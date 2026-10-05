@@ -1328,3 +1328,36 @@ async function testGatewayConnection(gateway) {
     resultDiv.textContent = `✕ Connection failed: ${err.message.replace('Edge Function returned a non-2xx status code', 'Invalid Credentials')}`;
   }
 }
+\n
+// =========================================
+// ADMIN RESPONSIVE SIDEBAR
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const adminMobileToggle = document.getElementById('admin-mobile-toggle');
+  const adminSidebar = document.querySelector('.admin-sidebar');
+  
+  if (adminMobileToggle && adminSidebar) {
+    adminMobileToggle.addEventListener('click', () => {
+      adminSidebar.classList.toggle('open');
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && adminSidebar.classList.contains('open')) {
+        if (!adminSidebar.contains(e.target) && !adminMobileToggle.contains(e.target) && !e.target.closest('.admin-mobile-header')) {
+          adminSidebar.classList.remove('open');
+        }
+      }
+    });
+    
+    // Close sidebar when clicking a nav item on mobile
+    const navItems = adminSidebar.querySelectorAll('.admin-nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          adminSidebar.classList.remove('open');
+        }
+      });
+    });
+  }
+});
