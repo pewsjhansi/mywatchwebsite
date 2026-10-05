@@ -653,7 +653,7 @@ function handleAddToCart() {
 // =========================================
 // RESPONSIVE MOBILE MENU
 // =========================================
-document.addEventListener('DOMContentLoaded', () => {
+function initMobileMenu() {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
   
@@ -713,4 +713,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+  initMobileMenu();
+}

@@ -788,7 +788,7 @@ footer {
   .section-header { margin-bottom: 2rem; }
 
   /* Navigation Drawer */
-  .mobile-menu-btn { display: block !important; }
+  .mobile-menu-btn { display: block !important; position: relative; z-index: 101; }
   .nav-actions { gap: 1rem; }
   .nav-actions .auth-trigger, .nav-actions .label-caps {
     display: none !important;
