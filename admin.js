@@ -146,6 +146,7 @@ async function handleAdminLogout(e) {
     window.location.href = 'index.html';
   }
 }
+window.handleAdminLogout = handleAdminLogout;
 
 // ─── NAVIGATION ─────────────────────────────────────────────
 function showSection(name, el) {
@@ -1360,3 +1361,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+window.showSection = showSection;

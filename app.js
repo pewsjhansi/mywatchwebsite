@@ -492,6 +492,7 @@ function toggleProfileDropdown(e) {
   const dropdown = document.getElementById('profile-dropdown');
   if (dropdown) dropdown.classList.toggle('open');
 }
+window.toggleProfileDropdown = toggleProfileDropdown;
 
 document.addEventListener('click', (e) => {
   const dropdown = document.getElementById('profile-dropdown');
@@ -510,6 +511,7 @@ async function handleLogout(e) {
     }
   }
 }
+window.handleLogout = handleLogout;
 
 // ─── PRODUCT CARD RENDERER ───────────────────────────────────
 function renderProductCard(product) {
@@ -661,17 +663,45 @@ document.addEventListener('DOMContentLoaded', () => {
       // Create mobile auth link if not exists
       if (navLinks.classList.contains('open') && !document.getElementById('mobile-auth-trigger')) {
         const authTrigger = document.querySelector('.auth-trigger');
+        const adminTrigger = document.querySelector('a[href="admin.html"]'); // admin login fallback
+        
         if (authTrigger) {
           const mobileAuth = document.createElement('div');
           mobileAuth.className = 'nav-links-auth-mobile';
-          mobileAuth.innerHTML = '<a href="#" id="mobile-auth-trigger" style="text-decoration:none; color:var(--color-primary); font-family:var(--font-body); font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;">' + (authTrigger.textContent || 'Login | Sign Up') + '</a>';
+          
+          if (window.userAuth) {
+             const dropdown = authTrigger.querySelector('.profile-dropdown-menu');
+             if (dropdown) {
+                const clone = dropdown.cloneNode(true);
+                clone.style.display = 'flex';
+                clone.style.flexDirection = 'column';
+                clone.style.gap = '1rem';
+                clone.style.background = 'transparent';
+                clone.style.border = 'none';
+                clone.style.padding = '0';
+                clone.style.position = 'static';
+                clone.style.boxShadow = 'none';
+                clone.style.opacity = '1';
+                clone.style.visibility = 'visible';
+                clone.id = 'mobile-auth-trigger'; // to prevent duplicate injections
+                mobileAuth.appendChild(clone);
+             }
+          } else {
+             mobileAuth.innerHTML = '<a href="#" id="mobile-auth-trigger" style="text-decoration:none; color:var(--color-primary); font-family:var(--font-body); font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;">Login | Sign Up</a>';
+             if (adminTrigger) {
+                mobileAuth.innerHTML += '<a href="admin.html" style="text-decoration:none; color:var(--color-primary); font-family:var(--font-body); font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-top:1rem; display:block;">Admin Login</a>';
+             }
+          }
           navLinks.appendChild(mobileAuth);
           
-          document.getElementById('mobile-auth-trigger').addEventListener('click', (e) => {
-            e.preventDefault();
-            navLinks.classList.remove('open');
-            authTrigger.click(); // trigger original modal
-          });
+          const mobileLoginBtn = document.getElementById('mobile-auth-trigger');
+          if (mobileLoginBtn && !window.userAuth) {
+            mobileLoginBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              navLinks.classList.remove('open');
+              authTrigger.click(); // trigger original modal
+            });
+          }
         }
       }
     });
