@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All | Aurelius Atelier Horlogerie</title>
+  <meta name="description" content="Shop our full collection of luxury watch bands. Filter by size, color and material.">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 3rem;
+      padding: 4rem 0;
+    }
+    .filter-sidebar {
+      border-right: 1px solid var(--color-divider);
+      padding-right: 2rem;
+    }
+    .filter-section { margin-bottom: 2rem; }
+    .filter-title { margin-bottom: 1rem; font-size: 13px; }
+    .filter-list { list-style: none; }
+    .filter-list li { margin-bottom: 0.5rem; }
+    .filter-list label {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-body); font-size: 14px; cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .filter-sidebar { border-right: none; border-bottom: 1px solid var(--color-divider); padding-right: 0; padding-bottom: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-container">
+      <div style="display:flex; align-items:center; gap: 2rem;">
+        <a href="index.html" class="brand">AURELIUS</a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html" style="color:var(--color-secondary)">Shop All</a>
+        <a href="shop.html">New Arrivals</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;">Login | Sign Up</div>
+        <div class="cart-icon open-cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <div class="cart-count">0</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="shop-layout">
+      <aside class="filter-sidebar">
+        <h2 class="title-lg" style="margin-bottom: 2rem;">Filters</h2>
+        <div class="filter-section">
+          <h3 class="label-caps filter-title">Size</h3>
+          <ul class="filter-list">
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> 18mm</label></li>
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> 20mm</label></li>
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> 22mm</label></li>
+          </ul>
+        </div>
+        <div class="filter-section">
+          <h3 class="label-caps filter-title">Color</h3>
+          <ul class="filter-list">
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> Black</label></li>
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> Brown</label></li>
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> Navy</label></li>
+            <li><label><input type="checkbox" onchange="applyShopFilter()"> Silver / Gold</label></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="shop-content">
+        <div style="display:flex; justify-content:space-between; margin-bottom: 2rem; align-items:center;">
+          <h1 class="headline-md">All Straps</h1>
+          <select class="form-input" id="shop-sort" style="width: 200px; padding:5px 0;" onchange="applyShopFilter()">
+            <option value="featured">Sort by: Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+
+        <div class="product-grid" id="shop-grid">
+          <!-- Populated by app.js via renderProductCard() -->
+          <p class="body-md" style="padding:2rem">Loading products...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="title-lg">Your Cart</h2>
+      <button class="cart-close" id="cart-close-btn">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items"></div>
+    <div class="cart-footer">
+      <div id="cart-promo-section"></div>
+      <div id="cart-footer-content"></div>
+      <span id="cart-subtotal" style="display:none"></span>
+      <a href="checkout.html" class="btn-primary" style="width:100%; text-align:center; margin-top:0.5rem">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // app.js handles rendering via renderProductCard() on productsLoaded event.
+    // This script only adds sort/filter on top of the already-rendered products.
+
+    let shopAllProducts = [];
+
+    document.addEventListener('productsLoaded', () => {
+      shopAllProducts = typeof products !== 'undefined' ? products : [];
+      applyShopFilter();
+    });
+
+    function applyShopFilter() {
+      if (!shopAllProducts.length) return;
+      const sort = document.getElementById('shop-sort').value;
+
+      let list = [...shopAllProducts];
+
+      // Sort
+      if (sort === 'price-low') {
+        list.sort((a, b) => (Number(a.selling_price || a.price) - Number(b.selling_price || b.price)));
+      } else if (sort === 'price-high') {
+        list.sort((a, b) => (Number(b.selling_price || b.price) - Number(a.selling_price || a.price)));
+      } else if (sort === 'newest') {
+        list.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      }
+      // 'featured' = default order from DB
+
+      const grid = document.getElementById('shop-grid');
+      if (!grid) return;
+
+      if (list.length === 0) {
+        grid.innerHTML = '<p class="body-md" style="padding:2rem">No products found.</p>';
+        return;
+      }
+
+      grid.innerHTML = list.map(p => renderProductCard(p)).join('');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#fedeb2","on-secondary-container":"#78603e","on-error":"#ffffff","on-secondary":"#ffffff","error-container":"#ffdad6","primary-fixed":"#e5e2e3","surface-bright":"#fbf9f5","on-primary-fixed":"#1c1b1c","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#e0c298","on-primary-container":"#858384","outline-variant":"#c7c6ca","secondary":"#725b38","tertiary-fixed":"#e4e1e7","on-primary-fixed-variant":"#474647","surface-container-low":"#f5f3ef","on-tertiary":"#ffffff","surface-container-high":"#eae8e4","surface-container":"#f0eeea","primary":"#000000","error":"#ba1a1a","tertiary-fixed-dim":"#c8c5cb","on-surface-variant":"#46464a","on-primary":"#ffffff","inverse-on-surface":"#f2f0ec","secondary-container":"#fedeb2","outline":"#77777b","surface-variant":"#e4e2de","background":"#fbf9f5","on-error-container":"#93000a","surface-dim":"#dbdad6","primary-fixed-dim":"#c8c6c7","inverse-surface":"#30312e","on-tertiary-fixed":"#1b1b1f","on-tertiary-fixed-variant":"#47464b","on-secondary-fixed-variant":"#584323","surface-container-highest":"#e4e2de","on-tertiary-container":"#848388","on-surface":"#1b1c1a","inverse-primary":"#c8c6c7","tertiary":"#000000","primary-container":"#1c1b1c","surface":"#fbf9f5","tertiary-container":"#1b1b1f","surface-tint":"#5f5e5f","on-secondary-fixed":"#281800","on-background":"#1b1c1a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-lg":"1.75rem","space-xl":"3rem","margin":"1.25rem","margin-desktop":"5rem","space-md":"1rem","margin-tablet":"3rem","space-xs":"0.25rem","gutter-desktop":"2.5rem","gutter":"1.5rem"},"fontFamily":{"technical-mono":["Inter"],"headline-lg":["Playfair Display"],"body-sm":["Inter"],"body-lg":["Inter"],"title-md":["Inter"],"display-lg":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"body-md":["Inter"],"headline-sm":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"title-lg":["Inter"],"label-caps":["Inter"]},"fontSize":{"technical-mono":["12px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"300"}],"title-md":["15px",{"lineHeight":"22px","letterSpacing":"0.04em","fontWeight":"500"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0.015em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"500"}],"title-lg":["18px",{"lineHeight":"26px","letterSpacing":"0.02em","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.18em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-9 bg-primary text-on-primary px-margin md:px-margin-desktop flex items-center justify-between font-label-caps text-label-caps uppercase tracking-wider"><div class="hidden sm:flex items-center gap-space-sm text-secondary-fixed"><span class="material-symbols-outlined text-[14px]">verified</span><span>Haute Horlogerie Atelier • Bespoke Guild</span></div><div class="flex-1 text-center truncate px-space-sm font-technical-mono text-technical-mono tracking-normal text-surface-container-high">Complimentary Worldwide Express Courier &amp; Hand-Stitched Leather Care Kit on orders above $150</div><div class="flex items-center gap-space-xs"><label class="sr-only" for="currency-select">Currency</label><select class="bg-transparent text-on-primary font-technical-mono text-technical-mono border-none focus:ring-0 cursor-pointer pr-1 py-0" id="currency-select"><option class="bg-primary text-on-primary" value="USD">USD ($)</option><option class="bg-primary text-on-primary" value="EUR">EUR (€)</option><option class="bg-primary text-on-primary" value="GBP">GBP (£)</option><option class="bg-primary text-on-primary" value="INR">INR (₹)</option></select></div></div><div class="h-20 max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm group" data-path="home" href="#"><img alt="Aurelius Atelier Horlogerie Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uu5WHYfYWmCOXSKmVhXV3uldHq_35I5dlFtvT2x7EFCw2RS-frxSIynXm2JJjZ_3HTKuNSHwcJZ_fXqBd_sX2qIW2jkQMeI5I7nwFiLM6tZrJPqcxGXwlZMRRncQdKZlNKIX0xz9W3N8DjZbuDXTE3H00WWUks4huoO0ZWBwPZsb2ZUxOyJa_c3bsAQkE5aVq7-t_hvP5w4bk0Po5d8-ZHNcXcrmcvu1yvOZbFfTthYmHxYWFzROxg5Q"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary font-medium leading-none">Aurelius</span><span class="font-label-caps text-label-caps text-secondary tracking-[0.25em] text-[9px] uppercase leading-tight mt-0.5">Atelier Horlogerie</span></div></a></div><nav class="hidden xl:flex items-center gap-gutter-desktop" data-active-classes="text-primary font-semibold border-b border-secondary pb-1"><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="shop-all" href="#">Shop All</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="mens-collection" href="#">Men's Collection</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="womens-collection" href="#">Women's Collection</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="new-arrivals" href="#">New Arrivals</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="best-sellers" href="#">Best Sellers</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="the-atelier" href="#">The Atelier / Craftsmanship</a></nav><div class="flex items-center gap-space-md sm:gap-space-lg"><button aria-label="Search Archive" class="p-1 text-on-surface hover:text-secondary transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Saved Vitrine" class="relative p-1 text-on-surface hover:text-secondary transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-secondary ring-2 ring-surface"></span></a><a aria-label="Cart" class="relative p-1 text-on-surface hover:text-secondary transition-colors" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary font-technical-mono text-[10px] flex items-center justify-center leading-none">2</span></a><a aria-label="Horological Profile" class="flex items-center pl-1 group" data-path="account" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant group-hover:ring-secondary transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh_vhj1D6q1Wt41z6VEMW175zE5BMEMhyWMWaS2RS4yeiFRm3Os1gfV-FPnBA-SXlvW9EpCXIJJkDd0QsyIv6jcUsFL9s3J0Fh3utcFMxWqIFNQ7jwraf9tsD9uA9sHia1q0rWE3dO_CT2QsD_AhMmm79gSD4mq-u_6IeGbjFtfj1GVS7ZbcW7gDbuWRQlOyh00fhcDk3Fuq53HY7tWAjb7uIGCcy_FYCf5zjLH5FyENs7hcNm67CM"/></a></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-290px)]"><div class="flex flex-col w-full">
+<!-- COLLECTOR PORTAL HERO / DOSSIER HEADER -->
+<section class="w-full bg-surface-container-low py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop space-y-space-lg">
+<!-- BREADCRUMBS & VAULT BADGE -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm text-on-surface-variant">
+<nav class="flex items-center gap-space-xs font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-outline-variant text-[10px]">/</span>
+<a class="hover:text-primary transition-colors" href="#">Horological Vault</a>
+<span class="text-outline-variant text-[10px]">/</span>
+<span class="text-primary font-semibold">Collector Account</span>
+</nav>
+<div class="inline-flex items-center gap-space-xs bg-surface-container px-3 py-1 font-technical-mono text-technical-mono text-[11px] uppercase tracking-wider text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Vault Protocol ID: #ATH-884021</span>
+</div>
+</div>
+<!-- EDITORIAL TITLE & WELCOME -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="space-y-space-xs max-w-3xl">
+<span class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-secondary font-semibold block">Haute Horlogerie • Private Guild Ledger</span>
+<h1 class="font-headline-lg text-headline-lg text-primary">Guild Vitrine &amp; Collector Dossier</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light leading-relaxed">
+            Welcome back, Eleanor. Review real-time bench telemetry, authenticated calf and cordovan commissions, archive provenance records, and private concierge allocations.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="bg-primary text-on-primary hover:bg-secondary px-6 py-3.5 font-label-caps text-label-caps uppercase tracking-widest transition-colors shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>New Custom Commission</span>
+</button>
+<button class="bg-surface hover:bg-surface-container text-on-surface px-5 py-3.5 font-label-caps text-label-caps uppercase tracking-widest transition-colors shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">lock_reset</span>
+<span>Vault Security</span>
+</button>
+</div>
+</div>
+<!-- HOROLOGICAL METRICS RIBBON (BENTO HIGHLIGHTS) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter pt-space-xs">
+<div class="bg-surface p-space-md shadow-sm space-y-1">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-[10px] tracking-widest uppercase">Commissions</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">watch</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary font-medium">4 Artifacts</p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">3 Fulfilled • 1 In-Transit</p>
+</div>
+<div class="bg-surface p-space-md shadow-sm space-y-1">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-[10px] tracking-widest uppercase">Guild Tier</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">workspace_premium</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary font-medium">Grand Patron</p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-secondary">Accredited Member since 2023</p>
+</div>
+<div class="bg-surface p-space-md space-y-1 shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-[10px] tracking-widest uppercase">Vault Ledger</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary font-medium">100% Certified</p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">Cryptographic Provenance Active</p>
+</div>
+<div class="bg-surface p-space-md space-y-1 shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-[10px] tracking-widest uppercase">Assigned Artisan</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">person_pin</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary font-medium">Marc-Antoine D.</p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">Geneva Atelier • Bench 04</p>
+</div>
+</div>
+</div>
+</section>
+<!-- NAVIGATION TABS / SECONDARY RAIL -->
+<section class="w-full bg-surface-container shadow-sm sticky top-20 z-40">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between overflow-x-auto no-scrollbar">
+<div class="flex items-center gap-space-lg shrink-0">
+<a class="font-label-caps text-label-caps uppercase tracking-wider text-primary py-4 relative font-semibold flex items-center gap-2" href="#orders">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Commissions &amp; Order History (3)</span>
+<span class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></span>
+</a>
+<a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-4" href="#dossier">
+          Collector Profile &amp; Vault
+        </a>
+<a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-4" href="#addresses">
+          Bespoke Delivery Addresses (2)
+        </a>
+<a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-4 flex items-center gap-1.5" href="#wishlist">
+<span>Saved Allocations</span>
+<span class="px-1.5 py-0.5 bg-surface-container-highest text-[10px] rounded-full text-on-surface">4</span>
+</a>
+<a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-4" href="#security">
+          Security &amp; Payment Rails
+        </a>
+</div>
+<div class="hidden xl:flex items-center gap-space-xs text-on-surface-variant font-technical-mono text-technical-mono text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-secondary">encrypted</span>
+<span>256-Bit SSL Encrypted Horological Vault</span>
+</div>
+</div>
+</section>
+<!-- MAIN DOSSIER WORKSPACE (ASYMMETRIC TWO-COLUMN SPLIT 8:4) -->
+<section class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+<!-- PRIMARY COLUMN: ORDERS & BENCH TELEMETRY (8 COLUMNS) -->
+<div class="lg:col-span-8 space-y-space-lg" id="orders">
+<!-- SECTION HEADING WITH FILTER CHIPS -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary font-semibold">Active &amp; Historical Dossiers</span>
+<h2 class="font-headline-md text-headline-md text-primary">Artifact Allocations</h2>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container p-1 rounded-sm">
+<button class="bg-surface text-primary px-3 py-1 font-label-caps text-[10px] uppercase tracking-wider shadow-sm font-semibold" type="button">All Records</button>
+<button class="text-on-surface-variant hover:text-primary px-3 py-1 font-label-caps text-[10px] uppercase tracking-wider transition-colors" type="button">Active Bench (1)</button>
+<button class="text-on-surface-variant hover:text-primary px-3 py-1 font-label-caps text-[10px] uppercase tracking-wider transition-colors" type="button">Delivered (2)</button>
+</div>
+</div>
+<!-- ================= ORDER CARD 1: ACTIVE BENCH CALIBRATION ================= -->
+<article class="bg-surface-container-low shadow-md overflow-hidden transition-all duration-300">
+<!-- TOP STATUS STRIP -->
+<div class="bg-surface-container-highest px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-secondary text-on-secondary font-label-caps text-[10px] uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[13px] animate-spin">refresh</span>
+                Active Bench Finishing
+              </span>
+<span class="font-headline-sm text-[16px] text-primary font-medium tracking-tight">Order #ATH-948210</span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-technical-mono text-technical-mono">
+<span>Commissioned: <strong>Oct 24, 2024</strong></span>
+<span>•</span>
+<span class="text-primary font-medium">Settled: <strong>$310.00 USD</strong></span>
+</div>
+</div>
+<div class="p-space-lg space-y-space-lg">
+<!-- BENCH TELEMETRY STEPPER -->
+<div class="bg-surface p-space-md shadow-sm space-y-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary font-semibold">Real-Time Artisan Telemetry</span>
+<h3 class="font-title-md text-title-md text-primary">Bench 04 • Geneva Atelier Horlogerie</h3>
+</div>
+<div class="flex items-center gap-2 font-technical-mono text-technical-mono text-[11px] text-on-surface-variant bg-surface-container px-3 py-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">flight_takeoff</span>
+<span>Estimated Arrival: <strong>Oct 28, 2024</strong> (Air Courier Express)</span>
+</div>
+</div>
+<!-- 4-STEP VISUAL PROGRESSION -->
+<div class="relative pt-2 pb-1">
+<!-- Track Line -->
+<div class="absolute top-5 left-6 right-6 h-0.5 bg-surface-container-highest -translate-y-1/2"></div>
+<div class="absolute top-5 left-6 w-[45%] h-0.5 bg-secondary -translate-y-1/2 transition-all"></div>
+<div class="relative grid grid-cols-4 gap-2 text-center">
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-technical-mono text-technical-mono text-[11px] shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-primary font-semibold block">Payment Verified</span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant block">Oct 24, 09:12 AM</span>
+</div>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-technical-mono text-technical-mono text-[11px] shadow-md z-10 animate-pulse">
+<span class="material-symbols-outlined text-[16px]">handyman</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-primary font-semibold block">Bench Finishing</span>
+<span class="font-technical-mono text-[10px] text-secondary font-medium block">Under 0.05mm Tolerances</span>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-technical-mono text-technical-mono text-[11px] z-10">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-on-surface-variant block">Insured Air Dispatch</span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant block">Est. Oct 26, Geneva Hub</span>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-technical-mono text-technical-mono text-[11px] z-10">
+<span class="material-symbols-outlined text-[16px]">home_pin</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-on-surface-variant block">Wrist Presentation</span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant block">New York Residence (Oct 28)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- COMMISSIONED ITEMS VITRINE -->
+<div class="space-y-space-sm">
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant block">Configured Artifacts (2)</span>
+<!-- Item 1 -->
+<div class="bg-surface p-space-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-20 h-20 bg-surface-container-high shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Macro luxury product photograph of a Whiskey Cognac Horween Shell Cordovan watch band with saddle ecru thread stitching and 316L brushed steel pin buckle against warm linen surface with soft golden studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA9k4muZ1kx4Ne_6sN2DW-mBrvnFUmf59J4z1o4p055KP6oIU0OnpzmFQ3GugGBwhiy9yEjs2OGNVeReKM8HGsvwASZoPTZJ3vb5wThW8BxT5x4564RUx6VF8DBFVXJaGDpYY3FHckDHYm4xrJLL1E4v81-MseYTo-iUN4YCcDTkZXpifZG4UgAeRNdVaOq99RfGJ5DsHSFEu9cgRSQobZ3yEPXoERCWjn7HujcXRxZhJmo6A07W1U"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-[17px] text-primary font-medium">Nomad Shell Cordovan Watch Band</h4>
+<span class="px-2 py-0.5 bg-surface-container text-secondary font-technical-mono text-[10px]">Passport #ATH-COR-881</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Specification: <strong>20mm Lug Width</strong> • Whiskey Cognac • 316L Brushed Swiss Hardware
+                    </p>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-technical-mono text-technical-mono text-[11px]">
+<span>Batch: 12/2024 Shell Reserve</span>
+<span>•</span>
+<span>Taper: 20mm to 16mm</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 w-full sm:w-auto border-t sm:border-t-0 pt-2 sm:pt-0">
+<p class="font-technical-mono text-body-md text-primary font-medium">$185.00 USD</p>
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-secondary">In Finishing</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface p-space-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-20 h-20 bg-surface-container-high shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="High horology macro detail of a Sovereign Milanese Mesh watch band in brushed Champagne Gold mesh weave with laser engraved sliding deployment clasp and polished micro bevels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LMoroYQmE2O6aaEc_4IBp_QTyTsNe1LQAFgTfYdC8rgJIFLH17D7ucV4T4XLAEZYdZK2uRp5wz2iIWBdEZwOJ-Nd65Kz8nqk9kDhsPlfQtdzi4DrhYIJ4lL_jN3uvzp62dTI04pWrJMjmTTqexqfLk1ZGlwsJsqa-jPF0sMHIs2UBpOKZNQIEHyImaYtOrTOAgUhjEdONJboJzi7gJpvPRNC215vKPW8HkRXOaELnIRgUhl0wfmo"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-[17px] text-primary font-medium">Sovereign Milanese Mesh Band</h4>
+<span class="px-2 py-0.5 bg-surface-container text-secondary font-technical-mono text-[10px]">Passport #ATH-MES-304</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Specification: <strong>20mm Lug Width</strong> • Champagne Gold PVD • Quick-Release Caliber Springbars
+                    </p>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-technical-mono text-technical-mono text-[11px]">
+<span>Weave: 0.4mm Wire Dense Knit</span>
+<span>•</span>
+<span>Taper: Straight 20mm</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 w-full sm:w-auto border-t sm:border-t-0 pt-2 sm:pt-0">
+<p class="font-technical-mono text-body-md text-primary font-medium">$125.00 USD</p>
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-secondary">In Finishing</span>
+</div>
+</div>
+</div>
+<!-- ACTION FOOTER CTAS -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="bg-primary hover:bg-secondary text-on-primary px-5 py-2.5 font-label-caps text-label-caps uppercase tracking-wider transition-colors shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]">sensors</span>
+<span>Live Telemetry Tracker</span>
+</button>
+<button class="bg-surface hover:bg-surface-container text-on-surface px-4 py-2.5 font-label-caps text-label-caps uppercase tracking-wider transition-colors shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>Download Atelier Certificate &amp; Tax Invoice (PDF)</span>
+</button>
+</div>
+<button class="text-secondary hover:text-primary font-label-caps text-label-caps uppercase tracking-widest flex items-center gap-1 transition-colors py-1" type="button">
+<span>Request Concierge Advice</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= ORDER CARD 2: FULFILLED HISTORICAL ORDER ================= -->
+<article class="bg-surface shadow-sm overflow-hidden transition-all duration-300">
+<div class="bg-surface-container px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-highest text-primary font-label-caps text-[10px] uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[13px] text-secondary">check_circle</span>
+                Delivered &amp; Fitted
+              </span>
+<span class="font-headline-sm text-[16px] text-primary font-medium tracking-tight">Order #ATH-819204</span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-technical-mono text-technical-mono">
+<span>Fitted: <strong>August 14, 2024</strong></span>
+<span>•</span>
+<span class="text-primary font-medium">Settled: <strong>$195.00 USD</strong></span>
+</div>
+</div>
+<div class="p-space-md space-y-space-md">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-16 h-16 bg-surface-container shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Macro detail of deep burgundy Chicago Cordovan leather strap No. 8 with polished edge coating, bespoke hand-stitched bar tacks, and warm patina highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsmP-_1A9AXyHI3OnKp318NXXDWfYlkJNdYik0MDSG5JD5FKnoYegSkoL91G2O-HZykyC_DLbV2CoMGar7FvZqj6nwka3GPk0Q6JsULwguh5oxcIeGHiYtx6FkPnJdtY0jLiTj1WLRIY5cmJ6WZ7Hl1Ad2yMnNBfz6J2Km9rpdDRVYGlZxVLPUZnAx3lczihxK2IKXIH2ZKWkybwAW8wHL5frifdMdyB06uYO1l4QnZipp1iQ27pBS"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-[16px] text-primary font-medium">The Chicago Cordovan • No. 8</h4>
+<span class="font-technical-mono text-[10px] text-on-surface-variant bg-surface-container-low px-2 py-0.5">Ledger Hash #SHA-8192-04</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    20mm Lug • Deep Burgundy Glaze • Hand-Beveled Edge Waxing
+                  </p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-secondary">
+                    Registered to: Patek Philippe Calatrava 5227G
+                  </p>
+</div>
+</div>
+<div class="text-right shrink-0 w-full sm:w-auto">
+<span class="px-2.5 py-1 bg-surface-container font-technical-mono text-[11px] text-primary block sm:inline-block">Authenticity Token #8192-AC</span>
+</div>
+</div>
+<!-- FULFILLED ACTIONS -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-2 border-t-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary px-4 py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors" type="button">
+                  Re-Commission Band
+                </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface px-4 py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified</span>
+<span>View Certificate of Authenticity</span>
+</button>
+</div>
+<button class="text-secondary hover:text-primary font-label-caps text-label-caps uppercase tracking-widest text-[11px] transition-colors flex items-center gap-1" type="button">
+<span>Request Lifetime Stitch Restoration</span>
+<span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= ORDER CARD 3: FULFILLED HISTORICAL ORDER ================= -->
+<article class="bg-surface shadow-sm overflow-hidden transition-all duration-300">
+<div class="bg-surface-container px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-highest text-primary font-label-caps text-[10px] uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[13px] text-secondary">check_circle</span>
+                Delivered
+              </span>
+<span class="font-headline-sm text-[16px] text-primary font-medium tracking-tight">Order #ATH-704128</span>
+</div>
+<div class="flex items-center gap-space-md text-on-surface-variant font-technical-mono text-technical-mono">
+<span>Commissioned: <strong>May 02, 2024</strong></span>
+<span>•</span>
+<span class="text-primary font-medium">Settled: <strong>$120.00 USD</strong></span>
+</div>
+</div>
+<div class="p-space-md space-y-space-md">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-16 h-16 bg-surface-container shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Macro studio photograph of a nautical navy blue vulcanized FKM rubber dive watch band with textured waffle pattern, titanium buckle, and ISO 300m depth badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhu9eRisurzv5-SWKlFCMqPG57SpCNJQaSA0RMo4UxiljwtE2aE1O4esxMP18JSsipZqSJJpU7_zu8UlnU9vwslIQn2UXv_b-3TPgH9IJ2AnKf3HMZs0Q2HXnQF1JWHqas9uB-olnn1t0TtECoI6NSRjkjlzrOPcyNB65sVT20mmeQxOLrIqHt8meA2ZqLfWPXDs_Xx5OzuUGeu7JL51BAdzVJJelNPD8Itkkho7b_-nWnvUzbVygP"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-[16px] text-primary font-medium">Nautique FKM Diver • Abysse</h4>
+<span class="font-technical-mono text-[10px] text-on-surface-variant bg-surface-container-low px-2 py-0.5">Passport #ATH-FKM-192</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    20mm Lug • Nautical Navy • 300m Depth Rated Vulcanized Fluoroelastomer
+                  </p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">
+                    Archived Delivery: Signed &amp; Received at Manhattan Residence
+                  </p>
+</div>
+</div>
+<div class="text-right shrink-0 w-full sm:w-auto">
+<p class="font-technical-mono text-body-md text-primary font-medium">$120.00 USD</p>
+</div>
+</div>
+<!-- FULFILLED ACTIONS -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-2">
+<div class="flex items-center gap-space-xs">
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface px-4 py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors" type="button">
+                  Order Details
+                </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface px-4 py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[15px]">download</span>
+<span>Download Receipt</span>
+</button>
+</div>
+<span class="font-technical-mono text-[11px] text-secondary">Warranty Valid Thru: May 2026</span>
+</div>
+</div>
+</article>
+<!-- HOROLOGICAL RESTORATION INVITATION BANNER -->
+<div class="bg-primary text-on-primary p-space-lg shadow-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="space-y-1 max-w-xl">
+<span class="font-label-caps text-[10px] uppercase tracking-[0.25em] text-secondary-fixed block">Annual Atelier Care Covenant</span>
+<h3 class="font-headline-sm text-headline-sm text-on-primary">Complimentary Wax Refinishing &amp; Tension Re-Stitch</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest font-light">
+              Grand Patron privileges grant Eleanor Vance complimentary seasonal conditioning with organic beeswax and harness-thread replacement on all active leather artifacts.
+            </p>
+</div>
+<button class="bg-secondary-fixed text-on-secondary-fixed hover:bg-on-secondary hover:text-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-widest shrink-0 transition-colors" type="button">
+            Book Atelier Service
+          </button>
+</div>
+</div>
+<!-- SECONDARY COLUMN: COLLECTOR PROFILE & FAST CONTROLS (4 COLUMNS) -->
+<aside class="lg:col-span-4 space-y-space-lg" id="dossier">
+<!-- ================= COLLECTOR PROFILE CARD ================= -->
+<div class="bg-surface shadow-md p-space-lg space-y-space-md">
+<div class="flex items-start justify-between">
+<div class="relative">
+<div class="w-20 h-20 rounded-full p-1 bg-gradient-to-tr from-secondary to-secondary-fixed-dim shadow-sm">
+<img alt="Eleanor Vance - Grand Patron Member" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XeIg6fYzXzFoYjuRlamO5NyoNOWnvx9mDlb_RfZ2Dr8vDIDJUwaFaG0ug8JIG3RJW_Mwxr0pIUTF0_8WRKuVgWKbDqtsRog7f1Bk50SBtYY_NSe9asLxj-UwZqAMm_8JgPMoJ21mByU6C0kNcSReH8ClljQSi75lsxxktPHXjkOQc-szxvXCmA-xtUQYTXu_gYpii4zUobyGKjtQeA-cQyLs5YrnDpHZeIU47ohX71A88Y1swDEsHXuJE"/>
+</div>
+<span class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-primary text-secondary-fixed flex items-center justify-center font-technical-mono text-[9px] shadow-sm">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+</span>
+</div>
+<button class="bg-surface-container hover:bg-surface-container-high text-primary px-3 py-1.5 font-label-caps text-[10px] uppercase tracking-widest transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[13px]">edit</span>
+<span>Edit Dossier</span>
+</button>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Eleanor Vance</h3>
+</div>
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-semibold">Grand Patron Member • Since 2023</p>
+<p class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">Collector Vault ID: #ATH-884021</p>
+</div>
+<div class="space-y-space-xs pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">mail</span>
+<span class="truncate">e.vance@horology.com</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">call</span>
+<span>+1 (555) 382-9102</span>
+</div>
+<div class="flex items-start gap-space-xs pt-1">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0 mt-0.5">location_on</span>
+<span class="leading-snug">742 Evergreen Terrace, Suite 4B, Upper East Side, New York, NY 10021</span>
+</div>
+</div>
+<div class="pt-space-xs bg-surface-container-low p-space-sm space-y-1">
+<div class="flex items-center justify-between text-[11px] font-technical-mono">
+<span class="text-on-surface-variant">Allocated Vault Credit</span>
+<span class="text-primary font-medium">$450.00 USD</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-3/4"></div>
+</div>
+<span class="font-technical-mono text-[10px] text-secondary block pt-0.5">Tier Renewal: November 2025</span>
+</div>
+</div>
+<!-- ================= HOROLOGICAL PRIVILEGES & COVENANT WIDGET ================= -->
+<div class="bg-surface shadow-md p-space-lg space-y-space-md">
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary font-semibold">Patron Privileges</span>
+<h3 class="font-title-lg text-title-lg text-primary">The Aurelius Covenant</h3>
+</div>
+<div class="space-y-space-sm font-body-sm text-body-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">straighten</span>
+<div>
+<p class="font-semibold text-primary">30-Day Bespoke Lug Fitting Guarantee</p>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">Exchange or re-taper within 0.5mm tolerance at zero courier charge.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">handyman</span>
+<div>
+<p class="font-semibold text-primary">Lifetime Saddle-Stitch Restoration</p>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">Unlimited artisanal re-stitching using beeswax-coated French linen cord.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">diamond</span>
+<div>
+<p class="font-semibold text-primary">Dedicated Private Concierge</p>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">Direct encrypted telegram / telephone channel to Geneva Master Artisan.</p>
+</div>
+</div>
+</div>
+<div class="pt-space-xs">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary py-3 px-4 font-label-caps text-label-caps uppercase tracking-widest transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+<span>Contact Assigned Horologist</span>
+</button>
+</div>
+</div>
+<!-- ================= SAVED DELIVERY VITRINE / ADDRESSES ================= -->
+<div class="bg-surface shadow-md p-space-lg space-y-space-md" id="addresses">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary font-semibold">Logistics Registry</span>
+<h3 class="font-title-lg text-title-lg text-primary">Delivery Vitrines</h3>
+</div>
+<button class="text-secondary hover:text-primary font-label-caps text-[11px] uppercase tracking-widest flex items-center gap-1 transition-colors" type="button">
+<span>+ Add Bespoke</span>
+</button>
+</div>
+<div class="space-y-space-sm">
+<!-- Address 1 (Default) -->
+<div class="bg-surface-container-low p-space-sm space-y-1 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-primary font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Primary Atelier Residence (NYC)</span>
+</span>
+<span class="px-2 py-0.5 bg-surface text-secondary font-technical-mono text-[9px] uppercase tracking-wider">Default</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-light">
+                Eleanor Vance • Attn: Private Vault<br/>
+                742 Evergreen Terrace, Suite 4B<br/>
+                Upper East Side, New York, NY 10021
+              </p>
+<div class="flex items-center gap-space-md pt-1 font-technical-mono text-[11px] text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Edit Parameters</a>
+<span>•</span>
+<span class="text-secondary">Special Courier Instructions Stored</span>
+</div>
+</div>
+<!-- Address 2 -->
+<div class="bg-surface-container-low p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-primary font-semibold">Midtown Office HQ</span>
+<button class="text-on-surface-variant hover:text-primary font-technical-mono text-[10px]" type="button">Set as Primary</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-light">
+                Vance Advisory Partners S.A.<br/>
+                590 Madison Avenue, 32nd Floor<br/>
+                New York, NY 10022
+              </p>
+<div class="flex items-center gap-space-md pt-1 font-technical-mono text-[11px] text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Edit Parameters</a>
+<span>•</span>
+<a class="hover:text-error transition-colors" href="#">Remove</a>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= TIMEPIECE COMPATIBILITY ARCHIVE ================= -->
+<div class="bg-surface shadow-md p-space-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-secondary font-semibold">Registered Watches</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">watch</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">Timepiece Caliber Vault</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Registered lugs and bezel finishes ensure every strap commission matches your timepiece's exact factory proportions.
+          </p>
+<div class="space-y-2 pt-1 font-technical-mono text-technical-mono text-[11px]">
+<div class="flex items-center justify-between p-2 bg-surface-container">
+<span>Patek Philippe Calatrava 5227G</span>
+<strong class="text-primary">20mm Lug / 16mm Buckle</strong>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface-container">
+<span>Audemars Piguet Royal Oak Jumbo 15202</span>
+<strong class="text-primary">Bespoke Plot Endlink</strong>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface-container">
+<span>Omega Speedmaster Ed White</span>
+<strong class="text-primary">19mm Lug / 16mm Buckle</strong>
+</div>
+</div>
+<button class="w-full bg-surface-container-high hover:bg-surface-container-highest text-primary py-2 font-label-caps text-[10px] uppercase tracking-widest transition-colors mt-2" type="button">
+            + Register New Reference
+          </button>
+</div>
+</aside>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface mt-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop pb-space-xl border-b border-surface-container-highest"><div class="lg:col-span-5 space-y-space-md"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm uppercase tracking-widest text-primary">Aurelius</span><span class="font-label-caps text-label-caps text-secondary text-[10px] uppercase">• Genève &amp; Milano</span></div><p class="font-body-lg text-body-lg text-on-surface-variant max-w-md font-light leading-relaxed">Architecting the tactile bridge between extraordinary mechanical calibers and the wrist. Precision-engineered straps formed from vegetable-tanned cordovan, saddle-stitched French alligator, and fluroelastomer vulcanized rubbers.</p><div class="pt-space-sm"><form class="space-y-space-xs max-w-md"><label class="font-label-caps text-label-caps uppercase tracking-widest text-primary block" for="footer-newsletter">The Atelier Gazette • Rare Batch Allocations</label><div class="flex items-stretch bg-surface border border-outline-variant p-1 focus-within:border-secondary transition-colors"><input class="w-full bg-transparent px-space-sm py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none" id="footer-newsletter" placeholder="collector@horlogerie.com" type="email"/><button class="bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary px-space-md py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors shrink-0" type="submit">Subscribe</button></div><p class="font-technical-mono text-technical-mono text-on-surface-variant text-[11px]">Limited release notifications exclusively. Discretion preserved.</p></form></div></div><div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-gutter"><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Collections</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="shop-all" href="#">All Bands &amp; Straps</a></li><li class="hover:text-primary transition-colors"><a data-path="horween-cordovan" href="#">Horween Cordovan</a></li><li class="hover:text-primary transition-colors"><a data-path="milanese-mesh" href="#">Milanese Mesh</a></li><li class="hover:text-primary transition-colors"><a data-path="fkm-vulcanized-rubber" href="#">FKM Vulcanized Rubber</a></li><li class="hover:text-primary transition-colors"><a data-path="alligator-grain" href="#">Alligator Grain</a></li><li class="hover:text-primary transition-colors"><a data-path="apple-watch-compatible" href="#">Apple Watch Compatible</a></li></ul></div><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Concierge</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="strap-size-guide" href="#">Strap Size Guide</a></li><li class="hover:text-primary transition-colors"><a data-path="lug-measurement-tool" href="#">Lug Measurement Tool</a></li><li class="hover:text-primary transition-colors"><a data-path="bespoke-orders" href="#">Bespoke Orders</a></li><li class="hover:text-primary transition-colors"><a data-path="order-status" href="#">Order Status &amp; Tracking</a></li><li class="hover:text-primary transition-colors"><a data-path="care-and-maintenance" href="#">Care &amp; Maintenance</a></li></ul></div><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Legal &amp; Policies</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="shipping-and-delivery" href="#">Shipping &amp; Delivery</a></li><li class="hover:text-primary transition-colors"><a data-path="returns-and-exchanges" href="#">Returns &amp; Exchanges</a></li><li class="hover:text-primary transition-colors"><a data-path="authenticity-guarantee" href="#">Authenticity Guarantee</a></li><li class="hover:text-primary transition-colors"><a data-path="privacy-policy" href="#">Privacy Policy</a></li></ul></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex flex-wrap items-center gap-space-md font-technical-mono text-technical-mono text-[11px]"><span class="text-primary font-medium">© 2024 Aurelius Atelier Horlogerie S.A.</span><span>All rights reserved.</span><span class="hidden sm:inline">•</span><span>Manufacture Artisanale d'Horlogerie</span></div><div class="flex items-center gap-space-md"><span class="font-label-caps text-[10px] tracking-widest uppercase text-on-surface-variant">Accepted Tenders:</span><div class="flex items-center gap-space-sm font-technical-mono text-technical-mono text-[11px] uppercase tracking-wider text-primary"><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">UPI</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">VISA</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">MASTERCARD</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">AMEX</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">APPLE PAY</span></div></div></div></div></footer></body></html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#fedeb2","on-secondary-container":"#78603e","on-error":"#ffffff","on-secondary":"#ffffff","error-container":"#ffdad6","primary-fixed":"#e5e2e3","surface-bright":"#fbf9f5","on-primary-fixed":"#1c1b1c","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#e0c298","on-primary-container":"#858384","outline-variant":"#c7c6ca","secondary":"#725b38","tertiary-fixed":"#e4e1e7","on-primary-fixed-variant":"#474647","surface-container-low":"#f5f3ef","on-tertiary":"#ffffff","surface-container-high":"#eae8e4","surface-container":"#f0eeea","primary":"#000000","error":"#ba1a1a","tertiary-fixed-dim":"#c8c5cb","on-surface-variant":"#46464a","on-primary":"#ffffff","inverse-on-surface":"#f2f0ec","secondary-container":"#fedeb2","outline":"#77777b","surface-variant":"#e4e2de","background":"#fbf9f5","on-error-container":"#93000a","surface-dim":"#dbdad6","primary-fixed-dim":"#c8c6c7","inverse-surface":"#30312e","on-tertiary-fixed":"#1b1b1f","on-tertiary-fixed-variant":"#47464b","on-secondary-fixed-variant":"#584323","surface-container-highest":"#e4e2de","on-tertiary-container":"#848388","on-surface":"#1b1c1a","inverse-primary":"#c8c6c7","tertiary":"#000000","primary-container":"#1c1b1c","surface":"#fbf9f5","tertiary-container":"#1b1b1f","surface-tint":"#5f5e5f","on-secondary-fixed":"#281800","on-background":"#1b1c1a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-lg":"1.75rem","space-xl":"3rem","margin":"1.25rem","margin-desktop":"5rem","space-md":"1rem","margin-tablet":"3rem","space-xs":"0.25rem","gutter-desktop":"2.5rem","gutter":"1.5rem"},"fontFamily":{"technical-mono":["Inter"],"headline-lg":["Playfair Display"],"body-sm":["Inter"],"body-lg":["Inter"],"title-md":["Inter"],"display-lg":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"body-md":["Inter"],"headline-sm":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"title-lg":["Inter"],"label-caps":["Inter"]},"fontSize":{"technical-mono":["12px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"300"}],"title-md":["15px",{"lineHeight":"22px","letterSpacing":"0.04em","fontWeight":"500"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0.015em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"500"}],"title-lg":["18px",{"lineHeight":"26px","letterSpacing":"0.02em","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.18em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-9 bg-primary text-on-primary px-margin md:px-margin-desktop flex items-center justify-between font-label-caps text-label-caps uppercase tracking-wider"><div class="hidden sm:flex items-center gap-space-sm text-secondary-fixed"><span class="material-symbols-outlined text-[14px]">verified</span><span>Haute Horlogerie Atelier • Bespoke Guild</span></div><div class="flex-1 text-center truncate px-space-sm font-technical-mono text-technical-mono tracking-normal text-surface-container-high">Complimentary Worldwide Express Courier &amp; Hand-Stitched Leather Care Kit on orders above $150</div><div class="flex items-center gap-space-xs"><label class="sr-only" for="currency-select">Currency</label><select class="bg-transparent text-on-primary font-technical-mono text-technical-mono border-none focus:ring-0 cursor-pointer pr-1 py-0" id="currency-select"><option class="bg-primary text-on-primary" value="USD">USD ($)</option><option class="bg-primary text-on-primary" value="EUR">EUR (€)</option><option class="bg-primary text-on-primary" value="GBP">GBP (£)</option><option class="bg-primary text-on-primary" value="INR">INR (₹)</option></select></div></div><div class="h-20 max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm group" data-path="home" href="#"><img alt="Aurelius Atelier Horlogerie Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uu5WHYfYWmCOXSKmVhXV3uldHq_35I5dlFtvT2x7EFCw2RS-frxSIynXm2JJjZ_3HTKuNSHwcJZ_fXqBd_sX2qIW2jkQMeI5I7nwFiLM6tZrJPqcxGXwlZMRRncQdKZlNKIX0xz9W3N8DjZbuDXTE3H00WWUks4huoO0ZWBwPZsb2ZUxOyJa_c3bsAQkE5aVq7-t_hvP5w4bk0Po5d8-ZHNcXcrmcvu1yvOZbFfTthYmHxYWFzROxg5Q"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary font-medium leading-none">Aurelius</span><span class="font-label-caps text-label-caps text-secondary tracking-[0.25em] text-[9px] uppercase leading-tight mt-0.5">Atelier Horlogerie</span></div></a></div><nav class="hidden xl:flex items-center gap-gutter-desktop" data-active-classes="text-primary font-semibold border-b border-secondary pb-1"><a aria-current="page" class="uppercase tracking-widest transition-colors py-1 text-primary font-semibold border-b border-secondary pb-1" data-path="shop-all" href="#">Shop All</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="mens-collection" href="#">Men's Collection</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="womens-collection" href="#">Women's Collection</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="new-arrivals" href="#">New Arrivals</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="best-sellers" href="#">Best Sellers</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="the-atelier" href="#">The Atelier / Craftsmanship</a></nav><div class="flex items-center gap-space-md sm:gap-space-lg"><button aria-label="Search Archive" class="p-1 text-on-surface hover:text-secondary transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Saved Vitrine" class="relative p-1 text-on-surface hover:text-secondary transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-secondary ring-2 ring-surface"></span></a><a aria-label="Cart" class="relative p-1 text-on-surface hover:text-secondary transition-colors" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary font-technical-mono text-[10px] flex items-center justify-center leading-none">2</span></a><a aria-label="Horological Profile" class="flex items-center pl-1 group" data-path="account" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant group-hover:ring-secondary transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh_vhj1D6q1Wt41z6VEMW175zE5BMEMhyWMWaS2RS4yeiFRm3Os1gfV-FPnBA-SXlvW9EpCXIJJkDd0QsyIv6jcUsFL9s3J0Fh3utcFMxWqIFNQ7jwraf9tsD9uA9sHia1q0rWE3dO_CT2QsD_AhMmm79gSD4mq-u_6IeGbjFtfj1GVS7ZbcW7gDbuWRQlOyh00fhcDk3Fuq53HY7tWAjb7uIGCcy_FYCf5zjLH5FyENs7hcNm67CM"/></a></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-290px)]"><div class="flex flex-col w-full">
+<!-- Top Subtle Ambient Light Glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[340px] bg-secondary-fixed/30 rounded-full blur-[110px] pointer-events-none"></div>
+<!-- Editorial Header Section -->
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop pt-8 pb-10 relative z-10">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-technical-mono text-technical-mono text-on-surface-variant mb-5">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-outline-variant text-[10px]">•</span>
+<a class="hover:text-primary transition-colors" href="#">Atelier Catalog</a>
+<span class="text-outline-variant text-[10px]">•</span>
+<span class="text-primary font-medium">Shop All</span>
+</nav>
+<!-- Main Headline Block with Asymmetric Counter -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8">
+<div class="space-y-3 max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full text-secondary font-label-caps text-label-caps uppercase tracking-[0.2em]">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Horological Straps • Vol. IV
+          </div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">The Strap Collection</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light leading-relaxed">
+            Precision-engineered bands tailored for mechanical icons and luxury smartwatches. Cut, skived, and hand-finished in small bespoke batches.
+          </p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-5 py-3 rounded-lg shadow-sm">
+<div class="flex flex-col text-right">
+<span class="font-technical-mono text-technical-mono text-on-surface-variant uppercase tracking-wider text-[11px]">Vault Inventory</span>
+<span class="font-title-md text-title-md text-primary font-medium">Showing 24 of 48 Timepiece Bands</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[28px]">watch</span>
+</div>
+</div>
+<!-- Filter Controls & Action Ribbon -->
+<div class="bg-surface-container-low rounded-xl p-4 md:p-5 shadow-sm space-y-4">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<!-- Active Filter Badges -->
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider text-[10px] mr-1">Active Criteria:</span>
+<div class="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded-full text-primary font-technical-mono text-technical-mono shadow-sm" id="filter-tag-size">
+<span class="text-secondary font-semibold">Size:</span> 20mm
+              <button aria-label="Remove Size filter" class="text-on-surface-variant hover:text-primary ml-1 flex items-center" onclick="document.getElementById('filter-tag-size').remove()">
+<span class="material-symbols-outlined text-[15px]">close</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded-full text-primary font-technical-mono text-technical-mono shadow-sm" id="filter-tag-mat">
+<span class="text-secondary font-semibold">Material:</span> Italian Leather
+              <button aria-label="Remove Material filter" class="text-on-surface-variant hover:text-primary ml-1 flex items-center" onclick="document.getElementById('filter-tag-mat').remove()">
+<span class="material-symbols-outlined text-[15px]">close</span>
+</button>
+</div>
+<button class="font-technical-mono text-technical-mono text-secondary hover:text-primary underline underline-offset-4 ml-1 transition-colors">
+              Clear All Filters
+            </button>
+</div>
+<!-- Sorting and View Density Controls -->
+<div class="flex items-center gap-4 ml-auto">
+<div class="flex items-center gap-2">
+<label class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hidden sm:inline" for="sort-select">Sort By:</label>
+<div class="relative bg-surface rounded-lg shadow-sm">
+<select class="appearance-none bg-transparent font-title-md text-title-md text-primary pl-3 pr-8 py-2 focus:outline-none cursor-pointer" id="sort-select">
+<option selected="">Featured Atelier</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Newest First</option>
+<option>Best Selling</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Grid Density Toggles -->
+<div class="hidden md:flex items-center bg-surface-container rounded-lg p-1 gap-1">
+<button class="p-1.5 rounded bg-surface shadow-sm text-primary transition-all" id="view-3-btn" onclick="setViewMode(3)" title="Spacious Gallery View (3 Columns)">
+<span class="material-symbols-outlined text-[20px]">view_module</span>
+</button>
+<button class="p-1.5 rounded text-on-surface-variant hover:text-primary transition-all" id="view-4-btn" onclick="setViewMode(4)" title="Compact Catalog View (4 Columns)">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Catalog Main Area: Filters + Grid -->
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop pb-20 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- ================= SIDEBAR FILTERS (4 COLS LG) ================= -->
+<aside class="lg:col-span-3 space-y-6 lg:sticky lg:top-24">
+<!-- Sidebar Shell Card -->
+<div class="bg-surface-container-low rounded-xl p-6 shadow-sm space-y-7">
+<div class="flex items-center justify-between pb-3 border-b-0">
+<h2 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+              Refine Vitrine
+            </h2>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">Reset (0)</span>
+</div>
+<!-- Section 1: Lug Width Dimension -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">Lug Width (mm)</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">Exact Fit</span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-body-sm font-body-sm">
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span>18mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant">12</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span>19mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant">6</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded bg-surface-container-highest cursor-pointer font-medium text-primary">
+<div class="flex items-center gap-2">
+<input checked="" class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span>20mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-secondary font-semibold">34</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span>21mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant">8</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span>22mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant">28</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span>24mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant">9</span>
+</label>
+</div>
+<!-- Smartwatch Lug Adapter Tags -->
+<div class="pt-2 space-y-1.5">
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer text-body-sm font-body-sm transition-colors">
+<div class="flex items-center gap-2 truncate">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span class="truncate">Apple Watch 40/41mm</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant shrink-0 ml-1">15</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded bg-surface hover:bg-surface-container cursor-pointer text-body-sm font-body-sm transition-colors">
+<div class="flex items-center gap-2 truncate">
+<input class="accent-primary rounded w-3.5 h-3.5" type="checkbox"/>
+<span class="truncate">Apple Watch 44/45/Ultra</span>
+</div>
+<span class="font-technical-mono text-[11px] text-on-surface-variant shrink-0 ml-1">19</span>
+</label>
+</div>
+</div>
+<!-- Section 2: Material & Guild Tanning -->
+<div class="space-y-3">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">Leather &amp; Material</span>
+<div class="space-y-1.5 font-body-sm text-body-sm">
+<label class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span>Horween Cordovan</span>
+</div>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">14</span>
+</label>
+<label class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-700"></span>
+<span>French Barenia Calf</span>
+</div>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">18</span>
+</label>
+<label class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-zinc-400"></span>
+<span>Milanese Stainless Mesh</span>
+</div>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">7</span>
+</label>
+<label class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-zinc-900"></span>
+<span>Vulcanized FKM Rubber</span>
+</div>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">11</span>
+</label>
+<label class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-900"></span>
+<span>Tuscan Suede Velour</span>
+</div>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">9</span>
+</label>
+<label class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-stone-700"></span>
+<span>Alligator &amp; Exotic Grain</span>
+</div>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">6</span>
+</label>
+</div>
+</div>
+<!-- Section 3: Palette & Swatches -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">Colorway</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-secondary">8 Shades</span>
+</div>
+<div class="grid grid-cols-4 gap-2.5">
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Noir Black">
+<span class="w-7 h-7 rounded-full bg-[#1A1A1A] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[13px] opacity-0 group-hover:opacity-100">done</span>
+</span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Noir</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Cognac Brown">
+<span class="w-7 h-7 rounded-full bg-[#6B3A19] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[13px] opacity-100">done</span>
+</span>
+<span class="font-technical-mono text-[10px] text-primary font-medium">Cognac</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Saddle Tan">
+<span class="w-7 h-7 rounded-full bg-[#B27341] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform"></span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Tan</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Champagne Gold">
+<span class="w-7 h-7 rounded-full bg-[#D4AF37] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform"></span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Gilt</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Navy Blue">
+<span class="w-7 h-7 rounded-full bg-[#1B2A4A] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform"></span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Marine</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Forest Green">
+<span class="w-7 h-7 rounded-full bg-[#233B28] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform"></span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Forest</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Slate Grey">
+<span class="w-7 h-7 rounded-full bg-[#52575D] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform"></span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Slate</span>
+</button>
+<button class="group flex flex-col items-center gap-1 focus:outline-none" title="Burgundy Bordeaux">
+<span class="w-7 h-7 rounded-full bg-[#581825] shadow-inner flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform"></span>
+<span class="font-technical-mono text-[10px] text-on-surface-variant">Bordeaux</span>
+</button>
+</div>
+</div>
+<!-- Section 4: Buckle Hardware Finishing -->
+<div class="space-y-3">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">Buckle Hardware</span>
+<div class="grid grid-cols-2 gap-2 text-body-sm font-body-sm">
+<label class="flex items-center gap-2 p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<span class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-slate-400 to-zinc-200"></span>
+<span class="text-[12px]">316L Steel</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<span class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-yellow-600 to-amber-200"></span>
+<span class="text-[12px]">Yellow Gold</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<span class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-rose-700 to-rose-200"></span>
+<span class="text-[12px]">Rose Gold</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded bg-surface hover:bg-surface-container cursor-pointer transition-colors">
+<span class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-neutral-900 to-neutral-700"></span>
+<span class="text-[12px]">Matte DLC</span>
+</label>
+</div>
+</div>
+<!-- Section 5: Price Range Slider & Brackets -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">Price Spectrum</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-secondary font-medium">$80 — $280</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="280" min="80" type="range" value="210"/>
+<div class="flex items-center justify-between gap-2 pt-1 font-technical-mono text-technical-mono text-[11px]">
+<div class="px-2.5 py-1.5 bg-surface rounded text-primary">$80 Min</div>
+<span class="text-on-surface-variant">to</span>
+<div class="px-2.5 py-1.5 bg-surface rounded text-primary">$280 Max</div>
+</div>
+<!-- Quick Price Brackets -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<button class="px-2 py-1 rounded bg-surface hover:bg-primary hover:text-on-primary font-technical-mono text-[11px] text-on-surface-variant transition-colors">$50-$100</button>
+<button class="px-2 py-1 rounded bg-primary text-on-primary font-technical-mono text-[11px] transition-colors">$100-$180</button>
+<button class="px-2 py-1 rounded bg-surface hover:bg-primary hover:text-on-primary font-technical-mono text-[11px] text-on-surface-variant transition-colors">$180+</button>
+</div>
+</div>
+<!-- Section 6: Gender Allocation -->
+<div class="space-y-2 pt-1">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary">Wrist Profile</span>
+<div class="flex items-center gap-1.5">
+<button class="flex-1 py-1.5 px-2 bg-surface hover:bg-surface-container rounded text-center font-body-sm text-body-sm transition-colors">Men (32)</button>
+<button class="flex-1 py-1.5 px-2 bg-surface hover:bg-surface-container rounded text-center font-body-sm text-body-sm transition-colors">Women (24)</button>
+<button class="flex-1 py-1.5 px-2 bg-surface-container-highest font-medium text-primary rounded text-center font-body-sm text-body-sm">Unisex (40)</button>
+</div>
+</div>
+</div>
+<!-- Concierge Fit Banner -->
+<div class="bg-primary text-on-primary p-5 rounded-xl space-y-3 shadow-md">
+<div class="flex items-center gap-2 text-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">straighten</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Atelier Advisory</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-container-high leading-relaxed">
+            Unsure of your lug gap width? Print our calibrated 1:1 scale gauge or speak with a master horologist via concierge.
+          </p>
+<a class="inline-flex items-center gap-1 text-secondary-fixed hover:text-white font-technical-mono text-technical-mono text-[11px] transition-colors" href="#">
+<span>Download 1:1 Gauge PDF</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+</aside>
+<!-- ================= PRODUCT CATALOG GRID (9 COLS LG) ================= -->
+<main class="lg:col-span-9 space-y-10">
+<!-- Vitrine Grid Container with dynamic class toggle -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 transition-all" id="product-catalog-grid">
+<!-- PRODUCT CARD 1 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<!-- Media Vitrine -->
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Macro luxury product photograph of handcrafted espresso brown Horween Shell Cordovan watch strap resting on natural sandstone background with Swiss luxury stainless steel watch head and soft natural atelier sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwjcuPx6d-drWrg7vl_k4FOQIPSCRITHLA74NDv0HyFMdjKXpSFnhOAUdcjbpBX4Wal1rk0O8Ax5JnxH8EgCvst1KgdtSxJQdHsAazE6zVVVrXsM_A3hAOYdZpKppgqJr9G4jo_NQeW0CFMyPlt9voiWboPclv0vJ9Z-tT4AEIOdsZbdv4tgcIFxsfLIFPXE8oXadvp7MsP2FBS87rcccE7xgRioWyazaOkn36JK8t3dE958rqR7nt"/>
+<!-- Luxury Badges -->
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-primary/90 text-on-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Best Seller</span>
+<span class="px-2 py-0.5 bg-surface/90 text-secondary font-technical-mono text-[10px] rounded-sm backdrop-blur-sm">Batch #104</span>
+</div>
+<!-- Hardware Switcher Icon -->
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<!-- Quick Add Overlay (Reveals on Hover) -->
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<!-- Meta Data & Specification -->
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>Horween Shell Cordovan</span>
+<span class="text-secondary font-medium">Chicago • USA</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  The Chicago Cordovan • No. 8
+                </h3>
+</div>
+<!-- Lug Size Indicators -->
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">18mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">19mm</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">22mm</span>
+</div>
+<!-- Price & Swatches -->
+<div class="flex items-center justify-between pt-2 border-t-0">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#4A2511] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#1A1A1A]"></span>
+<span class="w-3 h-3 rounded-full bg-[#7A3E1D]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$195</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Inc. 316L Buckle</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 2 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Editorial top-down view of French Barenia calfskin watch strap in warm cognac tan with creamy saddle stitching placed beside brass watchmaker calipers and movement components" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrZp3ojaCGmiEGKGaQ0RM_Bf0A089zoMnI24zkYifJU44EtXLYwPvpU-cc50fCKCD5n5V_O2tnoBROCM-ybwVUAw-t4mnTnmSNEgihiZaDfoujaTPUgHNmHT0o4Ln2XXinZNxRHbePCWe1MCDbh90YyaYnTJrfHvbiwTWqy5OKUPgCl1sxVgQS7wCpqL4kMkKtldKBTwb9-s13YIEaZuUjHX5J3AoEmctB6UZnVglqrPlVMY5p2V07"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Hand-Stitched</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>French Barenia Calf</span>
+<span class="text-secondary font-medium">Alsace • France</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Barénia Heritage Fauve
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">21mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">22mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#B67032] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#3B2213]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$185</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Quick-Release Bars</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 3 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Detailed macro of deep maritime navy vulcanized FKM rubber dive watch strap featuring waffle grid pattern and bead-blasted titanium buckle against dark ocean granite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZQHSj6dwPM3HFzvRBJ674X_NAIBrCkKG2kmmAmwqBo4jLO5UwN9H7eh0J3tXYlmt3tvv88bmp_7Fa2Gbq_XFAMuxFLDb8PhGhil46zQnR6861Qa2qaKey38H86nioJlc9Sr-GBGTsW9RD8tsLcrOVr6l3zG9KuJi3TzLOyAoTOeuAymvJ8ziQ_RQudF0y0Pox5mjsMf2pW5HlkXnjNV0ERtDZWXdn-yW-YY1yMXje-pYUVqxFKGGm"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Water-Resistant</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>Vulcanized FKM Rubber</span>
+<span class="text-secondary font-medium">Geneva • Suisse</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Nautique FKM Diver • Abysse
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">20mm</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">22mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">Apple Ultra</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#112233] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#181818]"></span>
+<span class="w-3 h-3 rounded-full bg-[#203323]"></span>
+<span class="w-3 h-3 rounded-full bg-[#D46B2C]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$120</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">300m Depth Rated</span>
+</div>
+</div>
+</div>
+</article>
+<!-- ================= EDITORIAL INTERSTITIAL BANNER (FULL WIDTH OF GRID) ================= -->
+<div class="col-span-1 md:col-span-2 xl:col-span-3 bg-surface-container rounded-2xl p-8 md:p-10 shadow-sm relative overflow-hidden my-2">
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-secondary-fixed/40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-7 space-y-4">
+<div class="inline-flex items-center gap-2 text-secondary font-label-caps text-label-caps uppercase tracking-widest">
+<span class="material-symbols-outlined text-[16px]">build_circle</span>
+                  Atelier Masterclass • Precision Fit
+                </div>
+<h3 class="font-headline-md text-headline-md text-primary">
+                  The Quick-Release Standard &amp; Zero-Lug-Scrath Mechanism
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Every Aurelius strap features custom micro-machined 316L quick-release spring bars. Swap styles in five seconds without touching sharp tools to polished case lugs.
+                </p>
+<div class="pt-2 flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider transition-colors rounded-sm" href="#">
+                    Read the Lug Sizing Guide
+                    <span class="material-symbols-outlined text-[16px]">east</span>
+</a>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">Tolerance ±0.02mm</span>
+</div>
+</div>
+<!-- Technical Diagram Graphic -->
+<div class="lg:col-span-5 bg-surface rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between border-b-0 pb-1">
+<span class="font-label-caps text-label-caps uppercase text-primary tracking-wider">Calibration Diagram</span>
+<span class="font-technical-mono text-secondary text-[11px]">Figure II.B</span>
+</div>
+<!-- Inline SVG Caliper Graphic -->
+<svg class="w-full text-secondary stroke-current" fill="none" viewbox="0 0 320 90">
+<path d="M 20 45 L 300 45" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<path d="M 60 20 L 60 70" stroke-width="2"></path>
+<path d="M 260 20 L 260 70" stroke-width="2"></path>
+<circle cx="60" cy="45" fill="currentColor" r="4"></circle>
+<circle cx="260" cy="45" fill="currentColor" r="4"></circle>
+<path d="M 60 45 L 80 45" stroke-width="2.5"></path>
+<path d="M 260 45 L 240 45" stroke-width="2.5"></path>
+<text class="fill-current font-technical-mono text-[11px] tracking-widest stroke-none" text-anchor="middle" x="160" y="38">20.00 mm LUG SPAN</text>
+<text class="fill-current font-technical-mono text-[9px] opacity-70 stroke-none" text-anchor="middle" x="160" y="65">SWISS TOLERANCE ZERO GAP</text>
+</svg>
+<div class="flex items-center justify-between text-[11px] font-technical-mono text-on-surface-variant pt-1">
+<span>Springbar Pin: Ø 1.8mm</span>
+<span>Lug Taper: 20mm → 16mm</span>
+</div>
+</div>
+</div>
+</div>
+<!-- PRODUCT CARD 4 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Close up photograph of brushed Milanese mesh watch bracelet in 316L stainless steel catching soft dramatic light over black watch dial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYybgyp4Wu8VQzRjzqBFu-fFB8tjTUCNz1afpfngJBvGPsxELCBt9WwZvrzJVhwWtG1f-vjjewfC5zHmF39_Y7SbZvjBXXE8TQnaXpuOwQoVTbcNTCPbMpWYAGBtMIWBuO6eAplkoqSK1vM-Mv3Q7hHVkntesDC7XgkXCl7a2Wjwy_jOCwBn-mkQ9Ojo40Au0BO8Ht5MXLn32AKlNKeBsZ5QN_uJDmk8JClqmNa37XTcl6-vaJfmMU"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Milanese Steel</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>Woven 316L Steel</span>
+<span class="text-secondary font-medium">Pforzheim • Germany</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Milanese Fine Mesh • Satin Silver
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">19mm</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">22mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-zinc-300 ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-amber-200"></span>
+<span class="w-3 h-3 rounded-full bg-zinc-800"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$165</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Slide Micro-Clasp</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 5 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Moody still life photograph of rich olive green Tuscan velour suede watch strap draped gracefully over vintage horology book with warm brass buckle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPdLwLbJ5rW9k4elXMNyz3XSRfuKKdr7J4-mCqJqqJ3LnqqsauIkUMRDphALVNFIxgZ8R0tdBgnA5u4dtEGiBBgyDKZwMzwTj3ljE-Smm2qDQEXKuV033AJD9JaYbWnPK1GkwiDTYwgrDyr--SODEYuAu1DGzdNR8RjFIDbhYa3__VR_OGHoT5WdI9T0PhH4itfbZ_CApdmAk5XqnyrlNIBfzpyPS0phpJLhDG-lQ9Pf3m11hi6OU1"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">New Release</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>Tuscan Calf Suede</span>
+<span class="text-secondary font-medium">Firenze • Italia</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Firenze Velour • Bosco Green
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">18mm</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#2E3C2B] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#685D54]"></span>
+<span class="w-3 h-3 rounded-full bg-[#8E7969]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$145</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Zermatt Hypoallergenic</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 6 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Luxury commercial shot of matte black Louisiana alligator scale embossed strap with tone-on-tone French minimal box stitch next to a rose gold dress chronograph" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMEuNgQPbhrpKVKG9t5iWp-G88W-XOfdFA59Sm1td2O9EEMkRb2w4fe1Id0wYo46msWnB_1NZET5jizzZnesbjW65RK_3wx8zKBrX0YXPdPAsA9-HixDMhjRPiV1_xc8gX-S7icWw5_PA2O5xm4mm-IFg7mT95LeNtAjb5QGHTU_keWo-cIMFA7JdLtBUD5urQiFwx_FvrzFlHweyOFrT7lbxrWHcw_dLwr4gM9zRqizsJV85UpuNS"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-primary text-on-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Grand Complication</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>Matte Alligator Grain</span>
+<span class="text-secondary font-medium">Bespoke Atelier</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Geneva Alligator • Matte Obsidian
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">19mm</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">21mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#111111] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#2C1917]"></span>
+<span class="w-3 h-3 rounded-full bg-[#101929]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$240</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Custom Taper Profile</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 7 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Editorial image of tailored sand beige nubuck strap mounted on Apple Watch Hermès edition lying on architectural travertine marble" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7nM3cFS6gvJbZXZ3UArjZXg9QAmK6MAduPh6UKlXxSp4-R6zUDkDTgSCPsnkRtBLk8KDV-KbqDnaX-F-6Tb9UpYBg6Av9RdGT98UoiEIOiBk6aXtSuyzHwnmujCvWSUAg59oFQHu9waBJc0108j3QEM2gTPAT1yXnMN0a3HUWHnKe7xvk7Znbe-hNCk-Txu0unMQLUFwTmcIeDVOaPbDAT7VQ73UGbYRXmH5YK1dik5a7fiM8g5Ta"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Apple Watch Adapter</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>French Taurillon Nubuck</span>
+<span class="text-secondary font-medium">Paris • France</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Connected Edition • Sable Dune
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">40/41mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">44/45mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">Ultra 49mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#C7B59D] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#1F1E1D]"></span>
+<span class="w-3 h-3 rounded-full bg-[#7D5E4D]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$155</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Precision Lugs Incl.</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 8 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Atmospheric macro of burgundy oxblood vegetable tanned leather watch band showing artisan burnished wax edges and micro-stitched keeper loops" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjsOlOwbtYDn5bv_7x0OHaHqhednu2XYCBor-ktX4wjvTqTX-Z3d4-uIcCuZ1v0CxIbPHZ69sNflVGEc_UaC9dQd2OOPBLCq9-cM6QThWKJzqELURjNJ-AJIxLfD9FuHYC79Im9-lZXqIJLpKelNpA8f6CBeHP4I2hsNp_QQ7ZIX3uQtLy1AMFN840LKz6zeNtiGT3Jbr8Fu1nU4CyEdCqLQ3LNIasl-PWxG58ZI5rt0op1_uVltKX"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Pure Veg-Tan</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>Pueblo Badalassi Carlo</span>
+<span class="text-secondary font-medium">Tuscany • Italia</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Pueblo Patina • Bordeaux Cru
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">18mm</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">22mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#521C27] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#754425]"></span>
+<span class="w-3 h-3 rounded-full bg-[#2A3728]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$170</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Self-Aging Patina</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT CARD 9 -->
+<article class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Overhead photo of vintage pilot watch strap in distressing dark chocolate saddle bridle leather with brushed roller buckle and dual reinforced rivets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAenoZ8zsxVVHAuxYAsCpvDNoExKRkWeWIxhM1ShXDjqaFzvIRUAnH_AiBT2Fo-qgJaV34rjpwIg8eQt5E_GttFKcFKqHp1_KvFzrYqlA2cxmv0xsv57kj5a0yA54CIwpUY9aQXdOjJb9IrfKRZThFavML5VNZDvLTET5FykiYC_SE5UQAH1Dyy-CZpY5apV9aXu6TiLKm7_YyBBf5q7L3itzbDpoLYzfYec4RiXhI04mv2jASMl6Gh"/>
+<div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 bg-surface-container-highest/95 text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-sm">Aviator Spec</span>
+</div>
+<button class="absolute top-3 right-3 p-1.5 rounded-full bg-surface/80 text-on-surface hover:text-secondary backdrop-blur-md shadow-sm transition-colors" title="Toggle Hardware">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary py-3 px-4 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span>
+                  Quick Add to Bag
+                </button>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex items-center justify-between text-on-surface-variant font-technical-mono text-technical-mono text-[11px] mb-1">
+<span>English Bridle Hide</span>
+<span class="text-secondary font-medium">Sedgwick • UK</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover:text-secondary transition-colors">
+                  Flieger Aviator • Dark Havana
+                </h3>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-technical-mono text-[11px]">20mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">22mm</span>
+<span class="px-2 py-0.5 rounded bg-surface font-technical-mono text-[11px] text-on-surface-variant">24mm</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-[#352317] ring-1 ring-primary"></span>
+<span class="w-3 h-3 rounded-full bg-[#181818]"></span>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary font-semibold">$175</span>
+<span class="block font-technical-mono text-[10px] text-on-surface-variant">Twin Rivet Lugs</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- ================= PAGINATION & COUNTER ================= -->
+<div class="pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-6 border-t-0">
+<div class="font-technical-mono text-technical-mono text-on-surface-variant">
+            Displaying <span class="text-primary font-medium">9 of 48</span> Atelier References
+          </div>
+<!-- Numbered Page Pills -->
+<nav aria-label="Catalog Pagination" class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-technical-mono text-technical-mono flex items-center justify-center font-medium shadow-sm">
+              1
+            </button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-technical-mono text-technical-mono flex items-center justify-center transition-colors">
+              2
+            </button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-technical-mono text-technical-mono flex items-center justify-center transition-colors">
+              3
+            </button>
+<span class="w-8 text-center text-on-surface-variant font-technical-mono text-technical-mono">…</span>
+<button class="w-10 h-10 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-technical-mono text-technical-mono flex items-center justify-center transition-colors">
+              6
+            </button>
+<button class="flex items-center gap-1.5 px-4 h-10 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors ml-2 shadow-sm">
+<span>Next Vitrine</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</nav>
+</div>
+<!-- Concierge Guarantee Stamp -->
+<div class="bg-surface-container-low rounded-xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary font-semibold">The Aurelius Guarantee • Lifetime Stitch Warranty</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Each strap includes complimentary custom fit exchange within 60 days of delivery.</p>
+</div>
+</div>
+<a class="px-5 py-2.5 bg-surface text-primary hover:bg-primary hover:text-on-primary font-label-caps text-label-caps uppercase tracking-wider rounded transition-colors whitespace-nowrap" href="#">
+            Consult Specialist
+          </a>
+</div>
+</main>
+</div>
+</div>
+<!-- Inline Script for Density Switch micro-interaction -->
+<script>
+    function setViewMode(cols) {
+      const grid = document.getElementById('product-catalog-grid');
+      const btn3 = document.getElementById('view-3-btn');
+      const btn4 = document.getElementById('view-4-btn');
+
+      if (!grid || !btn3 || !btn4) return;
+
+      if (cols === 4) {
+        grid.classList.remove('xl:grid-cols-3');
+        grid.classList.add('xl:grid-cols-4');
+        btn4.classList.add('bg-surface', 'shadow-sm', 'text-primary');
+        btn4.classList.remove('text-on-surface-variant');
+        btn3.classList.remove('bg-surface', 'shadow-sm', 'text-primary');
+        btn3.classList.add('text-on-surface-variant');
+      } else {
+        grid.classList.remove('xl:grid-cols-4');
+        grid.classList.add('xl:grid-cols-3');
+        btn3.classList.add('bg-surface', 'shadow-sm', 'text-primary');
+        btn3.classList.remove('text-on-surface-variant');
+        btn4.classList.remove('bg-surface', 'shadow-sm', 'text-primary');
+        btn4.classList.add('text-on-surface-variant');
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface mt-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop pb-space-xl border-b border-surface-container-highest"><div class="lg:col-span-5 space-y-space-md"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm uppercase tracking-widest text-primary">Aurelius</span><span class="font-label-caps text-label-caps text-secondary text-[10px] uppercase">• Genève &amp; Milano</span></div><p class="font-body-lg text-body-lg text-on-surface-variant max-w-md font-light leading-relaxed">Architecting the tactile bridge between extraordinary mechanical calibers and the wrist. Precision-engineered straps formed from vegetable-tanned cordovan, saddle-stitched French alligator, and fluroelastomer vulcanized rubbers.</p><div class="pt-space-sm"><form class="space-y-space-xs max-w-md"><label class="font-label-caps text-label-caps uppercase tracking-widest text-primary block" for="footer-newsletter">The Atelier Gazette • Rare Batch Allocations</label><div class="flex items-stretch bg-surface border border-outline-variant p-1 focus-within:border-secondary transition-colors"><input class="w-full bg-transparent px-space-sm py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none" id="footer-newsletter" placeholder="collector@horlogerie.com" type="email"/><button class="bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary px-space-md py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors shrink-0" type="submit">Subscribe</button></div><p class="font-technical-mono text-technical-mono text-on-surface-variant text-[11px]">Limited release notifications exclusively. Discretion preserved.</p></form></div></div><div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-gutter"><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Collections</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="shop-all" href="#">All Bands &amp; Straps</a></li><li class="hover:text-primary transition-colors"><a data-path="horween-cordovan" href="#">Horween Cordovan</a></li><li class="hover:text-primary transition-colors"><a data-path="milanese-mesh" href="#">Milanese Mesh</a></li><li class="hover:text-primary transition-colors"><a data-path="fkm-vulcanized-rubber" href="#">FKM Vulcanized Rubber</a></li><li class="hover:text-primary transition-colors"><a data-path="alligator-grain" href="#">Alligator Grain</a></li><li class="hover:text-primary transition-colors"><a data-path="apple-watch-compatible" href="#">Apple Watch Compatible</a></li></ul></div><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Concierge</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="strap-size-guide" href="#">Strap Size Guide</a></li><li class="hover:text-primary transition-colors"><a data-path="lug-measurement-tool" href="#">Lug Measurement Tool</a></li><li class="hover:text-primary transition-colors"><a data-path="bespoke-orders" href="#">Bespoke Orders</a></li><li class="hover:text-primary transition-colors"><a data-path="order-status" href="#">Order Status &amp; Tracking</a></li><li class="hover:text-primary transition-colors"><a data-path="care-and-maintenance" href="#">Care &amp; Maintenance</a></li></ul></div><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Legal &amp; Policies</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="shipping-and-delivery" href="#">Shipping &amp; Delivery</a></li><li class="hover:text-primary transition-colors"><a data-path="returns-and-exchanges" href="#">Returns &amp; Exchanges</a></li><li class="hover:text-primary transition-colors"><a data-path="authenticity-guarantee" href="#">Authenticity Guarantee</a></li><li class="hover:text-primary transition-colors"><a data-path="privacy-policy" href="#">Privacy Policy</a></li></ul></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex flex-wrap items-center gap-space-md font-technical-mono text-technical-mono text-[11px]"><span class="text-primary font-medium">© 2024 Aurelius Atelier Horlogerie S.A.</span><span>All rights reserved.</span><span class="hidden sm:inline">•</span><span>Manufacture Artisanale d'Horlogerie</span></div><div class="flex items-center gap-space-md"><span class="font-label-caps text-[10px] tracking-widest uppercase text-on-surface-variant">Accepted Tenders:</span><div class="flex items-center gap-space-sm font-technical-mono text-technical-mono text-[11px] uppercase tracking-wider text-primary"><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">UPI</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">VISA</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">MASTERCARD</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">AMEX</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">APPLE PAY</span></div></div></div></div></footer></body></html>

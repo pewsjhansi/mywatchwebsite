@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Aurelius Atelier</title>
+  <meta name="description" content="Complete your order at Aurelius Atelier Horlogerie.">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .checkout-layout { display:grid; grid-template-columns:1.5fr 1fr; gap:4rem; padding:4rem 0; }
+    .checkout-step { margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid var(--color-divider); }
+    .checkout-step-title { margin-bottom:2rem; }
+    .order-summary { background-color:var(--color-neutral); padding:3rem; position:sticky; top:100px; }
+    .summary-item { display:flex; justify-content:space-between; margin-bottom:0.875rem; font-size:14px; }
+    .summary-item.total-row { margin-top:1.5rem; padding-top:1.5rem; border-top:2px solid var(--color-divider); font-size:17px; font-weight:600; }
+    .summary-item.discount { color:#047857; }
+    .summary-item.promo { color:#6d28d9; }
+    .promo-row { display:flex; gap:0.5rem; margin:1.25rem 0 0.5rem; }
+    .promo-input { flex:1; padding:10px 14px; border:1px solid var(--color-divider); background:transparent; font-family:var(--font-body); font-size:13px; color:var(--color-primary); outline:none; transition:border-color 0.2s; }
+    .promo-input:focus { border-color:var(--color-secondary); }
+    .promo-applied { background:#f3e8ff; border:1px solid #c4b5fd; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; margin:1rem 0 0.5rem; }
+    .gst-note { font-size:11px; color:var(--color-tertiary); letter-spacing:0.08em; text-transform:uppercase; padding:0.5rem 0; }
+    @media(max-width:900px){ .checkout-layout{grid-template-columns:1fr;} .order-summary{position:static;padding:2rem;} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <div style="display:flex;align-items:center;gap:2rem">
+        <a href="index.html" class="brand">AURELIUS</a>
+      </div>
+      <nav class="nav-links" style="display:flex;gap:2rem;align-items:center">
+        <a href="index.html">Return to Shop</a>
+        <div class="auth-trigger label-caps" style="cursor:pointer;display:flex;align-items:center">Login | Sign Up</div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="checkout-layout">
+      <!-- FORM SIDE -->
+      <div class="checkout-form">
+
+        <div class="checkout-step">
+          <h2 class="title-lg checkout-step-title">1. Contact Information</h2>
+          <div class="form-group">
+            <input type="email" class="form-input" id="co-email" placeholder="Email Address" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" class="form-input" id="co-phone" placeholder="Phone Number" required>
+          </div>
+        </div>
+
+        <div class="checkout-step">
+          <h2 class="title-lg checkout-step-title">2. Delivery Address</h2>
+          <div id="saved-addresses-selector" style="display:none; margin-bottom: 2rem;">
+            <label class="label-caps" style="color:var(--color-tertiary)">Saved Addresses</label>
+            <select id="co-saved-addresses" class="form-input" onchange="applySavedAddress()">
+              <option value="">-- Type a new address below --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="co-name" placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="co-house" placeholder="House / Flat Number" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="co-street" placeholder="Street / Locality" required>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+            <div class="form-group">
+              <input type="text" class="form-input" id="co-city" placeholder="City" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-input" id="co-state" placeholder="State" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="co-pin" placeholder="PIN Code" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="co-country" placeholder="Country" value="India">
+          </div>
+          <div class="form-group" id="save-address-group" style="display:none;margin-top:1rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:14px;cursor:pointer">
+              <input type="checkbox" id="co-save-address"> Save this address to my profile
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-step">
+          <h2 class="title-lg checkout-step-title">3. Payment Method</h2>
+          <div style="display:flex;gap:2rem;flex-wrap:wrap" id="payment-methods-container">
+            <label id="label-razorpay" style="display:none;align-items:center;gap:0.5rem;cursor:pointer">
+              <input type="radio" name="payment" value="razorpay"> Razorpay
+            </label>
+            <label id="label-cashfree" style="display:none;align-items:center;gap:0.5rem;cursor:pointer">
+              <input type="radio" name="payment" value="cashfree"> Cashfree Payment
+            </label>
+            <label id="label-cod" style="display:flex;align-items:center;gap:0.5rem;cursor:pointer">
+              <input type="radio" name="payment" value="cod" checked> Cash on Delivery
+            </label>
+          </div>
+        </div>
+
+        <div id="place-order-error" style="color:var(--color-error);font-size:13px;margin-bottom:1rem;display:none"></div>
+        <button class="btn-primary" style="width:100%;font-size:14px" id="place-order-btn" onclick="placeOrder()">Confirm Order &amp; Pay</button>
+      </div>
+
+      <!-- SUMMARY SIDE -->
+      <div class="order-summary-wrapper">
+        <div class="order-summary">
+          <h2 class="title-lg" style="margin-bottom:2rem">Order Summary</h2>
+          <div id="checkout-items"></div>
+
+          <!-- Promo Code -->
+          <div id="promo-section">
+            <div class="promo-row">
+              <input type="text" id="promo-code-input" class="promo-input" placeholder="Promo code" style="text-transform:uppercase">
+              <button class="btn-secondary" onclick="applyCheckoutPromo()" style="padding:10px 16px;font-size:11px">Apply</button>
+            </div>
+            <div id="promo-feedback" style="font-size:12px;min-height:18px"></div>
+          </div>
+
+          <div id="applied-promo-display" style="display:none" class="promo-applied">
+            <span id="applied-promo-text" style="font-size:12px;font-weight:700;color:#6d28d9"></span>
+            <button onclick="removeCheckoutPromo()" style="background:none;border:none;font-size:11px;cursor:pointer;text-decoration:underline;color:#6d28d9">Remove</button>
+          </div>
+
+          <!-- Breakdown -->
+          <div style="margin-top:1.5rem" id="price-breakdown"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const cashfree = Cashfree({ mode: "sandbox" }); // or production based on env
+    let checkoutPromo = null;
+
+    // Restore promo from localStorage
+    const savedPromo = localStorage.getItem('aureliusPromo');
+    if (savedPromo) {
+      try {
+        checkoutPromo = JSON.parse(savedPromo);
+        if (checkoutPromo && checkoutPromo.valid) {
+          showAppliedPromo();
+        }
+      } catch(e) { checkoutPromo = null; }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      renderCheckoutSummary();
+      // Wait for auth to initialize
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (session) {
+        document.getElementById('co-email').value = session.user.email || '';
+        await loadSavedAddresses(session.user.id);
+      }
+    });
+
+    document.addEventListener('productsLoaded', () => {
+      renderCheckoutSummary();
+      if (typeof userAuth !== 'undefined' && userAuth) {
+        document.getElementById('co-email').value = userAuth.email || '';
+      }
+      loadPaymentConfiguration();
+    });
+
+    async function loadSavedAddresses(userId) {
+      const { data: addresses } = await supabaseClient.from('customer_addresses').select('*').eq('customer_id', userId).order('is_default', {ascending: false});
+      if (addresses && addresses.length > 0) {
+        window.checkoutAddresses = addresses;
+        const selector = document.getElementById('saved-addresses-selector');
+        const select = document.getElementById('co-saved-addresses');
+        selector.style.display = 'block';
+        addresses.forEach(addr => {
+          const opt = document.createElement('option');
+          opt.value = addr.id;
+          opt.textContent = `${addr.title} - ${addr.full_name}, ${addr.city}`;
+          select.appendChild(opt);
+        });
+        
+        // Auto-select default
+        const defaultAddr = addresses.find(a => a.is_default) || addresses[0];
+        if (defaultAddr) {
+          select.value = defaultAddr.id;
+          applySavedAddress();
+        }
+      }
+    }
+
+    function applySavedAddress() {
+      const id = document.getElementById('co-saved-addresses').value;
+      const saveAddressGroup = document.getElementById('save-address-group');
+      if (!id || !window.checkoutAddresses) {
+        document.getElementById('co-name').value = '';
+        document.getElementById('co-house').value = '';
+        document.getElementById('co-street').value = '';
+        document.getElementById('co-city').value = '';
+        document.getElementById('co-state').value = '';
+        document.getElementById('co-pin').value = '';
+        document.getElementById('co-phone').value = '';
+        if (typeof userAuth !== 'undefined' && userAuth) saveAddressGroup.style.display = 'block';
+        return;
+      }
+      
+      saveAddressGroup.style.display = 'none';
+      const addr = window.checkoutAddresses.find(a => a.id === id);
+      if (addr) {
+        document.getElementById('co-name').value = addr.full_name || '';
+        document.getElementById('co-house').value = ''; 
+        document.getElementById('co-street').value = addr.street_address || '';
+        document.getElementById('co-city').value = addr.city || '';
+        document.getElementById('co-state').value = addr.state || '';
+        document.getElementById('co-pin').value = addr.pin_code || '';
+        document.getElementById('co-country').value = addr.country || 'India';
+        document.getElementById('co-phone').value = addr.mobile || '';
+      }
+    }
+
+    async function loadPaymentConfiguration() {
+      try {
+        const { data, error } = await supabaseClient.functions.invoke('payment-handler', {
+          body: { action: 'get-all-config' }
+        });
+        if (error || !data) return;
+
+        let anyOnlineSelected = false;
+
+        data.forEach(config => {
+          if (config.gateway === 'razorpay' && config.enabled) {
+            document.getElementById('label-razorpay').style.display = 'flex';
+            if (!anyOnlineSelected) {
+              document.querySelector('input[value="razorpay"]').checked = true;
+              anyOnlineSelected = true;
+            }
+          }
+          if (config.gateway === 'cashfree' && config.enabled) {
+            document.getElementById('label-cashfree').style.display = 'flex';
+            if (!anyOnlineSelected) {
+              document.querySelector('input[value="cashfree"]').checked = true;
+              anyOnlineSelected = true;
+            }
+          }
+        });
+      } catch (err) {
+        console.error('Failed to load payment configuration', err);
+      }
+    }
+
+    function renderCheckoutSummary() {
+      const itemsEl = document.getElementById('checkout-items');
+      let mrpTotal = 0, sellingTotal = 0;
+
+      if (!cart || cart.length === 0) {
+        itemsEl.innerHTML = '<p class="body-md">Your cart is empty.</p>';
+        document.getElementById('price-breakdown').innerHTML = '';
+        return;
+      }
+
+      itemsEl.innerHTML = cart.map(item => {
+        const selling = Number(item.selling_price || item.price || 0);
+        const mrp = Number(item.mrp || item.price || selling);
+        mrpTotal += mrp * item.quantity;
+        sellingTotal += selling * item.quantity;
+        return `
+          <div class="summary-item" style="align-items:flex-start;margin-bottom:1.25rem">
+            <div style="flex:1">
+              <div class="title-md">${item.name} <span class="technical-mono" style="font-size:11px">×${item.quantity}</span></div>
+              <div class="label-caps" style="color:var(--color-tertiary);margin-top:0.25rem">${item.color || ''} | ${item.size || ''}</div>
+              ${mrp > selling ? `<div style="font-size:11px;color:var(--color-tertiary);text-decoration:line-through">₹${mrp.toFixed(2)}</div>` : ''}
+            </div>
+            <div class="technical-mono">₹${(selling * item.quantity).toFixed(2)}</div>
+          </div>`;
+      }).join('');
+
+      // Recalculate totals after rendering (mrpTotal/sellingTotal now set)
+      updateBreakdown(mrpTotal, sellingTotal);
+    }
+
+    function updateBreakdown(mrpTotal, sellingTotal) {
+      if (mrpTotal === 0 && sellingTotal === 0) {
+        // Recalculate from cart
+        cart.forEach(item => {
+          const s = Number(item.selling_price || item.price || 0);
+          const m = Number(item.mrp || item.price || s);
+          mrpTotal += m * item.quantity;
+          sellingTotal += s * item.quantity;
+        });
+      }
+
+      const productDiscount = mrpTotal - sellingTotal;
+      let promoDiscount = 0;
+
+      if (checkoutPromo && checkoutPromo.valid) {
+        if (checkoutPromo.discount_type === 'fixed') {
+          promoDiscount = Math.min(checkoutPromo.discount_value, sellingTotal);
+        } else {
+          promoDiscount = Math.round(sellingTotal * checkoutPromo.discount_value / 100 * 100) / 100;
+          if (checkoutPromo.max_discount_amount) {
+            promoDiscount = Math.min(promoDiscount, checkoutPromo.max_discount_amount);
+          }
+        }
+        promoDiscount = Math.round(promoDiscount * 100) / 100;
+      }
+
+      const grandTotal = Math.max(sellingTotal - promoDiscount, 0);
+
+      // Estimate GST (already included in prices)
+      // Calculate weighted average GST from cart items
+      let gstTotal = 0;
+      cart.forEach(item => {
+        const s = Number(item.selling_price || item.price || 0);
+        const gstRate = Number(item.gst_rate != null ? item.gst_rate : 18);
+        const taxable = s / (1 + gstRate / 100);
+        gstTotal += (s - taxable) * item.quantity;
+      });
+
+      const breakdownEl = document.getElementById('price-breakdown');
+      breakdownEl.innerHTML = `
+        ${productDiscount > 0 ? `
+          <div class="summary-item" style="color:var(--color-tertiary)"><span>MRP Total</span><span>₹${mrpTotal.toFixed(2)}</span></div>
+          <div class="summary-item discount"><span>Product Discount</span><span>- ₹${productDiscount.toFixed(2)}</span></div>
+        ` : ''}
+        <div class="summary-item"><span>Subtotal</span><span>₹${sellingTotal.toFixed(2)}</span></div>
+        ${checkoutPromo && checkoutPromo.valid ? `
+          <div class="summary-item promo"><span>Promo (${checkoutPromo.code})</span><span>- ₹${promoDiscount.toFixed(2)}</span></div>
+        ` : ''}
+        <div class="summary-item"><span>Shipping</span><span>Complimentary</span></div>
+        <div class="gst-note">GST included in all prices · ≈₹${gstTotal.toFixed(2)}</div>
+        <div class="summary-item total-row"><span>Grand Total</span><span>₹${grandTotal.toFixed(2)}</span></div>
+      `;
+    }
+
+    async function applyCheckoutPromo() {
+      const codeEl = document.getElementById('promo-code-input');
+      const feedbackEl = document.getElementById('promo-feedback');
+      const code = (codeEl.value || '').trim().toUpperCase();
+      if (!code) return;
+
+      const sellingTotal = cart.reduce((acc, i) => acc + Number(i.selling_price || i.price || 0) * i.quantity, 0);
+      feedbackEl.textContent = 'Validating...';
+      feedbackEl.style.color = 'var(--color-tertiary)';
+
+      try {
+        const { data, error } = await supabaseClient.rpc('validate_promo_code', {
+          p_code: code,
+          p_cart_total: sellingTotal
+        });
+
+        if (error || !data) {
+          feedbackEl.textContent = 'Error validating code: ' + (error?.message || 'Unknown error');
+          feedbackEl.style.color = 'var(--color-error)';
+          return;
+        }
+
+        if (!data.valid) {
+          feedbackEl.textContent = data.message;
+          feedbackEl.style.color = 'var(--color-error)';
+          return;
+        }
+
+        checkoutPromo = data;
+        localStorage.setItem('aureliusPromo', JSON.stringify(checkoutPromo));
+        feedbackEl.textContent = '';
+        showAppliedPromo();
+        renderCheckoutSummary();
+      } catch (err) {
+        feedbackEl.textContent = 'Exception validating code: ' + err.message;
+        feedbackEl.style.color = 'var(--color-error)';
+      }
+    }
+
+    function showAppliedPromo() {
+      if (!checkoutPromo) return;
+      document.getElementById('promo-section').style.display = 'none';
+      const display = document.getElementById('applied-promo-display');
+      display.style.display = 'flex';
+      document.getElementById('applied-promo-text').textContent =
+        checkoutPromo.code + ' applied ✓ (-₹' + Number(checkoutPromo.discount_amount || 0).toFixed(2) + ')';
+    }
+
+    function removeCheckoutPromo() {
+      checkoutPromo = null;
+      appliedPromo = null;
+      localStorage.removeItem('aureliusPromo');
+      document.getElementById('promo-section').style.display = 'block';
+      document.getElementById('applied-promo-display').style.display = 'none';
+      document.getElementById('promo-code-input').value = '';
+      document.getElementById('promo-feedback').textContent = '';
+      renderCheckoutSummary();
+    }
+
+    async function placeOrder() {
+      const btn = document.getElementById('place-order-btn');
+      const errEl = document.getElementById('place-order-error');
+      errEl.style.display = 'none';
+
+      if (!cart || cart.length === 0) { errEl.textContent = 'Your cart is empty!'; errEl.style.display = 'block'; return; }
+
+      if (!userAuth) { openAuthModal(); return; }
+
+      // Validate form fields sequentially to focus the missing one
+      const requiredFields = [
+        { id: 'co-email', name: 'Email Address' },
+        { id: 'co-phone', name: 'Phone Number' },
+        { id: 'co-name', name: 'Full Name' },
+        { id: 'co-house', name: 'House / Flat Number' },
+        { id: 'co-street', name: 'Street / Locality' },
+        { id: 'co-city', name: 'City' },
+        { id: 'co-state', name: 'State' },
+        { id: 'co-pin', name: 'PIN Code' }
+      ];
+
+      for (const field of requiredFields) {
+        const el = document.getElementById(field.id);
+        if (!el.value.trim()) {
+          errEl.textContent = `Please provide your ${field.name}.`;
+          errEl.style.display = 'block';
+          el.focus();
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+      }
+
+      const email = document.getElementById('co-email').value.trim();
+      const phone = document.getElementById('co-phone').value.trim();
+      const name = document.getElementById('co-name').value.trim();
+      const house = document.getElementById('co-house').value.trim();
+      const street = document.getElementById('co-street').value.trim();
+      const city = document.getElementById('co-city').value.trim();
+      const state = document.getElementById('co-state').value.trim();
+      const pin = document.getElementById('co-pin').value.trim();
+      const country = document.getElementById('co-country').value.trim() || 'India';
+      const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'online';
+
+      btn.textContent = 'Processing...';
+      btn.disabled = true;
+
+      try {
+        const deliveryAddress = { name, house, street, city, state, pin, pincode: pin, country, mobile: phone };
+
+        // Build cart items for server function
+        const cartItems = cart.map(item => ({
+          product_id: item.id,
+          quantity: item.quantity,
+          size: item.size || null,
+          color: item.color || null
+        }));
+
+        // Use secure server function to place order (Order status will be pending)
+        const { data: result, error } = await supabaseClient.rpc('place_order', {
+          p_customer_id: userAuth.id,
+          p_cart_items: cartItems,
+          p_delivery_address: deliveryAddress,
+          p_payment_method: paymentMethod,
+          p_promo_code: checkoutPromo ? checkoutPromo.code : null
+        });
+
+        if (error) {
+          errEl.textContent = 'Order placement failed: ' + error.message;
+          errEl.style.display = 'block';
+          return;
+        }
+
+        const orderId = result?.id || result?.order_id || result?.order_number; // fallback if needed
+
+        // If user checked 'Save this address', save it
+        if (document.getElementById('co-save-address').checked && typeof userAuth !== 'undefined' && userAuth) {
+          await supabaseClient.from('customer_addresses').insert([{
+            customer_id: userAuth.id,
+            title: 'SAVED ' + new Date().toLocaleDateString('en-IN'),
+            full_name: name,
+            mobile: phone,
+            street_address: house + (house ? ', ' : '') + street,
+            city: city,
+            state: state,
+            pin_code: pin,
+            country: country,
+            is_default: false
+          }]);
+        }
+
+        // If Cash on Delivery, just skip to success
+        if (paymentMethod === 'cod') {
+          finalizeOrderSuccess(result);
+          return;
+        }
+
+        // --- PAYMENT GATEWAY FLOW ---
+        btn.textContent = 'Initializing Payment...';
+
+        // 1. Call Secure Edge Function to create payment order
+        const { data: paymentSession, error: functionError } = await supabaseClient.functions.invoke('payment-handler', {
+          body: { action: 'create', order_identifier: orderId, gateway: paymentMethod }
+        });
+
+        if (functionError || !paymentSession || paymentSession.error) {
+          errEl.textContent = 'Payment initialization failed: ' + (functionError?.message || paymentSession?.error || 'Unknown error');
+          errEl.style.display = 'block';
+          return;
+        }
+
+        // 2. Open selected gateway SDK
+        if (paymentMethod === 'razorpay') {
+          const options = {
+            key: paymentSession.key_id, // Safely exposed publishable key
+            amount: paymentSession.amount,
+            currency: paymentSession.currency,
+            name: "AURELIUS ATELIER",
+            description: "Luxury Watch Band Order",
+            order_id: paymentSession.gateway_order_id,
+            prefill: { name, email, contact: phone },
+            handler: async function (response) {
+              btn.textContent = 'Verifying Payment...';
+              // 3. Verify Razorpay Signature Server-Side
+              const { data: verifyData, error: verifyError } = await supabaseClient.functions.invoke('payment-handler', {
+                body: { 
+                  action: 'verify', 
+                  gateway: 'razorpay',
+                  order_identifier: orderId,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_signature: response.razorpay_signature
+                }
+              });
+
+              if (verifyError || !verifyData?.success) {
+                errEl.textContent = 'Payment verification failed. Please contact support.';
+                errEl.style.display = 'block';
+                btn.textContent = 'Confirm Order & Pay';
+                btn.disabled = false;
+              } else {
+                finalizeOrderSuccess(result);
+              }
+            },
+            modal: {
+              ondismiss: function() {
+                btn.textContent = 'Confirm Order & Pay';
+                btn.disabled = false;
+              }
+            }
+          };
+          const rzp = new Razorpay(options);
+          rzp.on('payment.failed', function (response) {
+            errEl.textContent = 'Payment failed: ' + response.error.description;
+            errEl.style.display = 'block';
+            btn.textContent = 'Confirm Order & Pay';
+            btn.disabled = false;
+          });
+          rzp.open();
+        } 
+        else if (paymentMethod === 'cashfree') {
+          cashfree.checkout({
+            paymentSessionId: paymentSession.gateway_session_id,
+            returnUrl: window.location.origin + "/success.html?cf_id={order_id}&order_ref=" + orderId
+          }).then(function(result) {
+            if(result.error){
+              errEl.textContent = 'Payment failed: ' + result.error.message;
+              errEl.style.display = 'block';
+              btn.textContent = 'Confirm Order & Pay';
+              btn.disabled = false;
+            }
+            if(result.redirect){
+              console.log("Redirecting to Cashfree");
+            }
+            if(result.paymentDetails){
+              console.log("Payment Details: ", result.paymentDetails);
+            }
+          });
+        }
+
+      } catch (err) {
+        errEl.textContent = 'Exception placing order: ' + err.message;
+        errEl.style.display = 'block';
+        if (btn) {
+          btn.textContent = 'Confirm Order & Pay';
+          btn.disabled = false;
+        }
+      }
+    }
+
+    function finalizeOrderSuccess(result) {
+      // Success — clear cart and promo
+      localStorage.removeItem('luxuryCart');
+      localStorage.removeItem('aureliusPromo');
+
+      // Store order number for success page
+      if (result && result.order_number) {
+        localStorage.setItem('lastOrderNumber', result.order_number);
+      }
+
+      window.location.href = 'success.html';
+    }
+  </script>
+</body>
+</html>

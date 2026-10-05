@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurelius Atelier Horlogerie | Luxury Watch Bands</title>
+  <meta name="description" content="Discover premium luxury watch bands crafted from exceptional materials. Elegance, trust, and simplicity.">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">AURELIUS</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop All</a>
+        <a href="shop.html">New Arrivals</a>
+      </nav>
+      <div class="nav-actions">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;"></div>
+        <div class="cart-icon open-cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <div class="cart-count">0</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-subtitle label-caps">The Artisanal Collection</div>
+        <h1 class="hero-title display-lg">Uncompromising Craftsmanship<br>for Exceptional Timepieces</h1>
+        <a href="shop.html" class="btn-primary">Discover the Collection</a>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="headline-md">Curated Best Sellers</h2>
+        </div>
+        <div class="product-grid" id="best-sellers-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="brand" style="margin-bottom:1rem; font-size:20px;">AURELIUS</h3>
+          <p class="body-md" style="color:var(--color-tertiary)">Tactile intimacy of bespoke leatherwork, satin-brushed metallics, and Swiss precision engineering.</p>
+        </div>
+        <div>
+          <h4 class="title-md footer-heading">Collections</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">Shop All</a></li>
+            <li><a href="#">Men's Collection</a></li>
+            <li><a href="#">Women's Collection</a></li>
+            <li><a href="#">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="title-md footer-heading">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="title-md footer-heading">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom label-caps">
+        &copy; 2026 Aurelius Atelier Horlogerie. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="title-lg">Your Cart</h2>
+      <button class="cart-close" id="cart-close-btn">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items">
+      <!-- Cart items injected here -->
+    </div>
+    <div class="cart-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem">
+        <span class="title-md">Subtotal</span>
+        <span class="title-md" id="cart-subtotal">$0.00</span>
+      </div>
+      <p class="body-sm" style="color:var(--color-tertiary); margin-bottom:1.5rem">Shipping & taxes calculated at checkout.</p>
+      <a href="checkout.html" class="btn-primary" style="width:100%; text-align:center;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

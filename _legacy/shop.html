@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All | Aurelius Atelier Horlogerie</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 3rem;
+      padding: 4rem 0;
+    }
+    .filter-sidebar {
+      border-right: 1px solid var(--color-divider);
+      padding-right: 2rem;
+    }
+    .filter-section {
+      margin-bottom: 2rem;
+    }
+    .filter-title {
+      margin-bottom: 1rem;
+      font-size: 13px;
+    }
+    .filter-list {
+      list-style: none;
+    }
+    .filter-list li {
+      margin-bottom: 0.5rem;
+    }
+    .filter-list label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .filter-sidebar { border-right: none; border-bottom: 1px solid var(--color-divider); padding-right: 0; padding-bottom: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">AURELIUS</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html" style="color:var(--color-secondary)">Shop All</a>
+        <a href="shop.html">New Arrivals</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;"></div>
+        <div class="cart-icon open-cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <div class="cart-count">0</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="shop-layout">
+      <aside class="filter-sidebar">
+        <h2 class="title-lg" style="margin-bottom: 2rem;">Filters</h2>
+        <div class="filter-section">
+          <h3 class="label-caps filter-title">Size</h3>
+          <ul class="filter-list">
+            <li><label><input type="checkbox"> 18mm</label></li>
+            <li><label><input type="checkbox"> 20mm</label></li>
+            <li><label><input type="checkbox"> 22mm</label></li>
+          </ul>
+        </div>
+        <div class="filter-section">
+          <h3 class="label-caps filter-title">Color</h3>
+          <ul class="filter-list">
+            <li><label><input type="checkbox"> Black</label></li>
+            <li><label><input type="checkbox"> Brown</label></li>
+            <li><label><input type="checkbox"> Navy</label></li>
+            <li><label><input type="checkbox"> Silver / Gold</label></li>
+          </ul>
+        </div>
+      </aside>
+      
+      <div class="shop-content">
+        <div style="display:flex; justify-content:space-between; margin-bottom: 2rem; align-items:center;">
+          <h1 class="headline-md">All Straps</h1>
+          <select class="form-input" style="width: 200px; padding:5px 0;">
+            <option>Sort by: Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest First</option>
+          </select>
+        </div>
+        
+        <div class="product-grid" id="shop-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer Overlay & Drawer (same as index.html) -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="title-lg">Your Cart</h2>
+      <button class="cart-close" id="cart-close-btn">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items"></div>
+    <div class="cart-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem">
+        <span class="title-md">Subtotal</span>
+        <span class="title-md" id="cart-subtotal">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary" style="width:100%; text-align:center;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('shop-grid');
+      if (grid && typeof products !== 'undefined') {
+        products.forEach(product => {
+          grid.innerHTML += `
+            <a href="product.html?id=${product.id}" style="text-decoration: none; color: inherit;">
+              <div class="product-card">
+                <div class="product-image-wrap">
+                  <img src="${product.image}" class="product-image" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                  <div class="product-title title-md">${product.name}</div>
+                  <div class="product-material label-caps">${product.material}</div>
+                  <div class="product-price technical-mono">$${product.price.toFixed(2)}</div>
+                </div>
+              </div>
+            </a>
+          `;
+        });
+      }
+    });
+  </script>
+</body>
+</html>

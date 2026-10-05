@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Successful | Aurelius Atelier</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .success-container { max-width:600px; margin:8rem auto; text-align:center; background:var(--color-canvas); padding:4rem; border:1px solid var(--color-divider); box-shadow:var(--shadow-subtle); }
+    .check-icon { width:64px; height:64px; margin:0 auto 2rem; color:var(--color-secondary); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container" style="justify-content:center">
+      <div style="display:flex;align-items:center;gap:2rem">
+        <a href="index.html" class="brand">AURELIUS</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="success-container">
+      <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <h1 class="headline-md" style="margin-bottom:1rem">Order Placed Successfully</h1>
+      <p class="body-lg" style="color:var(--color-tertiary);margin-bottom:0.75rem">
+        Thank you for your bespoke order. Your craftsmanship journey begins now.
+      </p>
+      <p class="technical-mono" style="margin-bottom:2rem" id="order-number-display"></p>
+      <p class="body-md" style="color:var(--color-tertiary);margin-bottom:2rem">
+        Your order is now <strong>pending approval</strong> by our team. You will receive an update once it is approved and dispatched.
+      </p>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+        <a href="dashboard.html#orders" class="btn-secondary">View My Orders</a>
+        <a href="shop.html" class="btn-primary">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const orderNum = localStorage.getItem('lastOrderNumber');
+    const orderDisplay = document.getElementById('order-number-display');
+    const headline = document.querySelector('.headline-md');
+
+    if (orderNum) {
+      orderDisplay.textContent = 'Order ID: ' + orderNum;
+    }
+
+    // Verify Cashfree redirect if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const cfId = urlParams.get('cf_id');
+    const orderRef = urlParams.get('order_ref');
+    
+    if (cfId && orderRef) {
+      headline.textContent = 'Verifying Payment...';
+      orderDisplay.textContent = 'Please wait while we confirm your payment.';
+      
+      supabaseClient.functions.invoke('payment-handler', {
+        body: {
+          action: 'verify',
+          gateway: 'cashfree',
+          order_identifier: orderRef,
+          cashfree_order_id: cfId
+        }
+      }).then(({ data, error }) => {
+        if (error || !data?.success) {
+          headline.textContent = 'Payment Verification Failed';
+          headline.style.color = 'var(--color-error)';
+          orderDisplay.textContent = 'Please contact support with Order ID: ' + orderNum;
+        } else {
+          headline.textContent = 'Order Placed Successfully';
+          headline.style.color = 'inherit';
+          orderDisplay.textContent = 'Order ID: ' + orderNum;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

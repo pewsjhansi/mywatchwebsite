@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Aurelius Atelier</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">AURELIUS</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop All</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;"></div>
+        <div class="cart-icon open-cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <div class="cart-count">0</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="pdp-layout">
+      <div class="pdp-gallery">
+        <img id="pdp-img" src="" alt="Product Image" class="pdp-main-img">
+      </div>
+      
+      <div class="pdp-info">
+        <h1 class="headline-lg" id="pdp-title">Product Name</h1>
+        <div class="pdp-price technical-mono" id="pdp-price">$0.00</div>
+        
+        <div class="pdp-section">
+          <p class="body-lg" style="color:var(--color-tertiary)">
+            Precision crafted using heritage techniques, offering unparalleled comfort and a sophisticated profile for discerning collectors.
+          </p>
+        </div>
+
+        <div class="pdp-section">
+          <span class="pdp-label label-caps">Lug Width</span>
+          <div class="swatch-group" id="pdp-sizes">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <div class="pdp-section">
+          <span class="pdp-label label-caps">Color</span>
+          <div class="swatch-group" id="pdp-colors">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="handleAddToCart()">Add to Cart</button>
+        
+        <div style="margin-top: 3rem;">
+          <h4 class="title-md">Delivery & Returns</h4>
+          <p class="body-md" style="color:var(--color-tertiary); margin-top:0.5rem;">Complimentary global shipping on all bespoke orders. Returns accepted within 14 days of receipt for unused straps in original condition.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="title-lg">Your Cart</h2>
+      <button class="cart-close" id="cart-close-btn">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items"></div>
+    <div class="cart-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem">
+        <span class="title-md">Subtotal</span>
+        <span class="title-md" id="cart-subtotal">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary" style="width:100%; text-align:center;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

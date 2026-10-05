@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Products | Aurelius Atelier</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .compare-container { margin: 4rem auto; max-width: 1200px; padding: 0 1.5rem; overflow-x: auto; }
+    .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    .compare-table th, .compare-table td { border: 1px solid var(--color-divider); padding: 1.5rem; text-align: center; vertical-align: top; width: 25%; }
+    .compare-table th { background-color: var(--color-neutral); font-weight: 600; text-align: left; width: 15%; }
+    .c-img { width: 100%; max-width: 150px; aspect-ratio: 4/5; object-fit: cover; margin-bottom: 1rem; }
+    .c-title { font-family: var(--font-heading); font-size: 16px; margin-bottom: 0.5rem; font-weight: 600; }
+    .c-price { color: var(--color-primary); font-size: 14px; margin-bottom: 1rem; }
+    .c-stock { font-size: 12px; font-weight: 600; padding: 4px 8px; display: inline-block; margin-bottom: 1rem; }
+    .stock-in { background-color: #E6F4EA; color: #1E8E3E; }
+    .stock-out { background-color: #FCE8E6; color: #D93025; }
+    .c-btn { width: 100%; font-size: 12px; padding: 8px; margin-bottom: 0.5rem; }
+    .c-remove { font-size: 10px; color: var(--color-error); cursor: pointer; text-decoration: underline; }
+    .spec-list { text-align: left; font-size: 13px; line-height: 1.6; }
+    .spec-list b { display: block; margin-top: 0.5rem; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-tertiary); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">AURELIUS</a>
+      <nav class="nav-links"><a href="shop.html">Shop All</a></nav>
+    </div>
+  </header>
+
+  <main class="compare-container">
+    <h1 class="headline-lg" style="margin-bottom: 2rem; text-align: center;">Compare Products</h1>
+    <div id="compare-content">Loading...</div>
+  </main>
+
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('productsLoaded', async () => {
+      const list = JSON.parse(localStorage.getItem('compareList') || '[]');
+      const container = document.getElementById('compare-content');
+      
+      if (list.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:4rem"><p class="body-lg">You have no products to compare.</p><a href="shop.html" class="btn-primary" style="display:inline-block; margin-top:1rem">Go to Shop</a></div>';
+        return;
+      }
+
+      // Fetch products
+      const compareProds = products.filter(p => list.includes(p.id));
+      
+      // Fetch specs for all
+      const { data: specs } = await supabaseClient.from('product_specifications').select('*').in('product_id', list);
+      const specsByProduct = {};
+      list.forEach(id => specsByProduct[id] = (specs || []).filter(s => s.product_id === id));
+
+      // Build table
+      let html = '<table class="compare-table"><thead><tr><th>Feature</th>';
+      
+      compareProds.forEach(p => {
+        const inStock = (p.stock_quantity > 0 || p.stock_quantity == null);
+        html += `<td>
+          <img src="${p.image}" class="c-img">
+          <div class="c-title">${p.name}</div>
+          <div class="c-price">${fmt(p.selling_price || p.price)}</div>
+          <div class="c-stock ${inStock ? 'stock-in' : 'stock-out'}">${inStock ? 'IN STOCK' : 'OUT OF STOCK'}</div>
+          <a href="product.html?id=${p.id}" class="btn-primary c-btn">View Product</a>
+          <div class="c-remove" onclick="removeCompare('${p.id}')">Remove</div>
+        </td>`;
+      });
+      html += '</tr></thead><tbody>';
+
+      // Warranty row
+      html += '<tr><th>Warranty</th>';
+      compareProds.forEach(p => {
+        let w = 'N/A';
+        if (p.warranty_available) {
+          w = p.warranty_duration || '';
+          if (p.warranty_type) w += ' ' + p.warranty_type;
+        }
+        html += `<td>${w}</td>`;
+      });
+      html += '</tr>';
+
+      // Material
+      html += '<tr><th>Material</th>';
+      compareProds.forEach(p => { html += `<td>${p.material || '-'}</td>`; });
+      html += '</tr>';
+
+      // Detailed Specs
+      html += '<tr><th>Specifications</th>';
+      compareProds.forEach(p => {
+        const sList = specsByProduct[p.id];
+        let sHtml = '<div class="spec-list">';
+        if (sList && sList.length > 0) {
+          sList.forEach(s => { sHtml += `<b>${s.spec_name}</b> ${s.spec_value}`; });
+        } else {
+          sHtml += '-';
+        }
+        sHtml += '</div>';
+        html += `<td>${sHtml}</td>`;
+      });
+      html += '</tr>';
+
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    });
+
+    function removeCompare(id) {
+      let list = JSON.parse(localStorage.getItem('compareList') || '[]');
+      list = list.filter(x => x !== id);
+      localStorage.setItem('compareList', JSON.stringify(list));
+      location.reload();
+    }
+  </script>
+</body>
+</html>

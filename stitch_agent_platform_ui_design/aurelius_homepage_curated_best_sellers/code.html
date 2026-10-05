@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#fedeb2","on-secondary-container":"#78603e","on-error":"#ffffff","on-secondary":"#ffffff","error-container":"#ffdad6","primary-fixed":"#e5e2e3","surface-bright":"#fbf9f5","on-primary-fixed":"#1c1b1c","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#e0c298","on-primary-container":"#858384","outline-variant":"#c7c6ca","secondary":"#725b38","tertiary-fixed":"#e4e1e7","on-primary-fixed-variant":"#474647","surface-container-low":"#f5f3ef","on-tertiary":"#ffffff","surface-container-high":"#eae8e4","surface-container":"#f0eeea","primary":"#000000","error":"#ba1a1a","tertiary-fixed-dim":"#c8c5cb","on-surface-variant":"#46464a","on-primary":"#ffffff","inverse-on-surface":"#f2f0ec","secondary-container":"#fedeb2","outline":"#77777b","surface-variant":"#e4e2de","background":"#fbf9f5","on-error-container":"#93000a","surface-dim":"#dbdad6","primary-fixed-dim":"#c8c6c7","inverse-surface":"#30312e","on-tertiary-fixed":"#1b1b1f","on-tertiary-fixed-variant":"#47464b","on-secondary-fixed-variant":"#584323","surface-container-highest":"#e4e2de","on-tertiary-container":"#848388","on-surface":"#1b1c1a","inverse-primary":"#c8c6c7","tertiary":"#000000","primary-container":"#1c1b1c","surface":"#fbf9f5","tertiary-container":"#1b1b1f","surface-tint":"#5f5e5f","on-secondary-fixed":"#281800","on-background":"#1b1c1a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-lg":"1.75rem","space-xl":"3rem","margin":"1.25rem","margin-desktop":"5rem","space-md":"1rem","margin-tablet":"3rem","space-xs":"0.25rem","gutter-desktop":"2.5rem","gutter":"1.5rem"},"fontFamily":{"technical-mono":["Inter"],"headline-lg":["Playfair Display"],"body-sm":["Inter"],"body-lg":["Inter"],"title-md":["Inter"],"display-lg":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"body-md":["Inter"],"headline-sm":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"title-lg":["Inter"],"label-caps":["Inter"]},"fontSize":{"technical-mono":["12px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"300"}],"title-md":["15px",{"lineHeight":"22px","letterSpacing":"0.04em","fontWeight":"500"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0.015em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"500"}],"title-lg":["18px",{"lineHeight":"26px","letterSpacing":"0.02em","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.18em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-9 bg-primary text-on-primary px-margin md:px-margin-desktop flex items-center justify-between font-label-caps text-label-caps uppercase tracking-wider"><div class="hidden sm:flex items-center gap-space-sm text-secondary-fixed"><span class="material-symbols-outlined text-[14px]">verified</span><span>Haute Horlogerie Atelier • Bespoke Guild</span></div><div class="flex-1 text-center truncate px-space-sm font-technical-mono text-technical-mono tracking-normal text-surface-container-high">Complimentary Worldwide Express Courier &amp; Hand-Stitched Leather Care Kit on orders above $150</div><div class="flex items-center gap-space-xs"><label class="sr-only" for="currency-select">Currency</label><select class="bg-transparent text-on-primary font-technical-mono text-technical-mono border-none focus:ring-0 cursor-pointer pr-1 py-0" id="currency-select"><option class="bg-primary text-on-primary" value="USD">USD ($)</option><option class="bg-primary text-on-primary" value="EUR">EUR (€)</option><option class="bg-primary text-on-primary" value="GBP">GBP (£)</option><option class="bg-primary text-on-primary" value="INR">INR (₹)</option></select></div></div><div class="h-20 max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm group" data-path="home" href="#"><img alt="Aurelius Atelier Horlogerie Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uu5WHYfYWmCOXSKmVhXV3uldHq_35I5dlFtvT2x7EFCw2RS-frxSIynXm2JJjZ_3HTKuNSHwcJZ_fXqBd_sX2qIW2jkQMeI5I7nwFiLM6tZrJPqcxGXwlZMRRncQdKZlNKIX0xz9W3N8DjZbuDXTE3H00WWUks4huoO0ZWBwPZsb2ZUxOyJa_c3bsAQkE5aVq7-t_hvP5w4bk0Po5d8-ZHNcXcrmcvu1yvOZbFfTthYmHxYWFzROxg5Q"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary font-medium leading-none">Aurelius</span><span class="font-label-caps text-label-caps text-secondary tracking-[0.25em] text-[9px] uppercase leading-tight mt-0.5">Atelier Horlogerie</span></div></a></div><nav class="hidden xl:flex items-center gap-gutter-desktop" data-active-classes="text-primary font-semibold border-b border-secondary pb-1"><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="shop-all" href="#">Shop All</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="mens-collection" href="#">Men's Collection</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="womens-collection" href="#">Women's Collection</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="new-arrivals" href="#">New Arrivals</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="best-sellers" href="#">Best Sellers</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-1" data-path="the-atelier" href="#">The Atelier / Craftsmanship</a></nav><div class="flex items-center gap-space-md sm:gap-space-lg"><button aria-label="Search Archive" class="p-1 text-on-surface hover:text-secondary transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Saved Vitrine" class="relative p-1 text-on-surface hover:text-secondary transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-secondary ring-2 ring-surface"></span></a><a aria-label="Cart" class="relative p-1 text-on-surface hover:text-secondary transition-colors" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary font-technical-mono text-[10px] flex items-center justify-center leading-none">2</span></a><a aria-label="Horological Profile" class="flex items-center pl-1 group" data-path="account" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant group-hover:ring-secondary transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh_vhj1D6q1Wt41z6VEMW175zE5BMEMhyWMWaS2RS4yeiFRm3Os1gfV-FPnBA-SXlvW9EpCXIJJkDd0QsyIv6jcUsFL9s3J0Fh3utcFMxWqIFNQ7jwraf9tsD9uA9sHia1q0rWE3dO_CT2QsD_AhMmm79gSD4mq-u_6IeGbjFtfj1GVS7ZbcW7gDbuWRQlOyh00fhcDk3Fuq53HY7tWAjb7uIGCcy_FYCf5zjLH5FyENs7hcNm67CM"/></a></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-290px)]"><div class="flex flex-col w-full">
+<!-- 1. HERO CAROUSEL SECTION -->
+<section class="relative w-full overflow-hidden bg-primary text-on-primary">
+<div class="relative w-full min-h-[580px] lg:min-h-[700px] flex items-center" id="hero-slider">
+<!-- Slide 1 (Active) -->
+<div class="hero-slide active absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-100 z-10 flex items-center">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Macro cinematic shot of an ultra-luxury whiskey Horween cordovan watch strap mounted on a vintage rose gold chronograph timepiece resting on dark slate stone with subtle warm atelier workshop lighting and gold dust ambiance" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8GoGIOAdjjf7pc8-RLz3STC4tCnwLBi3bmZwPHc7gp8PNTSrylFE-wc6Av1Kb0T007SwAYOLUJPn8Sy1k9-IBOZQXzwi7v0a-4e9aTuKwd6ZR3yOIvYxi5121BdHmRKL3LlXvjx4djoGrE8rQiDiCkfxCnDgq2YHjS2VyYVfP1eCJpHnLNp67J8t6fUr3v-Vv_iSGg02uVUTaVb-vLUL5ENgDkJ2Qk7cRK7yoQKUWJsSEdyZV27iS')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+<div class="relative z-20 max-w-[1440px] mx-auto px-margin md:px-margin-desktop w-full py-space-xl">
+<div class="max-w-2xl space-y-space-md">
+<div class="inline-flex items-center gap-space-sm px-3 py-1 bg-surface-container-highest/20 backdrop-blur-md rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+<span class="font-label-caps text-label-caps uppercase text-secondary-fixed tracking-widest text-[10px]">Atelier Series No. 04 • Edition 2024</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tight text-surface-bright leading-[1.08]">
+              Artisanal Straps for Discerning Timepieces
+            </h1>
+<p class="font-body-lg text-body-lg text-surface-container-highest font-light leading-relaxed max-w-xl">
+              Handcrafted Horween Cordovan, Belgian Barenia Calfskin, and Sculpted Milanese mesh tailored to luxury horology with micrometer-level precision.
+            </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="px-8 py-4 bg-surface-bright hover:bg-secondary-fixed text-primary hover:text-on-secondary-fixed transition-colors font-label-caps text-label-caps uppercase tracking-widest text-center shadow-lg" href="#bestsellers">
+                Explore Collection
+              </a>
+<a class="px-8 py-4 bg-transparent hover:bg-surface-container-highest/15 text-surface-bright transition-colors font-label-caps text-label-caps uppercase tracking-widest text-center backdrop-blur-sm" href="#size-finder">
+                Discover Bespoke Fit
+              </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0 z-0 flex items-center">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="High angle macro editorial of a 316L satin steel Milanese mesh watch strap seamless mesh weave with architectural shadows and reflections on brushed platinum casing" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYWbQUtHfE7lHVpN2zaYTHPPYu3zqx2bIOeZaPqiTTgBGlhIOymEzGcb_RMmbEs8I7CX_Nb5b6lfGbAj08QYJEjG7gX2Z0OQDg6azyC4EHD3T3zwz8aCtX4sXl5oEsIZjMnbVGlcALkVBbv87VrOCp2FMVyUK0-IJu7ypsXy4UousP3t_xd986Mi0ukjmNqq8ZPcVv3awLwjbLIu_SETbki5zd5xx7U-2zmlAHKytsk8b7awDNG3ln')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-transparent"></div>
+<div class="relative z-20 max-w-[1440px] mx-auto px-margin md:px-margin-desktop w-full py-space-xl">
+<div class="max-w-2xl space-y-space-md">
+<div class="inline-flex items-center gap-space-sm px-3 py-1 bg-surface-container-highest/20 backdrop-blur-md rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+<span class="font-label-caps text-label-caps uppercase text-secondary-fixed tracking-widest text-[10px]">Metallurgy Masterclass</span>
+</div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tight text-surface-bright leading-[1.08]">
+              Sculpted Milanese 316L Architecture
+            </h2>
+<p class="font-body-lg text-body-lg text-surface-container-highest font-light leading-relaxed max-w-xl">
+              Fluid steel chainmail engineered to mirror the contours of haute horlogerie cases, offering weightless durability and bespoke magnetic clasping.
+            </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="px-8 py-4 bg-surface-bright hover:bg-secondary-fixed text-primary hover:text-on-secondary-fixed transition-colors font-label-caps text-label-caps uppercase tracking-widest text-center shadow-lg" href="#bestsellers">
+                View Milanese Mesh
+              </a>
+<a class="px-8 py-4 bg-transparent hover:bg-surface-container-highest/15 text-surface-bright transition-colors font-label-caps text-label-caps uppercase tracking-widest text-center backdrop-blur-sm" href="#size-finder">
+                Lug Compatibility
+              </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slider Nav & Counter -->
+<div class="absolute bottom-8 right-margin md:right-margin-desktop z-30 flex items-center gap-space-md">
+<div class="flex items-center gap-2 font-technical-mono text-technical-mono text-secondary-fixed">
+<span class="text-surface-bright font-medium" id="slide-current">01</span>
+<span class="text-outline">/</span>
+<span class="text-outline">02</span>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Previous Slide" class="w-10 h-10 bg-primary-container hover:bg-secondary text-surface-bright flex items-center justify-center transition-colors" id="hero-prev">
+<span class="material-symbols-outlined text-[18px]">west</span>
+</button>
+<button aria-label="Next Slide" class="w-10 h-10 bg-primary-container hover:bg-secondary text-surface-bright flex items-center justify-center transition-colors" id="hero-next">
+<span class="material-symbols-outlined text-[18px]">east</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 2. VALUE PROPOSITION STRIP -->
+<section class="w-full bg-surface-container-low text-on-surface py-space-lg shadow-sm">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter items-center">
+<!-- Pillar 1 -->
+<div class="flex items-start gap-space-md group p-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 shadow-sm text-secondary">
+<span class="material-symbols-outlined text-[24px]">stylus_note</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-title-md text-title-md text-primary font-medium">Artisanal Craftsmanship</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Hand-stitched in Florence using ancient saddle-knot techniques.</p>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="flex items-start gap-space-md group p-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 shadow-sm text-secondary">
+<span class="material-symbols-outlined text-[24px]">straighten</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-title-md text-title-md text-primary font-medium">Universal Lug Fit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">18mm to 24mm widths, Apple Watch, and bespoke odd sizes.</p>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="flex items-start gap-space-md group p-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 shadow-sm text-secondary">
+<span class="material-symbols-outlined text-[24px]">tune</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-title-md text-title-md text-primary font-medium">Quick-Release System</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Tool-free 316L stainless steel integrated sprint levers.</p>
+</div>
+</div>
+<!-- Pillar 4 -->
+<div class="flex items-start gap-space-md group p-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 shadow-sm text-secondary">
+<span class="material-symbols-outlined text-[24px]">shield_with_heart</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-title-md text-title-md text-primary font-medium">Insured Express Courier</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Direct from Swiss Atelier with tamper-evident sealing.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. BEST-SELLING PRODUCTS SECTION -->
+<section class="w-full py-space-xl bg-surface" id="bestsellers">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop space-y-space-lg">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm pb-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-technical-mono text-technical-mono text-secondary uppercase tracking-widest text-[11px]">Curated Vitrine</span>
+<span class="w-8 h-[1px] bg-secondary-fixed-dim"></span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">Curated Best Sellers</h2>
+</div>
+<a class="inline-flex items-center gap-space-xs font-label-caps text-label-caps uppercase tracking-widest text-primary hover:text-secondary transition-colors group" href="#">
+<span>View All (18 Straps)</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Products Grid (8 Items) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- CARD 1 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Nomad Shell Cordovan strap in warm whiskey cognac leather displayed flat with cream hand-stitched contrast detailing on clean off-white stone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2RHo41hR8GeO_i5Cj44avOcEu-u_2INSbjCAQQipWe8OHwF9qKKOirhx50pGzMaCHibyCB7XNPOIUYbisZ75tOUGtSKWp_sWKe0A2VKJN9oHHe9k2hnvDUy5g6KsyIDL8SeiquN7G5_LvpkXeHBuyoappbW4WhvGG3pTQCNaHRIE9hQKRG-8Isp8tkxTRd4be4z79znA8ek5ZJp48Pc6Hzz5AI71vfIhs0k0Hzst4c63_cqrdv8Lk"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">Shell Cordovan</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">22mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.9 (128)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#8c522f] ring-1 ring-surface-bright" title="Cognac"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#1e1c1b] ring-1 ring-surface-bright" title="Black"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#3d2719] ring-1 ring-surface-bright" title="Espresso"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#592b23] ring-1 ring-surface-bright" title="Burgundy"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Nomad Shell Cordovan Strap</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Whiskey Cognac • Horween USA</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$145</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 2 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Sovereign Milanese mesh watch strap in champagne gold woven 316L stainless steel with magnetic clasp laid diagonally on luxury travertine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Aqeq9XETOVQKDTmZ6-ERKzzIa7pbRwpBgXHClQTGjggPTMMdeGNrnldMGLbPa3yfD9Xxm1Bd4k9XVBfSUBlcUG-isDFC7CEKcwPLgdBhNjL0E737TWmCjWqqXg4Li6Vj7A-jbDkeGm51G45DTnheIVGea0LaqFBCbcPnfe7cMTNQHcY13N7pF-9RfvUWrfXdili4pLM0XrbNDd1gCAXmO__ofJrcqXkNytm1kaahTVEVdsLxg2qn"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">316L Steel</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">19mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.8 (94)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#d4af37] ring-1 ring-surface-bright" title="Gold"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#c0c0c0] ring-1 ring-surface-bright" title="Silver"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#b76e79] ring-1 ring-surface-bright" title="Rose"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Sovereign Milanese Mesh</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Champagne Gold • Double Weave</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$185</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 3 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Atelier French Barenia calfskin watch strap in deep Noir Eclipse black with natural burnished edges and white saddle stitching resting on slate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAHjr8t7V8u5iudL0FL0ivmCT_AKL7MUtcEPTOgW0wa8WUws0xTCuW2nmgBUTlwMUSQItMCt9yj2gm1fxOJCM3TxmmXQb9JEqYNcCeIw4FH5ohXurtWdl78ihqqP5UhikalGx6-OtZdtezrz2ZP4UIXCNE8IoeGuRQVfe4s0b5koieYagGAKTw-qJ0t7WXgh2MSsOqEm3ui9DXGhyvg0n-wNb7WC2lSxvtNzqCsvr88CKvjtAOQeFV"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">French Barenia</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">18mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">5.0 (204)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#111112] ring-1 ring-surface-bright" title="Noir"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#825332] ring-1 ring-surface-bright" title="Fauve"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Atelier French Barenia Calfskin</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Noir Eclipse • Zermatt Lined</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$160</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 4 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Vulcan Ocean FKM rubber diver strap in nautical navy blue with micro diamond waffle texture and curved lug ends on water droplets texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1cm9ARVdcWkY5FVrHYFAhh9pyA_o3pqPTg6L6OgBC7RI067IIziJiwnjxpAWC_5HNVMGuON6DjJ3RSsSSpvb1BbyeNgCEbnn-KO_dNyYroVT2mU3sESGdSblf1KxG9hWIf1dZcR3OQouFLw7HZ8_Abxy4uS1QaQRgklRkQu6EY6um5HVPoCF7v1P9IN76132L3VlFC5ERZyEtOEs0qWls_7oguhRW5XvfqvT7XnKCSBmu7Jh7KgGD"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">FKM Vulcanized</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">22mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.9 (87)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1b2b40] ring-1 ring-surface-bright" title="Navy"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#202224] ring-1 ring-surface-bright" title="Black"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#354637] ring-1 ring-surface-bright" title="Olive"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Vulcan Ocean FKM Rubber Diver</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Nautical Navy • High-Density</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$95</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 5 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Royal Alligator patterned leather strap in deep forest emerald green with scales texture and satin finish laid alongside an antique pocket watch tool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRGuO6BV9BlcQegvE13og0z6nTbXB3xDNr7zd1g3-dgw7jCYTcKlpN-j8sdS3ULbn-DgPaSe-hDv5tY3Kq4ohFk8g68PzYQixpj-608okP4ELurv0wJrNypAEWCLwp3jVSAKLr6oacyc6ug9ZUiMUs5W6S4x626S1WSZntIxh4hlle1XNlI5dHXnpYg3tX0ZJpciU0CMMTeS56E9ksoRvEVpWcroSmkmlUsr6qTaBDr8YZb5BlcfyP"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">Alligator Grain</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">19mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.7 (73)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1b3b2b] ring-1 ring-surface-bright" title="Emerald"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#201529] ring-1 ring-surface-bright" title="Plum"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Royal Alligator Patterned Leather</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Forest Emerald • French Tanned</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$175</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 6 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Matte Titanium link bracelet in dark gunmetal grey aerospace grade titanium with chamfered polished bevels resting on black marble" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2UY-CCNEV-Eah-6Mim1pTJDbXG1JK5L7BtQcEG-2-4jh0euue5nhChz5GkEFnwU6eY2T9JogMXZi3g5NYt5jqXHadxTakuZkf8TjZFzhgTpyZxUCFqiIauXNmcYufQyin_DqVjSlkBugQL8jlZa7fJOFoMik8B3l90uCHbHAvGIM4m_myvemb4Ip6gSOXK0o3uVGjAaKco6_aYZ4SzbdVQRdLGfidYnxGkktKofEaIREvKJH-vWlD"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">Grade 2 Titanium</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">22mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.9 (112)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#4a4c50] ring-1 ring-surface-bright" title="Gunmetal"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#9da2a6] ring-1 ring-surface-bright" title="Raw Titanium"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Matte Titanium Link Bracelet</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Gunmetal Grey • DLC Coating</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$220</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 7 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Nubuck suede minimalist watch strap in sand dune beige with natural raw velvet texture and matching cream thread details on raw linen surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoJHfzNZqN4oRWYRknnJ5pH1euiy73ytGX7t8-pWz2orp1NFun6kvJFdaqsYGK1a6Nhr0W9Pdybe7SQR_PalbhSaSq_CkpTnMT5ITsrCOkvMGq6n7x5odxKEUoSyZvp5lpHF-JKtu6cn11OyXaXKuqzATjPH5R6z3lC1yTwSHVF8wKplJDLsZxZIagjG_7OGVcaCkeOqZssQIXmVmJQjBNx0H6_eLIJwApm5Y1DeOgkKB5K5ndsZNo"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">Nubuck Suede</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">18mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.8 (64)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#d2be9b] ring-1 ring-surface-bright" title="Sand"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#8c7b6c] ring-1 ring-surface-bright" title="Taupe"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#4a433d] ring-1 ring-surface-bright" title="Mocha"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Nubuck Suede Minimalist Band</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Sand Dune • Soft Calf Velour</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$120</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD 8 -->
+<div class="group bg-surface-container-low shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Hermitage Rally racing leather watch strap in oxblood red with classic racing micro-perforations and contrast cream edge stitching on vintage oak workshop desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1Qw_T3Lrv0mmCClTjEnD8WIgMORV5GUjs8LJEjxz9ryOwEbzaphsU1nCgTvmhONaF1CNoz7dNoS1tT0tD2sWP5KGzk1a0bqLcqqf8fmE1uI_GofEiFcsllL7WgXmKEJr-rfNemltrfLSoCVrIvkN_11vPSYSTpqEkm1GI99RJwjPfxHQbWLlEDPabrSHaFH69mp1WcKo-s1KVvAyzwVThOBoB2UCFq89AJRPP0mcRtxEIUJnVrkz5"/>
+<div class="absolute top-3 left-3 px-2 py-0.5 bg-surface/90 backdrop-blur-sm text-primary font-technical-mono text-[10px] uppercase tracking-wider">Motorsport Rally</div>
+<button aria-label="Add to Wishlist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 hover:bg-surface text-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex gap-1 font-technical-mono text-[10px]">
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">20mm</span>
+<span class="px-1.5 py-0.5 bg-surface/90 text-on-surface">22mm</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
+<div>
+<div class="flex items-center justify-between text-secondary mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-technical-mono text-technical-mono text-[11px] text-on-surface">4.9 (142)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#521c1f] ring-1 ring-surface-bright" title="Oxblood"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#1b1c1d] ring-1 ring-surface-bright" title="Racing Black"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#a16834] ring-1 ring-surface-bright" title="Vintage Tan"></span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium group-hover:text-secondary transition-colors">Hermitage Rally Racing Leather</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Oxblood Red • Perforated Calibre</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$135</span>
+<button class="quick-add-btn px-4 py-2 bg-primary hover:bg-secondary text-on-primary font-label-caps text-[10px] uppercase tracking-wider transition-colors">
+                Quick Add
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. CRAFTSMANSHIP SPOTLIGHT STORY -->
+<section class="w-full py-space-xl bg-surface-container text-on-surface overflow-hidden">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+<!-- Visual Story Mosaic (7 cols) -->
+<div class="lg:col-span-7 grid grid-cols-2 gap-space-md">
+<div class="space-y-space-md">
+<div class="overflow-hidden shadow-sm aspect-[4/5] bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Close up macro of an Italian master artisan hands saddle-stitching leather with double needles and beeswax coated linen thread in a sunlit Florence studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5j3_gPeGyzMeWgqQtTZeiCNZ9fmW4kDrbzegSdSfiFsukLi7n4Rg3veSV8DeSs7w6S3GjzKUlB8gusGtd3_bIcSZbUSUYEzkQdqRfOFefEeece_e8dD1R6_AE5l_HCnHqz7Zx88XE75ZwGx4u7UKqnGQ1GIdVz1iCYl54945pAe2AjeKAB9e9ih5ewa4qMLur8nFulQIv01TDRp78wXvQpYJtuOo8aJGL5DjEaggR63bcTaPHhUYO"/>
+</div>
+<div class="p-space-md bg-surface-container-lowest shadow-sm space-y-1">
+<span class="font-technical-mono text-[10px] text-secondary uppercase tracking-widest">Technique I</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Two-Needle Saddle Stitch</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Each seam locked independently. Unlike machine stitch runs, one severed loop will never unravel.</p>
+</div>
+</div>
+<div class="space-y-space-md pt-8">
+<div class="p-space-md bg-surface-container-lowest shadow-sm space-y-1">
+<span class="font-technical-mono text-[10px] text-secondary uppercase tracking-widest">Technique II</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Triple Edge Burnishing</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Layered edge enamel heated and ironed to a glossy, moisture-impermeable curved seal.</p>
+</div>
+<div class="overflow-hidden shadow-sm aspect-[4/5] bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Microscopic shot of French Haas Zermatt calfskin strap lining showing water-resistant pores and embossed Aurelius Atelier insignia stamp in matte gold foil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaSaLb__diKrLE0Bv4gA_DWWDVdUz9i6DpSzQP314Bh3UQCe0-qMiqFIh27c_Z3ssEhOAEsdc3S-UF16GLP8sm02c8zz_Sd95zG16ov6oJ-SBPDrK9snpf3bGR0Who_hYd5hJyeqKMPcD0RuoEIFNt00iBeGJd44oJ_QIqo4LNqYdUIfx5zIbDzvN9OdCdXMZVcqmNfArgXlf0ZIRUa_21iZnb6smsINXuS08k8XgmjdmBucH4jKXh"/>
+</div>
+</div>
+</div>
+<!-- Narrative Editorial (5 cols) -->
+<div class="lg:col-span-5 space-y-space-md">
+<div class="inline-flex items-center gap-2">
+<span class="w-6 h-[1px] bg-secondary"></span>
+<span class="font-technical-mono text-technical-mono uppercase tracking-widest text-secondary">The Atelier Standard</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight leading-tight">
+            Treated Like a Horological Caliber
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light leading-relaxed">
+            A luxury watch deserves an equal standard of engineering on the wrist. At Aurelius, every single strap undergoes fourteen hours of human touch: from hand-beveling the skived margins to five coats of hand-ironed beeswax edge coat.
+          </p>
+<div class="space-y-space-sm pt-2">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">verified_user</span>
+<div>
+<strong class="font-title-md text-title-md text-primary block">Hypoallergenic Zermatt Lining</strong>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Sourced directly from Tanneries Haas in France, resisting perspiration and preserving comfort in humid climates.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">architecture</span>
+<div>
+<strong class="font-title-md text-title-md text-primary block">Engineered Taper Proportions</strong>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">Custom 20mm-to-16mm or 22mm-to-18mm architectural tapers that honor classic vintage silhouettes.</p>
+</div>
+</div>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center gap-space-sm px-8 py-3.5 bg-primary text-on-primary hover:bg-secondary transition-colors font-label-caps text-label-caps uppercase tracking-widest" href="#">
+<span>Explore The Atelier Story</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. NEW ARRIVALS SHOWCASE -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop space-y-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="space-y-1">
+<span class="font-technical-mono text-technical-mono text-secondary uppercase tracking-widest text-[11px]">Autumn / Winter Limited Release</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">New Seasonal Arrivals</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md font-light">
+          Small-batch runs utilizing archival deadstock tanneries and unreleased hardware finishes.
+        </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- New Arrival 1 -->
+<div class="group bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Pebbled Epsom calfskin watch strap in slate basalt grey with brushed gunmetal tang buckle on architectural marble slab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwNuj8MqFirvxLIp3sXweFt25O9bu3ucE9GuLYQnEiSwqQ2s6Zhs5-HfO6EmW59pRyWj5IUEzH4H57GiT83iNNNL9nlt_m0tAg1EOj5WGm9tTYB3pgus0uaikp-Rp8LLo68_lw95t-YbXkn4B7jNKekbuXa9izWy-v7ap5nxNvYZbWDXcljAVZ5yfOBBe7Xs4rhnVD7R5ogfWWOt3J8AW9NQzCczuEVaTnTicThH4lIu7fuxnScVmC"/>
+<span class="absolute top-3 left-3 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed font-label-caps text-[9px] uppercase tracking-widest shadow-sm">NEW</span>
+</div>
+<div class="p-space-md space-y-2">
+<div class="flex items-center justify-between font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">
+<span>EPSOM LEATHER</span>
+<span>20MM</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium">Basalt Epsom Structured Band</h3>
+<div class="flex items-center justify-between pt-1">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$150</span>
+<button class="quick-add-btn text-secondary hover:text-primary font-label-caps text-[11px] uppercase tracking-wider transition-colors">Add to Bag +</button>
+</div>
+</div>
+</div>
+<!-- New Arrival 2 -->
+<div class="group bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Woven British military nylon strap in matte olive drab with brushed bronze rings and leather reinforcement pads on dark canvas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7pGi1cX4H5p27NyWmr9t-KN918KIXgMy0V5YNW01WbCJNODQT-LeWW3NLjCbPjiuMhUrdzar_mhHwCQX7X84zlsN1DQUJ4uRbOIxBGDMKh7drl2G4sHvC_VPVUPvkr68xWiOu4suvPneZljgb_5Su-3_WAXhIBbmoXJa5sP0vZouKXS6CwHzTWGp-noPANsgIrdt6bd3cZJLPyV23Cto-V2htw0LEURpO5ZeVmJU0CPPtyI7UhG5b"/>
+<span class="absolute top-3 left-3 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed font-label-caps text-[9px] uppercase tracking-widest shadow-sm">NEW</span>
+</div>
+<div class="p-space-md space-y-2">
+<div class="flex items-center justify-between font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">
+<span>BALLISTIC NYLON</span>
+<span>22MM</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium">Bronze Tactical Single-Pass</h3>
+<div class="flex items-center justify-between pt-1">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$85</span>
+<button class="quick-add-btn text-secondary hover:text-primary font-label-caps text-[11px] uppercase tracking-wider transition-colors">Add to Bag +</button>
+</div>
+</div>
+</div>
+<!-- New Arrival 3 -->
+<div class="group bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Glazed dark cordovan watch strap in deep violet bordeaux with hand-painted edges under specular horology studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9xT2Qz5_IOJTYq8dIPEf0rkdfq8T9wdTLcFSFpee0kcmB6HGOMiNzDTYA8bonlRK7RSW-XEODDueQKjKj1si9Ee8qSt91LsVZhpqjCpqZVyYEKMamquxfZkcFfJOTyUcKcf3IvGsHQ8TRcKglB3_8J2KAgBLXCJiEl5O2MVhQle69c6A3cCms3B_M5aakFCaKlbY9TI-ccNr8-uHr4YDbTyPRseIIfVVkUheJMSIx465umnjpo3l-"/>
+<span class="absolute top-3 left-3 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed font-label-caps text-[9px] uppercase tracking-widest shadow-sm">NEW</span>
+</div>
+<div class="p-space-md space-y-2">
+<div class="flex items-center justify-between font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">
+<span>SHELL CORDOVAN</span>
+<span>19MM</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium">Bordeaux Glaze Cordovan</h3>
+<div class="flex items-center justify-between pt-1">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$155</span>
+<button class="quick-add-btn text-secondary hover:text-primary font-label-caps text-[11px] uppercase tracking-wider transition-colors">Add to Bag +</button>
+</div>
+</div>
+</div>
+<!-- New Arrival 4 -->
+<div class="group bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sculpted ceramic link bracelet in deep matte black with hidden butterfly deployment clasp on illuminated glass showcase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD7IZOo1-Sd1G9LB7Q6EX_tXEDkQ9nkZeD_mpvhqUHgd_y9WzdQzKsd5Fb3a4gWjoRpWVXZG--Z0-faJULkpn2LoeYG5hWET2Xn6voYrAgaGBD0n9c5YFHmWLbErUApBE6FONvpnN8EhBP6J_IHtsW7oQodyqxNURp-PHDNB6_JsXAgJez5SdGFHB0eEgQPlP08dInUJKy_F0DLTaVFtmk8fmX6o-TXVlfxJt-z1-b4ffpml1bgv5Y"/>
+<span class="absolute top-3 left-3 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed font-label-caps text-[9px] uppercase tracking-widest shadow-sm">NEW</span>
+</div>
+<div class="p-space-md space-y-2">
+<div class="flex items-center justify-between font-technical-mono text-technical-mono text-[11px] text-on-surface-variant">
+<span>ZIRCONIA CERAMIC</span>
+<span>20MM</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-medium">Onyx Zirconia Ceramic Link</h3>
+<div class="flex items-center justify-between pt-1">
+<span class="font-technical-mono text-[15px] font-medium text-primary">$240</span>
+<button class="quick-add-btn text-secondary hover:text-primary font-label-caps text-[11px] uppercase tracking-wider transition-colors">Add to Bag +</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. CURATED TESTIMONIALS SECTION -->
+<section class="w-full py-space-xl bg-surface-container-low text-on-surface">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop space-y-space-lg">
+<div class="text-center max-w-xl mx-auto space-y-1">
+<span class="font-technical-mono text-technical-mono text-secondary uppercase tracking-widest text-[11px]">The Collector Community</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">Verified Appraisals</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Review 1 -->
+<div class="p-space-lg bg-surface shadow-sm space-y-space-md flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface-variant font-light italic leading-relaxed">
+              “The Whiskey Cordovan strap matched my 1969 Speedmaster better than original OEM bands costing triple the price. The hand-burnished edges haven't cracked in eight months of regular wear.”
+            </blockquote>
+</div>
+<div class="pt-space-sm space-y-0.5">
+<div class="font-title-md text-title-md text-primary font-medium">Julian V. • Geneva</div>
+<div class="font-technical-mono text-technical-mono text-[11px] text-secondary">Purchased: Nomad Shell Cordovan (Whiskey)</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-space-lg bg-surface shadow-sm space-y-space-md flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface-variant font-light italic leading-relaxed">
+              “As an independent watchmaker, I scrutinize tolerances down to 0.1mm. Aurelius quick-release spring bars are impeccably machined with zero play inside delicate vintage lugs.”
+            </blockquote>
+</div>
+<div class="pt-space-sm space-y-0.5">
+<div class="font-title-md text-title-md text-primary font-medium">Marc-Antoine D. • Neuchâtel</div>
+<div class="font-technical-mono text-technical-mono text-[11px] text-secondary">Purchased: Sovereign Milanese Mesh</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="p-space-lg bg-surface shadow-sm space-y-space-md flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface-variant font-light italic leading-relaxed">
+              “The Zermatt lining makes a substantial difference in high-humidity climates like Singapore. Sweat simply does not stain or degrade the leather interior. Truly bespoke quality.”
+            </blockquote>
+</div>
+<div class="pt-space-sm space-y-0.5">
+<div class="font-title-md text-title-md text-primary font-medium">Evelyn T. • Singapore</div>
+<div class="font-technical-mono text-technical-mono text-[11px] text-secondary">Purchased: French Barenia Noir</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. INTERACTIVE LUG SIZE FINDER & BESPOKE CONCIERGE BANNER -->
+<section class="w-full py-space-xl bg-primary text-on-primary" id="size-finder">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="bg-primary-container p-space-lg md:p-space-xl rounded-none shadow-xl relative overflow-hidden">
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 space-y-space-md">
+<div class="inline-flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+<span class="font-technical-mono text-technical-mono uppercase tracking-widest text-secondary-fixed text-[11px]">Precision Horological Fitting Tool</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-surface-bright tracking-tight">
+              Calibrate Your Exact Strap Fit
+            </h2>
+<p class="font-body-lg text-body-lg text-surface-container-high font-light leading-relaxed max-w-xl">
+              Unsure whether your timepiece requires an 18mm, 19mm vintage, or 20mm standard taper? Select your manufacture model or enter your caliper lug measurement.
+            </p>
+<!-- Mini Interactive Finder Widget -->
+<div class="bg-surface-container-lowest/10 backdrop-blur-md p-space-md space-y-space-sm max-w-lg shadow-sm">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div>
+<label class="block font-label-caps text-[10px] uppercase text-surface-container-high mb-1" for="brand-selector">Timepiece Brand</label>
+<select class="w-full bg-primary text-surface-bright font-body-sm text-body-sm px-3 py-2 border-0 focus:ring-1 focus:ring-secondary-fixed" id="brand-selector">
+<option value="rolex">Rolex (Submariner / Datejust)</option>
+<option value="omega">Omega (Speedmaster / Seamaster)</option>
+<option value="cartier">Cartier (Tank / Santos)</option>
+<option value="patek">Patek Philippe (Calatrava)</option>
+<option value="tudor">Tudor (Black Bay)</option>
+<option value="apple">Apple Watch (Ultra / 45mm / 41mm)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-caps text-[10px] uppercase text-surface-container-high mb-1" for="lug-selector">Caliper Width</label>
+<select class="w-full bg-primary text-surface-bright font-body-sm text-body-sm px-3 py-2 border-0 focus:ring-1 focus:ring-secondary-fixed" id="lug-selector">
+<option value="18">18mm (Classic Vintage)</option>
+<option value="19">19mm (Rare / Mid-century)</option>
+<option selected="" value="20">20mm (Modern Standard)</option>
+<option value="21">21mm (Modern Diver)</option>
+<option value="22">22mm (Chronograph/Tool)</option>
+</select>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container-highest/20 font-technical-mono text-[11px] text-secondary-fixed flex items-center justify-between" id="finder-result">
+<span>Recommended: 20mm Lug → 16mm Buckle Taper</span>
+<span class="text-surface-bright font-medium">Standard Length (115/75mm)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md pt-2">
+<button class="px-8 py-3.5 bg-secondary-fixed hover:bg-surface-bright text-on-secondary-fixed hover:text-primary transition-colors font-label-caps text-label-caps uppercase tracking-widest" id="apply-finder-btn">
+                Find Your Strap Size
+              </button>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-surface-container-high hover:text-surface-bright transition-colors flex items-center gap-1" href="#">
+<span>Download Caliper Print Guide (PDF)</span>
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+</a>
+</div>
+</div>
+<!-- Technical Schematic Visual (5 cols) -->
+<div class="lg:col-span-5 flex justify-center py-space-md">
+<div class="w-full max-w-sm p-space-md bg-surface-container-highest/10 backdrop-blur-md space-y-space-sm text-center">
+<div class="font-technical-mono text-[11px] text-secondary-fixed uppercase tracking-wider">Taper Calibration Diagram</div>
+<!-- Caliper SVG Schematic -->
+<svg class="w-full h-48 text-secondary-fixed mx-auto" fill="none" viewbox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Lug End -->
+<rect fill="currentColor" fill-opacity="0.15" height="24" stroke="currentColor" stroke-width="1.5" width="140" x="70" y="20"></rect>
+<text fill="currentColor" font-family="Inter" font-size="10" text-anchor="middle" x="140" y="36">LUG WIDTH (20mm)</text>
+<!-- Strap Body Taper -->
+<path d="M70 44 L90 120 L190 120 L210 44 Z" fill="currentColor" fill-opacity="0.08" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<circle cx="140" cy="80" fill="currentColor" r="4"></circle>
+<!-- Buckle End -->
+<rect fill="currentColor" fill-opacity="0.2" height="24" stroke="currentColor" stroke-width="1.5" width="100" x="90" y="120"></rect>
+<text fill="currentColor" font-family="Inter" font-size="10" text-anchor="middle" x="140" y="136">BUCKLE WIDTH (16mm)</text>
+<!-- Dimension lines -->
+<line stroke="currentColor" stroke-width="1" x1="50" x2="50" y1="20" y2="144"></line>
+<line stroke="currentColor" stroke-width="1" x1="45" x2="55" y1="20" y2="20"></line>
+<line stroke="currentColor" stroke-width="1" x1="45" x2="55" y1="144" y2="144"></line>
+<text fill="currentColor" font-family="Inter" font-size="9" text-anchor="middle" transform="rotate(-90 35 86)" x="35" y="86">LENGTH 120mm</text>
+</svg>
+<p class="font-technical-mono text-[10px] text-surface-container-high">
+                Precision tolerances guarantee flush contact with zero case rub.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Hero Carousel Switcher
+      const slides = document.querySelectorAll('.hero-slide');
+      const counter = document.getElementById('slide-current');
+      const prevBtn = document.getElementById('hero-prev');
+      const nextBtn = document.getElementById('hero-next');
+      let currentIdx = 0;
+
+      function updateSlide(idx) {
+        slides.forEach((s, i) => {
+          if (i === idx) {
+            s.classList.add('opacity-100', 'z-10');
+            s.classList.remove('opacity-0', 'z-0');
+          } else {
+            s.classList.remove('opacity-100', 'z-10');
+            s.classList.add('opacity-0', 'z-0');
+          }
+        });
+        if (counter) {
+          counter.textContent = String(idx + 1).padStart(2, '0');
+        }
+      }
+
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          currentIdx = (currentIdx - 1 + slides.length) % slides.length;
+          updateSlide(currentIdx);
+        });
+        nextBtn.addEventListener('click', () => {
+          currentIdx = (currentIdx + 1) % slides.length;
+          updateSlide(currentIdx);
+        });
+      }
+
+      // 2. Quick Add Toast micro-interaction
+      const quickAddButtons = document.querySelectorAll('.quick-add-btn');
+      quickAddButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span> Added';
+          this.classList.add('bg-secondary');
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('bg-secondary');
+          }, 1800);
+        });
+      });
+
+      // 3. Size Finder Dynamic Recommendation
+      const brandSelector = document.getElementById('brand-selector');
+      const lugSelector = document.getElementById('lug-selector');
+      const resultBox = document.getElementById('finder-result');
+      const applyBtn = document.getElementById('apply-finder-btn');
+
+      function calculateFit() {
+        if (!brandSelector || !lugSelector || !resultBox) return;
+        const brand = brandSelector.value;
+        const lug = lugSelector.value;
+        let buckle = parseInt(lug) - 2;
+        if (lug === '20') buckle = 16;
+        if (brand === 'apple') {
+          resultBox.innerHTML = `<span>Recommended: 22mm Custom Adapter End</span><span class="text-surface-bright font-medium">Dual Magnet Milanese</span>`;
+        } else {
+          resultBox.innerHTML = `<span>Recommended: ${lug}mm Lug &rarr; ${buckle}mm Buckle Taper</span><span class="text-surface-bright font-medium">Standard Length (115/75mm)</span>`;
+        }
+      }
+
+      if (brandSelector && lugSelector) {
+        brandSelector.addEventListener('change', calculateFit);
+        lugSelector.addEventListener('change', calculateFit);
+      }
+
+      if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+          const bestsellers = document.getElementById('bestsellers');
+          if (bestsellers) {
+            bestsellers.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface mt-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop pb-space-xl border-b border-surface-container-highest"><div class="lg:col-span-5 space-y-space-md"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm uppercase tracking-widest text-primary">Aurelius</span><span class="font-label-caps text-label-caps text-secondary text-[10px] uppercase">• Genève &amp; Milano</span></div><p class="font-body-lg text-body-lg text-on-surface-variant max-w-md font-light leading-relaxed">Architecting the tactile bridge between extraordinary mechanical calibers and the wrist. Precision-engineered straps formed from vegetable-tanned cordovan, saddle-stitched French alligator, and fluroelastomer vulcanized rubbers.</p><div class="pt-space-sm"><form class="space-y-space-xs max-w-md"><label class="font-label-caps text-label-caps uppercase tracking-widest text-primary block" for="footer-newsletter">The Atelier Gazette • Rare Batch Allocations</label><div class="flex items-stretch bg-surface border border-outline-variant p-1 focus-within:border-secondary transition-colors"><input class="w-full bg-transparent px-space-sm py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none" id="footer-newsletter" placeholder="collector@horlogerie.com" type="email"/><button class="bg-primary hover:bg-secondary text-on-primary hover:text-on-secondary px-space-md py-2 font-label-caps text-label-caps uppercase tracking-wider transition-colors shrink-0" type="submit">Subscribe</button></div><p class="font-technical-mono text-technical-mono text-on-surface-variant text-[11px]">Limited release notifications exclusively. Discretion preserved.</p></form></div></div><div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-gutter"><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Collections</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="shop-all" href="#">All Bands &amp; Straps</a></li><li class="hover:text-primary transition-colors"><a data-path="horween-cordovan" href="#">Horween Cordovan</a></li><li class="hover:text-primary transition-colors"><a data-path="milanese-mesh" href="#">Milanese Mesh</a></li><li class="hover:text-primary transition-colors"><a data-path="fkm-vulcanized-rubber" href="#">FKM Vulcanized Rubber</a></li><li class="hover:text-primary transition-colors"><a data-path="alligator-grain" href="#">Alligator Grain</a></li><li class="hover:text-primary transition-colors"><a data-path="apple-watch-compatible" href="#">Apple Watch Compatible</a></li></ul></div><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Concierge</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="strap-size-guide" href="#">Strap Size Guide</a></li><li class="hover:text-primary transition-colors"><a data-path="lug-measurement-tool" href="#">Lug Measurement Tool</a></li><li class="hover:text-primary transition-colors"><a data-path="bespoke-orders" href="#">Bespoke Orders</a></li><li class="hover:text-primary transition-colors"><a data-path="order-status" href="#">Order Status &amp; Tracking</a></li><li class="hover:text-primary transition-colors"><a data-path="care-and-maintenance" href="#">Care &amp; Maintenance</a></li></ul></div><div class="space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-primary font-semibold">Legal &amp; Policies</h3><ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-primary transition-colors"><a data-path="shipping-and-delivery" href="#">Shipping &amp; Delivery</a></li><li class="hover:text-primary transition-colors"><a data-path="returns-and-exchanges" href="#">Returns &amp; Exchanges</a></li><li class="hover:text-primary transition-colors"><a data-path="authenticity-guarantee" href="#">Authenticity Guarantee</a></li><li class="hover:text-primary transition-colors"><a data-path="privacy-policy" href="#">Privacy Policy</a></li></ul></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex flex-wrap items-center gap-space-md font-technical-mono text-technical-mono text-[11px]"><span class="text-primary font-medium">© 2024 Aurelius Atelier Horlogerie S.A.</span><span>All rights reserved.</span><span class="hidden sm:inline">•</span><span>Manufacture Artisanale d'Horlogerie</span></div><div class="flex items-center gap-space-md"><span class="font-label-caps text-[10px] tracking-widest uppercase text-on-surface-variant">Accepted Tenders:</span><div class="flex items-center gap-space-sm font-technical-mono text-technical-mono text-[11px] uppercase tracking-wider text-primary"><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">UPI</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">VISA</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">MASTERCARD</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">AMEX</span><span class="px-2 py-0.5 bg-surface-container rounded-sm border border-outline-variant">APPLE PAY</span></div></div></div></div></footer></body></html>

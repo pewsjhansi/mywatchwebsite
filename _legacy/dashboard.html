@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard | Aurelius Atelier</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">AURELIUS</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop All</a>
+        <a href="shop.html">New Arrivals</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;"></div>
+        <div class="cart-icon open-cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <div class="cart-count">0</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar">
+        <ul class="dashboard-menu" id="dashboard-tabs">
+          <li><a href="#profile" data-target="section-profile">Profile Info</a></li>
+          <li><a href="#orders" data-target="section-orders">My Orders</a></li>
+          <li><a href="#security" data-target="section-security">Security</a></li>
+          <li><a href="#" onclick="handleLogout(event)" style="color:var(--color-error); margin-top:2rem;">Logout</a></li>
+        </ul>
+      </aside>
+      
+      <div class="dashboard-content">
+        <!-- PROFILE INFO -->
+        <div id="section-profile" class="dash-section" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem;">
+            <h2 class="headline-md">Profile Information</h2>
+            <button class="btn-secondary">Edit Profile</button>
+          </div>
+          
+          <div class="dashboard-card" style="margin-bottom:2rem;">
+            <div class="technical-mono" style="color:var(--color-tertiary); margin-bottom:1.5rem;" id="dash-userid">User ID: WF-XXXXXX</div>
+            
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Name</label>
+                <div class="body-md" id="dash-info-name">John Doe</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Email</label>
+                <div class="body-md" id="dash-info-email">john@example.com</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Mobile</label>
+                <div class="body-md" id="dash-info-mobile">+91 98765 43210</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Gender</label>
+                <div class="body-md">Not Specified</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Occupation</label>
+                <div class="body-md">Not Specified</div>
+              </div>
+            </div>
+          </div>
+          
+          <h2 class="title-lg" style="margin-bottom:1.5rem;">Address</h2>
+          <div class="dashboard-card">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">House / Flat</label>
+                <div class="body-md">25</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Street</label>
+                <div class="body-md">Main Road</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">City</label>
+                <div class="body-md">Jhansi</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">State</label>
+                <div class="body-md">Uttar Pradesh</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">PIN Code</label>
+                <div class="body-md">284003</div>
+              </div>
+              <div>
+                <label class="label-caps" style="color:var(--color-tertiary);">Country</label>
+                <div class="body-md">India</div>
+              </div>
+            </div>
+            <button class="btn-secondary" style="margin-top:2rem;">Edit Address</button>
+          </div>
+        </div>
+        
+        <!-- MY ORDERS -->
+        <div id="section-orders" class="dash-section" style="display:none;">
+          <h2 class="headline-md" style="margin-bottom: 2rem;">My Orders</h2>
+          <div class="dashboard-card" style="text-align:center; padding: 4rem 2rem;">
+            <svg width="48" height="48" style="color:var(--color-divider); margin-bottom:1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            <h3 class="title-lg" style="margin-bottom:1rem;">You haven't placed any orders yet.</h3>
+            <a href="shop.html" class="btn-primary" style="display:inline-block; margin-top:1rem;">Start Shopping</a>
+          </div>
+        </div>
+        
+        <!-- SECURITY -->
+        <div id="section-security" class="dash-section" style="display:none;">
+          <h2 class="headline-md" style="margin-bottom: 2rem;">Security</h2>
+          <div class="dashboard-card" style="margin-bottom:2rem;">
+            <h3 class="title-md" style="margin-bottom:1rem;">Account Security</h3>
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+              <a href="#" style="color:var(--color-primary); text-decoration:underline;">Change Password</a>
+              <a href="#" style="color:var(--color-primary); text-decoration:underline;">Active Sessions</a>
+            </div>
+          </div>
+          
+          <div class="dashboard-card" style="border-color:var(--color-error); background:rgba(255,0,0,0.02);">
+            <h3 class="title-md" style="margin-bottom:1rem; color:var(--color-error);">Danger Zone</h3>
+            <p class="body-sm" style="margin-bottom:1.5rem; color:var(--color-tertiary);">Once you delete your account, there is no going back. Please be certain.</p>
+            <button class="btn-secondary" style="color:var(--color-error); border-color:var(--color-error);" onclick="handleDeleteAccount()">Delete My Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer Overlay & Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="title-lg">Your Cart</h2>
+      <button class="cart-close" id="cart-close-btn">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items"></div>
+    <div class="cart-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem">
+        <span class="title-md">Subtotal</span>
+        <span class="title-md" id="cart-subtotal">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary" style="width:100%; text-align:center;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Protect route
+      const auth = JSON.parse(localStorage.getItem('luxuryUserAuth'));
+      if (!auth) {
+        window.location.href = 'index.html';
+        return;
+      }
+      
+      // Populate dashboard
+      document.getElementById('dash-userid').textContent = 'User ID: ' + auth.userId;
+      document.getElementById('dash-info-name').textContent = auth.name;
+      document.getElementById('dash-info-email').textContent = auth.email;
+      document.getElementById('dash-info-mobile').textContent = auth.mobile;
+      
+      // Load user's actual orders from database (localStorage)
+      const allOrders = JSON.parse(localStorage.getItem('luxuryOrders')) || [];
+      const userOrders = allOrders.filter(o => o.userId === auth.userId);
+      const ordersContainer = document.getElementById('section-orders');
+      
+      if (userOrders.length > 0) {
+        let ordersHTML = `<h2 class="headline-md" style="margin-bottom: 2rem;">My Orders</h2>`;
+        userOrders.forEach(order => {
+          let itemsHTML = order.items.map(item => `
+            <div style="display:flex; gap:1rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--color-divider);">
+              <img src="${item.image}" style="width:60px; height:60px; object-fit:cover;">
+              <div>
+                <div class="title-md" style="margin-bottom:0.25rem;">${item.name}</div>
+                <div class="label-caps" style="color:var(--color-tertiary);">Color: ${item.color} | Size: ${item.size} | Qty: ${item.quantity}</div>
+                <div class="technical-mono" style="margin-top:0.25rem;">$${(item.price * item.quantity).toFixed(2)}</div>
+              </div>
+            </div>
+          `).join('');
+          
+          ordersHTML += `
+            <div class="dashboard-card" style="margin-bottom:2rem;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem;">
+                <div>
+                  <div class="title-lg">Order #${order.orderId}</div>
+                  <div class="technical-mono" style="color:var(--color-tertiary); margin-top:0.25rem;">Date: ${order.date}</div>
+                </div>
+                <div style="text-align:right;">
+                  <div class="technical-mono" style="color:var(--color-secondary); margin-bottom:0.25rem;">Status: ${order.status}</div>
+                  <div class="technical-mono" style="color:var(--color-tertiary); margin-bottom:0.25rem;">Payment: Paid</div>
+                  <div class="title-md">Total: $${order.total.toFixed(2)}</div>
+                </div>
+              </div>
+              ${itemsHTML}
+              <button class="btn-secondary" style="margin-top:1rem;">View Order Details</button>
+            </div>
+          `;
+        });
+        ordersContainer.innerHTML = ordersHTML;
+      }
+      
+      // Tab switching logic
+      const links = document.querySelectorAll('#dashboard-tabs a[data-target]');
+      const sections = document.querySelectorAll('.dash-section');
+      
+      function switchTab(hash) {
+        let targetId = 'section-profile';
+        if (hash === '#orders') targetId = 'section-orders';
+        if (hash === '#security') targetId = 'section-security';
+        
+        sections.forEach(sec => sec.style.display = 'none');
+        links.forEach(link => link.classList.remove('active'));
+        
+        document.getElementById(targetId).style.display = 'block';
+        const activeLink = document.querySelector(\`#dashboard-tabs a[href="\${hash || '#profile'}"]\`);
+        if(activeLink) activeLink.classList.add('active');
+      }
+      
+      window.addEventListener('hashchange', () => switchTab(window.location.hash));
+      switchTab(window.location.hash || '#profile');
+    });
+    
+    function handleDeleteAccount() {
+      if(confirm("WARNING: Account deletion is permanent. Are you sure you want to proceed?")) {
+        const otp = prompt("Secure Verification required. Please enter your 6-digit OTP (hint: 111111):");
+        if (otp === '111111') {
+          alert("Account successfully deleted.");
+          localStorage.removeItem('luxuryUserAuth');
+          window.location.href = 'index.html';
+        } else {
+          alert("Authentication failed. Account deletion cancelled.");
+        }
+      }
+    }
+  </script>
+</body>
+</html>

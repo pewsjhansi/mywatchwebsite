@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Aurelius Atelier</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      padding: 4rem 0;
+    }
+    .checkout-step {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .checkout-step-title {
+      margin-bottom: 2rem;
+    }
+    .order-summary {
+      background-color: var(--color-neutral);
+      padding: 3rem;
+    }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-divider);
+      font-size: 18px;
+    }
+    @media (max-width: 900px) {
+      .checkout-layout { grid-template-columns: 1fr; }
+      .order-summary { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">AURELIUS</a>
+      <nav class="nav-links" style="display:flex; gap:2rem; align-items:center;">
+        <a href="index.html">Return to Shop</a>
+        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        
+        <div class="checkout-step">
+          <h2 class="title-lg checkout-step-title">1. Contact Information</h2>
+          <div class="form-group">
+            <input type="email" class="form-input" placeholder="Email Address" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" class="form-input" placeholder="Phone Number" required>
+          </div>
+        </div>
+
+        <div class="checkout-step">
+          <h2 class="title-lg checkout-step-title">2. Delivery Address</h2>
+          <div class="form-group">
+            <input type="text" class="form-input" placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" placeholder="House / Flat Number" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" placeholder="Street / Locality" required>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;">
+            <div class="form-group">
+              <input type="text" class="form-input" placeholder="City" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-input" placeholder="State" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" placeholder="PIN Code" required>
+          </div>
+        </div>
+
+        <div class="checkout-step">
+          <h2 class="title-lg checkout-step-title">3. Payment Method</h2>
+          <div style="display:flex; gap: 2rem;">
+            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              <input type="radio" name="payment" value="online" checked> Online Payment (Card / Net Banking)
+            </label>
+            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              <input type="radio" name="payment" value="upi"> UPI
+            </label>
+          </div>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; font-size:14px;" onclick="placeOrder()">Confirm Order & Pay</button>
+      </div>
+
+      <div class="order-summary-wrapper">
+        <div class="order-summary">
+          <h2 class="title-lg" style="margin-bottom: 2rem;">Order Summary</h2>
+          <div id="checkout-items"></div>
+          
+          <div style="margin-top: 2rem;">
+            <div class="summary-item body-md">
+              <span>Subtotal</span>
+              <span class="technical-mono" id="checkout-subtotal">$0.00</span>
+            </div>
+            <div class="summary-item body-md">
+              <span>Shipping</span>
+              <span class="technical-mono">Complimentary</span>
+            </div>
+            <div class="total-row title-lg">
+              <span>Total</span>
+              <span class="technical-mono" id="checkout-total">$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const checkoutItems = document.getElementById('checkout-items');
+      const checkoutSubtotal = document.getElementById('checkout-subtotal');
+      const checkoutTotal = document.getElementById('checkout-total');
+      
+      let total = 0;
+      if (cart.length === 0) {
+        checkoutItems.innerHTML = '<p class="body-md">Your cart is empty.</p>';
+      } else {
+        cart.forEach(item => {
+          total += item.price * item.quantity;
+          checkoutItems.innerHTML += `
+            <div class="summary-item">
+              <div>
+                <div class="title-md">${item.name} <span class="technical-mono" style="font-size:11px;">x${item.quantity}</span></div>
+                <div class="label-caps" style="color:var(--color-tertiary); margin-top:0.25rem;">${item.color} | ${item.size}</div>
+              </div>
+              <div class="technical-mono">$${(item.price * item.quantity).toFixed(2)}</div>
+            </div>
+          `;
+        });
+      }
+      
+      checkoutSubtotal.textContent = `$${total.toFixed(2)}`;
+      checkoutTotal.textContent = `$${total.toFixed(2)}`;
+    });
+
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      if (!userAuth) {
+        openAuthModal();
+        return;
+      }
+      
+      // Mock payment delay
+      const btn = document.querySelector('.btn-primary[onclick="placeOrder()"]');
+      btn.textContent = "Processing...";
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        // Create actual order record
+        let orders = JSON.parse(localStorage.getItem('luxuryOrders')) || [];
+        const newOrder = {
+          orderId: 'AUR-' + Math.floor(10000 + Math.random() * 90000),
+          userId: userAuth.userId,
+          date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+          items: cart,
+          total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+          status: 'Processing'
+        };
+        orders.unshift(newOrder);
+        localStorage.setItem('luxuryOrders', JSON.stringify(orders));
+
+        // Clear cart
+        localStorage.removeItem('luxuryCart');
+        // Redirect to success
+        window.location.href = 'success.html';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

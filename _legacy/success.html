@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Successful | Aurelius Atelier</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .success-container {
+      max-width: 600px;
+      margin: 8rem auto;
+      text-align: center;
+      background: var(--color-canvas);
+      padding: 4rem;
+      border: 1px solid var(--color-divider);
+      box-shadow: var(--shadow-subtle);
+    }
+    .check-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 2rem;
+      color: var(--color-secondary);
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div class="container nav-container" style="justify-content: center;">
+      <a href="index.html" class="brand">AURELIUS</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="success-container">
+      <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <h1 class="headline-md" style="margin-bottom: 1rem;">Order Placed Successfully</h1>
+      <p class="body-lg" style="color:var(--color-tertiary); margin-bottom: 2rem;">
+        Thank you for your bespoke order. Your craftsmanship journey begins now. <br>
+        Order ID: <span class="technical-mono" id="order-id"></span>
+      </p>
+      
+      <div style="display:flex; justify-content:center; gap:1rem;">
+        <a href="index.html" class="btn-secondary">Return Home</a>
+        <a href="shop.html" class="btn-primary">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('order-id').textContent = 'AUR-' + Math.floor(Math.random() * 1000000);
+  </script>
+</body>
+</html>

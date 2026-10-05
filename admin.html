@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Aurelius Atelier</title>
+  <meta name="description" content="Aurelius Admin Panel - Manage products, orders, customers and promo codes.">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="admin-brand">
+      <a href="index.html" class="admin-brand-link">AURELIUS</a>
+      <div class="admin-badge label-caps">Admin</div>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="#" class="admin-nav-item active" data-section="dashboard" onclick="showSection('dashboard', this)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="admin-nav-item" data-section="products" onclick="showSection('products', this)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        Products
+      </a>
+      <a href="#" class="admin-nav-item" data-section="orders" onclick="showSection('orders', this)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Orders
+        <span class="admin-nav-badge" id="pending-orders-badge" style="display:none">0</span>
+      </a>
+      <a href="#" class="admin-nav-item" data-section="promos" onclick="showSection('promos', this)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 7h.01M17 17h.01M7 17h.01M17 7h.01M3 3l18 18M3 21L21 3"/></svg>
+        Promo Codes
+      </a>
+      <a href="#" class="admin-nav-item" data-section="customers" onclick="showSection('customers', this)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Customers
+      </a>
+      <a href="#" class="admin-nav-item" data-section="payments" onclick="showSection('payments', this)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        Payment Config
+      </a>
+      <div class="admin-nav-divider"></div>
+      <a href="index.html" class="admin-nav-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        View Store
+      </a>
+      <a href="#" class="admin-nav-item" onclick="handleAdminLogout(event)" style="color:var(--color-error)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Logout
+      </a>
+    </nav>
+
+    <div class="admin-user-info" id="admin-user-info">
+      <div class="admin-user-avatar" id="admin-avatar-initials">A</div>
+      <div>
+        <div class="body-md" id="admin-user-name">Admin</div>
+        <div class="label-caps" style="color:var(--color-tertiary)" id="admin-user-email">Loading...</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="admin-main" id="admin-main">
+
+    <!-- Loading Screen -->
+    <div id="admin-loading" class="admin-loading">
+      <div class="admin-loading-content">
+        <div class="admin-brand-link" style="font-family:var(--font-display); font-size:28px; margin-bottom:1rem;">AURELIUS</div>
+        <div class="admin-spinner"></div>
+        <p class="body-md" style="color:var(--color-tertiary); margin-top:1rem;">Loading admin panel...</p>
+      </div>
+    </div>
+
+    <!-- Auth Error / Login Screen -->
+    <div id="admin-auth-error" class="admin-loading" style="display:none;">
+      <div class="admin-loading-content" style="padding: 3rem; background: var(--color-canvas); border: 1px solid var(--color-divider); text-align: left; max-width: 400px; margin: 0 auto; margin-top: 10vh;">
+        <div style="font-family:var(--font-display); font-size:24px; margin-bottom:1.5rem; text-align:center;">AURELIUS ADMIN</div>
+        
+        <!-- Network/Offline Error (Fallback) -->
+        <div id="admin-network-error" style="display:none; text-align:center; color:var(--color-error)">
+          <h2 class="title-md" style="margin-bottom:1rem">Network Error</h2>
+          <p class="body-sm">Failed to load essential scripts from the CDN. Please check your internet connection or firewall settings.</p>
+        </div>
+        
+        <div id="admin-login-form">
+          <p class="body-md" style="color:var(--color-tertiary); margin-bottom:1.5rem; text-align:center;" id="admin-auth-msg">Please log in with an admin account.</p>
+          
+          <div class="form-group">
+            <label class="label-caps" style="color:var(--color-tertiary)">Email</label>
+            <input type="email" id="admin-login-email" class="form-input" style="padding:8px" required>
+          </div>
+          <div class="form-group">
+            <label class="label-caps" style="color:var(--color-tertiary)">Password</label>
+            <input type="password" id="admin-login-password" class="form-input" style="padding:8px" required>
+          </div>
+          
+          <div id="admin-login-error" class="auth-error" style="margin-bottom:1rem; display:none"></div>
+          
+          <button class="btn-primary" id="admin-login-btn" style="width:100%" onclick="handleAdminLogin()">Log In</button>
+          
+          <div style="margin-top:2rem; text-align:center">
+            <a href="index.html" class="body-sm" style="color:var(--color-tertiary); text-decoration:underline">Return to Store</a>
+          </div>
+        </div>
+        
+        <div id="admin-access-denied" style="display:none; text-align:center">
+          <svg width="48" height="48" fill="none" stroke="#ba1a1a" viewBox="0 0 24 24" style="margin:0 auto 1.5rem"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          <h2 class="headline-md" style="margin-bottom:1rem;">Access Denied</h2>
+          <p class="body-md" style="color:var(--color-tertiary); margin-bottom:2rem; white-space:pre-wrap; text-align:left; background:var(--color-neutral); padding:1rem; border-radius:4px; font-family:monospace; font-size:12px; line-height:1.5;">You do not have admin privileges.</p>
+          <button class="btn-secondary" onclick="handleAdminLogout()" style="width:100%; margin-bottom:1rem">Sign Out</button>
+          <a href="index.html" class="btn-primary" style="width:100%">Return to Store</a>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- ===================== DASHBOARD ===================== -->
+    <div id="section-dashboard" class="admin-section" style="display:none;">
+      <div class="admin-section-header">
+        <h1 class="headline-md">Dashboard</h1>
+        <p class="body-md" style="color:var(--color-tertiary)" id="dashboard-date"></p>
+      </div>
+
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="admin-stat-label label-caps">Total Products</div>
+          <div class="admin-stat-value" id="stat-products">—</div>
+          <div class="admin-stat-sub">Active in store</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label label-caps">Total Orders</div>
+          <div class="admin-stat-value" id="stat-orders">—</div>
+          <div class="admin-stat-sub">All time</div>
+        </div>
+        <div class="admin-stat-card admin-stat-pending">
+          <div class="admin-stat-label label-caps">Pending Orders</div>
+          <div class="admin-stat-value" id="stat-pending">—</div>
+          <div class="admin-stat-sub">Awaiting approval</div>
+        </div>
+        <div class="admin-stat-card admin-stat-success">
+          <div class="admin-stat-label label-caps">Approved</div>
+          <div class="admin-stat-value" id="stat-approved">—</div>
+          <div class="admin-stat-sub">Ready to dispatch</div>
+        </div>
+        <div class="admin-stat-card admin-stat-dispatched">
+          <div class="admin-stat-label label-caps">Dispatched</div>
+          <div class="admin-stat-value" id="stat-dispatched">—</div>
+          <div class="admin-stat-sub">Shipped out</div>
+        </div>
+        <div class="admin-stat-card admin-stat-error">
+          <div class="admin-stat-label label-caps">Cancelled</div>
+          <div class="admin-stat-value" id="stat-cancelled">—</div>
+          <div class="admin-stat-sub">Order cancelled</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label label-caps">Customers</div>
+          <div class="admin-stat-value" id="stat-customers">—</div>
+          <div class="admin-stat-sub">Registered users</div>
+        </div>
+        <div class="admin-stat-card admin-stat-promo">
+          <div class="admin-stat-label label-caps">Active Promos</div>
+          <div class="admin-stat-value" id="stat-promos">—</div>
+          <div class="admin-stat-sub">Live promo codes</div>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem">
+        <h2 class="title-lg" style="margin-bottom:1.5rem">Recent Orders</h2>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="recent-orders-table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recent-orders-body">
+              <tr><td colspan="6" class="admin-table-empty">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PRODUCTS ===================== -->
+    <div id="section-products" class="admin-section" style="display:none;">
+      <div class="admin-section-header">
+        <h1 class="headline-md">Products</h1>
+        <button class="btn-primary" onclick="openProductModal()">+ Add Product</button>
+      </div>
+
+      <div class="admin-toolbar">
+        <input type="text" class="admin-search" id="product-search" placeholder="Search products..." oninput="filterProducts()">
+        <select class="admin-select" id="product-filter-status" onchange="filterProducts()">
+          <option value="">All Status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>MRP</th>
+              <th>Selling Price</th>
+              <th>Discount</th>
+              <th>GST</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-tbody">
+            <tr><td colspan="8" class="admin-table-empty">Loading products...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===================== ORDERS ===================== -->
+    <div id="section-orders" class="admin-section" style="display:none;">
+      <div id="orders-list-view">
+        <div class="admin-section-header">
+          <h1 class="headline-md">Orders</h1>
+        </div>
+        <div class="admin-toolbar">
+          <input type="text" class="admin-search" id="order-search" placeholder="Search by Order #, name, email..." oninput="filterOrders()">
+          <select class="admin-select" id="order-filter-status" onchange="filterOrders()">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="dispatched">Dispatched</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <select class="admin-select" id="order-sort" onchange="filterOrders()">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody">
+              <tr><td colspan="8" class="admin-table-empty">Loading orders...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Order Detail View -->
+      <div id="order-detail-view" style="display:none;">
+        <div class="admin-section-header">
+          <div>
+            <button class="btn-secondary" onclick="closeOrderDetail()" style="padding:12px 24px; margin-bottom:1rem;">← Back to Orders</button>
+            <h1 class="headline-md" id="order-detail-number">Order Details</h1>
+          </div>
+          <div id="order-detail-status-badge"></div>
+        </div>
+
+        <div class="order-detail-grid">
+          <!-- Order Info -->
+          <div class="admin-card">
+            <h3 class="title-md" style="margin-bottom:1.5rem">Order Information</h3>
+            <div class="info-grid" id="order-info-section"></div>
+          </div>
+
+          <!-- Customer Info -->
+          <div class="admin-card">
+            <h3 class="title-md" style="margin-bottom:1.5rem">Customer Information</h3>
+            <div id="order-customer-section"></div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div class="admin-card">
+            <h3 class="title-md" style="margin-bottom:1.5rem">Shipping Address</h3>
+            <div id="order-address-section" class="body-md" style="line-height:2"></div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="admin-card">
+            <h3 class="title-md" style="margin-bottom:1.5rem">Order Timeline</h3>
+            <div id="order-timeline-section"></div>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="admin-card" style="margin-top:1.5rem">
+          <h3 class="title-md" style="margin-bottom:1.5rem">Products</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Variant</th>
+                <th>MRP</th>
+                <th>Price</th>
+                <th>GST</th>
+                <th>Qty</th>
+                <th>Line Total</th>
+              </tr>
+            </thead>
+            <tbody id="order-items-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="admin-card" style="margin-top:1.5rem">
+          <h3 class="title-md" style="margin-bottom:1.5rem">Price Breakdown</h3>
+          <div id="order-pricing-section"></div>
+        </div>
+
+        <!-- Admin Actions -->
+        <div class="admin-card" style="margin-top:1.5rem" id="order-actions-section">
+          <h3 class="title-md" style="margin-bottom:1.5rem">Admin Actions</h3>
+          <div id="order-action-buttons"></div>
+        </div>
+      </div>
+
+      <!-- Dispatch Label Print Area -->
+      <div id="dispatch-label-area" style="display:none;">
+        <div class="dispatch-label-print" id="dispatch-label-content"></div>
+        <div class="no-print" style="margin-top:2rem; display:flex; gap:1rem;">
+          <button class="btn-primary" onclick="window.print()">🖨 Print Label</button>
+          <button class="btn-secondary" onclick="closeLabel()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PROMO CODES ===================== -->
+    <div id="section-promos" class="admin-section" style="display:none;">
+      <div class="admin-section-header">
+        <h1 class="headline-md">Promo Codes</h1>
+        <button class="btn-primary" onclick="openPromoModal()">+ Create Promo Code</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Type</th>
+              <th>Discount</th>
+              <th>Min Order</th>
+              <th>Max Disc</th>
+              <th>Expiry</th>
+              <th>Usage</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="promos-tbody">
+            <tr><td colspan="9" class="admin-table-empty">Loading promo codes...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===================== CUSTOMERS ===================== -->
+    <div id="section-customers" class="admin-section" style="display:none;">
+      <div class="admin-section-header">
+        <h1 class="headline-md">Customers</h1>
+      </div>
+      <div class="admin-toolbar">
+        <input type="text" class="admin-search" id="customer-search" placeholder="Search customers..." oninput="filterCustomers()">
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>User ID</th>
+              <th>Joined</th>
+              <th>Orders</th>
+            </tr>
+          </thead>
+          <tbody id="customers-tbody">
+            <tr><td colspan="6" class="admin-table-empty">Loading customers...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===================== PAYMENT CONFIG ===================== -->
+    <div id="section-payments" class="admin-section" style="display:none;">
+      <div class="admin-section-header">
+        <h1 class="headline-md">Payment Configuration</h1>
+      </div>
+
+      <div class="admin-card" style="margin-bottom:2rem;">
+        <h2 class="title-md" style="margin-bottom:1rem">Gateway Availability</h2>
+        <p class="body-sm" style="color:var(--color-tertiary); margin-bottom:1.5rem">Select which online payment gateways are available to customers at checkout. Cash on Delivery remains available by default.</p>
+        
+        <div style="display:flex; gap:1.5rem; flex-direction:column">
+          <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer">
+            <input type="checkbox" id="config-enable-razorpay" onchange="toggleConfigForm('razorpay')"> Razorpay
+          </label>
+          <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer">
+            <input type="checkbox" id="config-enable-cashfree" onchange="toggleConfigForm('cashfree')"> Cashfree
+          </label>
+          <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; margin-top:1rem; border-top:1px solid var(--color-divider); padding-top:1rem;">
+            <input type="checkbox" id="config-enable-none" onchange="toggleConfigNone()"> None (Disable online payments)
+          </label>
+        </div>
+      </div>
+
+      <!-- RAZORPAY CONFIG -->
+      <div class="admin-card" id="config-block-razorpay" style="display:none; margin-bottom:2rem; border-left:4px solid #3395FF;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start">
+          <h2 class="title-md" style="margin-bottom:1rem">Razorpay Configuration</h2>
+          <span class="label-caps" id="status-badge-razorpay" style="background:var(--color-neutral); padding:4px 8px; border-radius:4px;">Not Configured</span>
+        </div>
+        
+        <div class="form-row-2" style="margin-bottom:1rem">
+          <div class="form-group">
+            <label class="form-label">Environment</label>
+            <div style="display:flex; gap:1rem; margin-top:0.5rem">
+              <label><input type="radio" name="rzp_env" value="test" checked> Test / Sandbox</label>
+              <label style="color:var(--color-error)"><input type="radio" name="rzp_env" value="live"> Live / Production</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Razorpay Key ID</label>
+            <input type="text" id="rzp_key_id" class="admin-input" placeholder="rzp_test_...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Razorpay Key Secret</label>
+            <input type="password" id="rzp_key_secret" class="admin-input" placeholder="••••••••••••••••">
+          </div>
+        </div>
+
+        <div style="display:flex; gap:1rem; margin-top:1rem">
+          <button class="btn-primary" onclick="saveGatewayConfig('razorpay')">Save Razorpay Configuration</button>
+          <button class="btn-secondary" onclick="testGatewayConnection('razorpay')">Test Connection</button>
+        </div>
+        <div id="test-result-razorpay" style="margin-top:1rem; font-size:13px; font-weight:600;"></div>
+      </div>
+
+      <!-- CASHFREE CONFIG -->
+      <div class="admin-card" id="config-block-cashfree" style="display:none; margin-bottom:2rem; border-left:4px solid #F37021;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start">
+          <h2 class="title-md" style="margin-bottom:1rem">Cashfree Configuration</h2>
+          <span class="label-caps" id="status-badge-cashfree" style="background:var(--color-neutral); padding:4px 8px; border-radius:4px;">Not Configured</span>
+        </div>
+        
+        <div class="form-row-2" style="margin-bottom:1rem">
+          <div class="form-group">
+            <label class="form-label">Environment</label>
+            <div style="display:flex; gap:1rem; margin-top:0.5rem">
+              <label><input type="radio" name="cf_env" value="test" checked> Test / Sandbox</label>
+              <label style="color:var(--color-error)"><input type="radio" name="cf_env" value="live"> Live / Production</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Cashfree App/Client ID</label>
+            <input type="text" id="cf_client_id" class="admin-input" placeholder="Enter App ID">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cashfree Secret Key</label>
+            <input type="password" id="cf_secret_key" class="admin-input" placeholder="••••••••••••••••">
+          </div>
+        </div>
+
+        <div style="display:flex; gap:1rem; margin-top:1rem">
+          <button class="btn-primary" onclick="saveGatewayConfig('cashfree')">Save Cashfree Configuration</button>
+          <button class="btn-secondary" onclick="testGatewayConnection('cashfree')">Test Connection</button>
+        </div>
+        <div id="test-result-cashfree" style="margin-top:1rem; font-size:13px; font-weight:600;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== PRODUCT MODAL ===================== -->
+  <div class="modal-overlay" id="product-modal-overlay" style="display:none">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h2 class="title-lg" id="product-modal-title">Add Product</h2>
+        <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="product-id-field">
+        
+        <div class="form-section">
+          <h3 class="form-section-title">Product Basic Information</h3>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Product Name *</label>
+              <input type="text" id="p-name" class="admin-input" placeholder="e.g. The Obsidian Alligator">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <input type="text" id="p-category" class="admin-input" placeholder="e.g. Leather Strap">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="p-description" class="admin-input admin-textarea" placeholder="Product description..."></textarea>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Material</label>
+              <input type="text" id="p-material" class="admin-input" placeholder="e.g. Genuine Alligator Leather">
+            </div>
+            <div class="form-group">
+              <label class="form-label">SKU</label>
+              <input type="text" id="p-sku" class="admin-input" placeholder="e.g. AUR-001">
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Sizes (comma separated)</label>
+              <input type="text" id="p-sizes" class="admin-input" placeholder='18mm, 20mm, 22mm'>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Colors (JSON array)</label>
+              <input type="text" id="p-colors" class="admin-input" placeholder='[{"name":"Black","hex":"#000"}]'>
+            </div>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label class="form-label">Best Seller</label>
+              <select id="p-best-seller" class="admin-input">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">New Arrival</label>
+              <select id="p-new-arrival" class="admin-input">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select id="p-active" class="admin-input">
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Media</h3>
+          <div class="form-group">
+            <label class="form-label">Primary Image URL</label>
+            <input type="text" id="p-image" class="admin-input" placeholder="https://...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Additional Images (JSON array of URLs)</label>
+            <textarea id="p-additional-images" class="admin-input admin-textarea" placeholder='["url1", "url2"]'></textarea>
+            <div class="label-caps" style="margin-top:0.5rem;color:var(--color-tertiary)">Used for product gallery and zoom.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Product Video URL (Optional)</label>
+            <input type="text" id="p-video-url" class="admin-input" placeholder="https://...mp4">
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Pricing</h3>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">MRP (₹) *</label>
+              <input type="number" id="p-mrp" class="admin-input" placeholder="0.00" min="0" step="0.01" oninput="updateProductCalc()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Selling Price (₹) *</label>
+              <input type="number" id="p-selling-price" class="admin-input" placeholder="0.00" min="0" step="0.01" oninput="updateProductCalc()">
+            </div>
+          </div>
+          <div class="price-calc-preview" id="price-calc-preview" style="display:none">
+            <div class="price-calc-item">
+              <span>MRP</span>
+              <span id="calc-mrp">₹0.00</span>
+            </div>
+            <div class="price-calc-item">
+              <span>Selling Price</span>
+              <span id="calc-selling">₹0.00</span>
+            </div>
+            <div class="price-calc-item price-calc-discount">
+              <span>Discount</span>
+              <span id="calc-discount">0%</span>
+            </div>
+          </div>
+          <div id="price-error" class="admin-error" style="display:none">Selling price cannot exceed MRP.</div>
+        </div>
+        
+        <div class="form-section">
+          <h3 class="form-section-title">GST</h3>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">GST Rate</label>
+              <select id="p-gst-select" class="admin-input" onchange="handleGstSelect()">
+                <option value="0">0%</option>
+                <option value="5">5%</option>
+                <option value="12">12%</option>
+                <option value="18" selected>18%</option>
+                <option value="28">28%</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="form-group" id="custom-gst-wrap" style="display:none">
+              <label class="form-label">Custom GST %</label>
+              <input type="number" id="p-gst-custom" class="admin-input" placeholder="e.g. 7.5" min="0" max="100" step="0.01">
+            </div>
+          </div>
+          <div class="gst-note label-caps">All prices are GST-inclusive.</div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Inventory</h3>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Stock Quantity</label>
+              <input type="number" id="p-stock" class="admin-input" placeholder="e.g. 100" min="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem">
+            <h3 class="form-section-title" style="margin-bottom:0">Specifications</h3>
+            <button type="button" class="btn-secondary" onclick="addSpecRow()" style="padding:4px 8px; font-size:12px">+ Add Spec</button>
+          </div>
+          <div id="p-specs-container">
+            <!-- Dynamic specs -->
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Warranty</h3>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Warranty Available</label>
+              <select id="p-warranty-avail" class="admin-input" onchange="toggleWarrantyFields()">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+            <div class="form-group warranty-field" style="display:none">
+              <label class="form-label">Warranty Duration</label>
+              <input type="text" id="p-warranty-duration" class="admin-input" placeholder="e.g. 1 Year">
+            </div>
+          </div>
+          <div class="form-row-2 warranty-field" style="display:none">
+            <div class="form-group">
+              <label class="form-label">Warranty Type</label>
+              <input type="text" id="p-warranty-type" class="admin-input" placeholder="e.g. Manufacturer Warranty">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Warranty Terms</label>
+              <input type="text" id="p-warranty-terms" class="admin-input" placeholder="e.g. Covers manufacturing defects only">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Recommendations</h3>
+          <div class="form-group">
+            <label class="form-label">Recommended Product IDs (comma separated)</label>
+            <input type="text" id="p-recommendations" class="admin-input" placeholder="id1, id2, id3">
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeProductModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveProduct()" id="save-product-btn">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PROMO MODAL ===================== -->
+  <div class="modal-overlay" id="promo-modal-overlay" style="display:none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="title-lg" id="promo-modal-title">Create Promo Code</h2>
+        <button class="modal-close" onclick="closePromoModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="promo-id-field">
+        <div class="form-group">
+          <label class="form-label">Promo Code *</label>
+          <input type="text" id="promo-code" class="admin-input" placeholder="e.g. SAVE50" style="text-transform:uppercase">
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Discount Type *</label>
+            <select id="promo-type" class="admin-input" onchange="updatePromoForm()">
+              <option value="fixed">Fixed (₹)</option>
+              <option value="percentage">Percentage (%)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" id="promo-value-label">Discount Value (₹) *</label>
+            <input type="number" id="promo-value" class="admin-input" placeholder="0" min="0" step="0.01">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Minimum Order Amount (₹)</label>
+            <input type="number" id="promo-min" class="admin-input" placeholder="0" min="0" step="0.01">
+          </div>
+          <div class="form-group" id="promo-max-wrap">
+            <label class="form-label">Max Discount Amount (₹)</label>
+            <input type="number" id="promo-max" class="admin-input" placeholder="Unlimited" min="0" step="0.01">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Start Date</label>
+            <input type="datetime-local" id="promo-start" class="admin-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Expiry Date</label>
+            <input type="datetime-local" id="promo-expiry" class="admin-input">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Usage Limit</label>
+            <input type="number" id="promo-limit" class="admin-input" placeholder="Unlimited" min="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="promo-active" class="admin-input">
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div id="promo-error" class="admin-error" style="display:none"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closePromoModal()">Cancel</button>
+        <button class="btn-primary" onclick="savePromo()" id="save-promo-btn">Save Promo Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Dialog -->
+  <div class="modal-overlay" id="confirm-modal-overlay" style="display:none">
+    <div class="modal-content" style="max-width:420px">
+      <div class="modal-header">
+        <h2 class="title-lg" id="confirm-title">Confirm Action</h2>
+        <button class="modal-close" onclick="closeConfirm()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="body-md" id="confirm-message" style="margin-bottom:1.5rem"></p>
+        <div class="form-group" id="confirm-reason-wrap" style="display:none">
+          <label class="form-label">Reason (optional)</label>
+          <textarea id="confirm-reason" class="admin-input admin-textarea" placeholder="Enter reason..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeConfirm()">Cancel</button>
+        <button class="btn-primary" id="confirm-btn" onclick="executeConfirm()">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="admin-toast" class="admin-toast" style="display:none"></div>
+
+  <!-- Inline Failsafe for Network Hangs -->
+  <script>
+    window.cdnTimeout = setTimeout(() => {
+      if (!window.supabase) {
+        document.getElementById('admin-loading').style.display = 'none';
+        document.getElementById('admin-auth-error').style.display = 'flex';
+        document.getElementById('admin-login-form').style.display = 'none';
+        document.getElementById('admin-access-denied').style.display = 'none';
+        document.getElementById('admin-network-error').style.display = 'block';
+      }
+    }, 5000);
+  </script>
+
+  <script src="supabase.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
