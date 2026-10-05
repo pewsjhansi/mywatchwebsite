@@ -142,7 +142,7 @@ async function handleAdminLogin() {
 async function handleAdminLogout(e) {
   if (e) e.preventDefault();
   if (confirm('Are you sure you want to log out?')) {
-    await window.supabaseClient.auth.signOut();
+    if (supabaseClient) await supabaseClient.auth.signOut();
     window.location.href = 'index.html';
   }
 }
