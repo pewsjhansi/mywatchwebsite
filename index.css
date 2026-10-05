@@ -767,7 +767,6 @@ footer {
   .dashboard-sidebar { border-right: none; border-bottom: 1px solid var(--color-divider); padding-right: 0; padding-bottom: 2rem; }
   .dashboard-cards { grid-template-columns: 1fr; }
 }
-\n
 /* =========================================
    RESPONSIVE OVERRIDES
    ========================================= */
@@ -865,4 +864,4 @@ footer {
   .otp-container { gap: 0.25rem; }
   .otp-input { width: 35px; height: 45px; font-size: 18px; }
 }
-\nimg { max-width: 100%; height: auto; }\n
+img { max-width: 100%; height: auto; }

@@ -1328,7 +1328,6 @@ async function testGatewayConnection(gateway) {
     resultDiv.textContent = `✕ Connection failed: ${err.message.replace('Edge Function returned a non-2xx status code', 'Invalid Credentials')}`;
   }
 }
-\n
 // =========================================
 // ADMIN RESPONSIVE SIDEBAR
 // =========================================
