@@ -70,52 +70,74 @@
     /* Gallery thumbnails */
     .pdp-gallery {
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .pdp-main-img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      background-color: var(--color-neutral);
+      flex-direction: row;
+      gap: 1rem;
+      align-items: flex-start;
     }
     .pdp-thumbs {
       display: flex;
+      flex-direction: column;
       gap: 0.5rem;
+      width: 80px;
+      flex-shrink: 0;
+      max-height: 600px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .pdp-thumbs::-webkit-scrollbar {
+      display: none;
     }
     .pdp-thumb {
-      width: 64px;
+      width: 80px;
       height: 80px;
-      object-fit: cover;
+      object-fit: contain;
       cursor: pointer;
-      border: 2px solid transparent;
-      opacity: 0.6;
+      border: 1px solid var(--color-divider);
+      border-radius: 4px;
+      opacity: 0.7;
       transition: all 0.2s;
+      background-color: #fff;
     }
     .pdp-thumb:hover, .pdp-thumb.active {
-      border-color: var(--color-secondary);
+      border: 2px solid #111;
       opacity: 1;
     }
 
-    
     /* Image Zoom */
+    .pdp-main-img-wrapper {
+      flex: 1;
+      width: 100%;
+    }
     .pdp-main-img-container {
       width: 100%;
       aspect-ratio: 4/5;
       overflow: hidden;
-      background-color: var(--color-neutral);
+      background-color: #fff;
       position: relative;
       cursor: crosshair;
     }
     .pdp-main-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.1s ease;
+      object-fit: contain;
       transform-origin: center center;
+      transition: transform 0.1s ease-out;
     }
-    .pdp-main-img:hover {
-      transform: scale(2); /* Zoom level */
+
+    @media (max-width: 900px) {
+      .pdp-gallery {
+        flex-direction: column;
+      }
+      .pdp-thumbs {
+        flex-direction: row;
+        width: 100%;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      .pdp-thumb {
+        flex-shrink: 0;
+      }
     }
     
     /* Video */
@@ -220,13 +242,15 @@
     <div class="pdp-layout">
       <!-- Gallery -->
       <div class="pdp-gallery">
-        <div class="pdp-main-img-container" id="pdp-img-container" onmousemove="zoomImage(event)" onmouseleave="resetZoom()">
-          <img id="pdp-img" src="" alt="Product Image" class="pdp-main-img">
-        </div>
-        <div class="pdp-video-container" id="pdp-video-container">
-          <video id="pdp-video" class="pdp-video" controls muted playsinline></video>
-        </div>
         <div class="pdp-thumbs" id="pdp-thumbs"></div>
+        <div class="pdp-main-img-wrapper">
+          <div class="pdp-main-img-container" id="pdp-img-container" onmousemove="zoomImage(event)" onmouseleave="resetZoom()">
+            <img id="pdp-img" src="" alt="Product Image" class="pdp-main-img">
+          </div>
+          <div class="pdp-video-container" id="pdp-video-container">
+            <video id="pdp-video" class="pdp-video" controls muted playsinline></video>
+          </div>
+        </div>
       </div>
 
       <!-- Product Info -->
@@ -393,20 +417,48 @@
 
       // ─── IMAGES & VIDEO ───
       const thumbContainer = document.getElementById('pdp-thumbs');
-      let images = [product.image];
+      let rawImages = [product.image];
       
       const { data: addImages } = await supabaseClient.from('product_images').select('image_url').eq('product_id', pid).order('sort_order');
       if (addImages && addImages.length) {
-        images = images.concat(addImages.map(img => img.image_url));
+        rawImages = rawImages.concat(addImages.map(img => img.image_url));
+      }
+
+      // Support existing array formats
+      if (product.images && Array.isArray(product.images)) {
+        rawImages = rawImages.concat(product.images);
+      } else if (product.image_urls && Array.isArray(product.image_urls)) {
+        rawImages = rawImages.concat(product.image_urls);
+      } else if (product.multiple_images && Array.isArray(product.multiple_images)) {
+        rawImages = rawImages.concat(product.multiple_images);
+      } else if (typeof product.images === 'string') {
+        try { rawImages = rawImages.concat(JSON.parse(product.images)); } catch(e){}
+      }
+
+      // Normalize array
+      let images = [];
+      rawImages.forEach(src => {
+        if (src && typeof src === 'string' && src.trim() !== '' && !images.includes(src)) {
+          images.push(src);
+        }
+      });
+
+      if (images.length > 0) {
+        // First valid image becomes default
+        document.getElementById('pdp-img').src = images[0];
       }
 
       if (images.length > 1 || product.video_url) {
         let thumbsHtml = images.map((src, i) =>
-          `<img src="${src}" class="pdp-thumb ${i === 0 ? 'active' : ''}" alt="" onclick="switchMainImage(this, '${src}', 'image')">`
+          `<button style="background:none;border:none;padding:0;" onclick="switchMainImage(this, '${src}', 'image')" aria-label="View product image ${i+1}">
+             <img src="${src}" class="pdp-thumb ${i === 0 ? 'active' : ''}" alt="${product.name} - Image ${i+1}">
+           </button>`
         ).join('');
         
         if (product.video_url) {
-          thumbsHtml += `<div class="pdp-thumb" style="background:#000; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px" onclick="switchMainImage(this, '${product.video_url}', 'video')">VIDEO</div>`;
+          thumbsHtml += `<button style="background:none;border:none;padding:0;" onclick="switchMainImage(this, '${product.video_url}', 'video')" aria-label="View product video">
+             <div class="pdp-thumb" style="background:#000; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px">VIDEO</div>
+           </button>`;
         }
         thumbContainer.innerHTML = thumbsHtml;
       }
@@ -448,12 +500,14 @@
       updateCompareUI();
     });
 
-    function switchMainImage(thumb, src, type) {
+    function switchMainImage(btn, src, type) {
       document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
+      const thumb = btn.querySelector('.pdp-thumb');
+      if (thumb) thumb.classList.add('active');
       const imgContainer = document.getElementById('pdp-img-container');
       const videoContainer = document.getElementById('pdp-video-container');
       const video = document.getElementById('pdp-video');
+      const img = document.getElementById('pdp-img');
       
       if (type === 'video') {
         imgContainer.style.display = 'none';
@@ -464,21 +518,27 @@
         videoContainer.style.display = 'none';
         video.pause();
         imgContainer.style.display = 'block';
-        document.getElementById('pdp-img').src = src;
+        img.src = src;
+        img.style.transform = 'scale(1)'; // reset zoom when switched
       }
     }
 
     function zoomImage(e) {
+      if (window.innerWidth <= 900) return; // Do not zoom on mobile/tablet to avoid overflow
       const container = e.currentTarget;
       const img = container.querySelector('img');
       const { left, top, width, height } = container.getBoundingClientRect();
       const x = (e.clientX - left) / width * 100;
       const y = (e.clientY - top) / height * 100;
       img.style.transformOrigin = `${x}% ${y}%`;
+      img.style.transform = 'scale(2.2)';
     }
     function resetZoom() {
       const img = document.getElementById('pdp-img');
-      if (img) img.style.transformOrigin = 'center center';
+      if (img) {
+        img.style.transformOrigin = 'center center';
+        img.style.transform = 'scale(1)';
+      }
     }
 
     function updateColorLabel() {
@@ -558,520 +618,6 @@
     }
     function viewCompare() {
       window.location.href = 'compare.html';
-    }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details | Aurelius Atelier</title>
-  <meta name="description" content="Luxury watch band details — Aurelius Atelier Horlogerie.">
-  <link rel="stylesheet" href="index.css">
-  <style>
-    .pdp-breadcrumb {
-      padding: 1.5rem 0 0;
-      font-size: 12px;
-      color: var(--color-tertiary);
-      letter-spacing: 0.05em;
-    }
-    .pdp-breadcrumb a { color: var(--color-tertiary); text-decoration: none; }
-    .pdp-breadcrumb a:hover { color: var(--color-secondary); }
-
-    /* Material / category tag */
-    .pdp-tag {
-      display: inline-block;
-      background: var(--color-neutral);
-      border: 1px solid var(--color-divider);
-      padding: 4px 12px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    /* Price block */
-    .pdp-price-block {
-      margin: 1.25rem 0 2rem;
-    }
-    .pdp-price-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.375rem;
-    }
-    .pdp-price-selling {
-      font-family: var(--font-body);
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--color-primary);
-      letter-spacing: -0.01em;
-    }
-    .pdp-price-mrp {
-      font-size: 16px;
-      color: var(--color-tertiary);
-      text-decoration: line-through;
-    }
-    .pdp-discount-badge {
-      background: var(--color-secondary);
-      color: var(--color-primary);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      letter-spacing: 0.05em;
-    }
-    .pdp-gst-note {
-      font-size: 11px;
-      color: var(--color-tertiary);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* Gallery thumbnails */
-    .pdp-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .pdp-main-img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      background-color: var(--color-neutral);
-    }
-    .pdp-thumbs {
-      display: flex;
-      gap: 0.5rem;
-    }
-    .pdp-thumb {
-      width: 64px;
-      height: 80px;
-      object-fit: cover;
-      cursor: pointer;
-      border: 2px solid transparent;
-      opacity: 0.6;
-      transition: all 0.2s;
-    }
-    .pdp-thumb:hover, .pdp-thumb.active {
-      border-color: var(--color-secondary);
-      opacity: 1;
-    }
-
-    
-    /* Image Zoom */
-    .pdp-main-img-container {
-      width: 100%;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-      background-color: var(--color-neutral);
-      position: relative;
-      cursor: crosshair;
-    }
-    .pdp-main-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.1s ease;
-      transform-origin: center center;
-    }
-    .pdp-main-img:hover {
-      transform: scale(2); /* Zoom level */
-    }
-    
-    /* Video */
-    .pdp-video-container {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background-color: #000;
-      display: none;
-    }
-    .pdp-video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* Specs & Warranty */
-    .pdp-details-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-top: 1rem;
-    }
-    .pdp-details-table th, .pdp-details-table td {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--color-divider);
-      text-align: left;
-    }
-    .pdp-details-table th {
-      font-weight: 600;
-      color: var(--color-tertiary);
-      width: 40%;
-    }
-
-    /* Recommendations */
-    .recommendations-section {
-      margin-top: 5rem;
-      border-top: 1px solid var(--color-divider);
-      padding-top: 3rem;
-    }
-    .recommendations-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    /* Compare bar */
-    .compare-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--color-primary);
-      color: var(--color-neutral);
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-    .compare-bar.active { transform: translateY(0); }
-
-    /* Add to cart success state */
-    .btn-added {
-      background-color: #047857 !important;
-      border-color: #047857 !important;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="container nav-container">
-      <div style="display:flex; align-items:center; gap: 2rem;">
-        <a href="index.html" class="brand">AURELIUS</a>
-      </div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop All</a>
-      </nav>
-      <div class="nav-actions">
-        <div class="auth-trigger label-caps" style="cursor:pointer; display:flex; align-items:center;">Login | Sign Up</div>
-        <div class="cart-icon open-cart">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <div class="cart-count">0</div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- Breadcrumb -->
-    <div class="pdp-breadcrumb">
-      <a href="index.html">Home</a> &rsaquo;
-      <a href="shop.html">Shop All</a> &rsaquo;
-      <span id="pdp-breadcrumb-name">Product</span>
-    </div>
-
-    <div class="pdp-layout">
-      <!-- Gallery -->
-      <div class="pdp-gallery">
-        <div class="pdp-main-img-container" id="pdp-img-container" onmousemove="zoomImage(event)" onmouseleave="resetZoom()">
-          <img id="pdp-img" src="" alt="Product Image" class="pdp-main-img">
-        </div>
-        <div class="pdp-video-container" id="pdp-video-container">
-          <video id="pdp-video" class="pdp-video" controls muted playsinline></video>
-        </div>
-        <div class="pdp-thumbs" id="pdp-thumbs"></div>
-      </div>
-
-      <!-- Product Info -->
-      <div class="pdp-info">
-        <!-- Material tag -->
-        <div id="pdp-material-tag" class="pdp-tag" style="display:none"></div>
-
-        <h1 class="headline-lg" id="pdp-title">Loading...</h1>
-
-        <!-- Price block — populated by app.js -->
-        <div class="pdp-price-block" id="pdp-price">
-          <div class="pdp-price-row">
-            <span class="pdp-price-selling">—</span>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div class="pdp-section" id="pdp-description-section">
-          <p class="body-lg" style="color:var(--color-tertiary)" id="pdp-description">
-            Precision crafted using heritage techniques, offering unparalleled comfort and a sophisticated profile for discerning collectors.
-          </p>
-        </div>
-
-        <!-- Sizes -->
-        <div class="pdp-section" id="pdp-sizes-section">
-          <span class="pdp-label label-caps">Lug Width</span>
-          <div class="swatch-group" id="pdp-sizes">
-            <!-- Populated by app.js -->
-          </div>
-        </div>
-
-        <!-- Colors -->
-        <div class="pdp-section" id="pdp-colors-section">
-          <span class="pdp-label label-caps">Color &mdash; <span id="pdp-selected-color" style="font-weight:400;text-transform:none;letter-spacing:0"></span></span>
-          <div class="swatch-group" id="pdp-colors">
-            <!-- Populated by app.js -->
-          </div>
-        </div>
-
-        <!-- Actions -->
-        <div style="display:flex; gap:1rem; margin-top:1rem">
-          <button class="btn-primary" id="pdp-atc-btn" style="flex:2; font-size:13px;" onclick="handleAddToCartPDP()">
-            Add to Cart
-          </button>
-          <button class="btn-secondary" style="flex:1; font-size:12px; padding:0" onclick="toggleWishlistPDP()" id="pdp-wishlist-btn">
-            ♥ Wishlist
-          </button>
-          <button class="btn-secondary" style="flex:1; font-size:12px; padding:0" onclick="toggleSavedWatchPDP()" id="pdp-save-btn">
-            ★ Save
-          </button>
-          <button class="btn-secondary" style="flex:1; font-size:12px; padding:0" onclick="toggleCompare()" id="pdp-compare-btn">
-            ⚄ Compare
-          </button>
-        </div>
-
-        <!-- SKU -->
-        <div id="pdp-sku" style="margin-top:1rem; font-size:11px; color:var(--color-tertiary); letter-spacing:0.1em; display:none">
-          SKU: <span id="pdp-sku-val"></span>
-        </div>
-
-        <!-- Specifications -->
-        <div style="margin-top: 3rem; display:none" id="pdp-specs-section">
-          <h4 class="title-md">Specifications</h4>
-          <table class="pdp-details-table" id="pdp-specs-table"></table>
-        </div>
-
-        <!-- Warranty -->
-        <div style="margin-top: 3rem;" id="pdp-warranty-section">
-          <h4 class="title-md">Warranty</h4>
-          <p class="body-md" style="color:var(--color-tertiary); margin-top:0.5rem;" id="pdp-warranty-text">
-            Warranty information not available.
-          </p>
-        </div>
-
-        <!-- Trust signals -->
-        <div style="margin-top: 3rem;">
-          <h4 class="title-md">Delivery &amp; Returns</h4>
-          <p class="body-md" style="color:var(--color-tertiary); margin-top:0.5rem;">
-            Complimentary global shipping on all bespoke orders. Returns accepted within 14 days of receipt for unused straps in original condition.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recommendations -->
-    <div class="recommendations-section" id="recommendations-section" style="display:none">
-      <h2 class="title-lg" style="text-align:center">Recommended for You</h2>
-      <div class="recommendations-grid" id="recommendations-grid"></div>
-    </div>
-  </main>
-
-  <!-- Compare Bar -->
-  <div class="compare-bar" id="compare-bar">
-    <div>
-      <span style="font-weight:600; font-family:var(--font-heading)">Compare Products (<span id="compare-count">0</span>/4)</span>
-    </div>
-    <div>
-      <button class="btn-secondary" style="border-color:#fff; color:#000; background:#fff; margin-right:1rem" onclick="viewCompare()">Compare Now</button>
-      <button style="background:none; border:none; color:#fff; cursor:pointer" onclick="clearCompare()">Clear All</button>
-    </div>
-  </div>
-
-
-  <!-- Cart Drawer -->
-  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
-  <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-header">
-      <h2 class="title-lg">Your Cart</h2>
-      <button class="cart-close" id="cart-close-btn">&times;</button>
-    </div>
-    <div class="cart-body" id="cart-items"></div>
-    <div class="cart-footer">
-      <div id="cart-promo-section"></div>
-      <div id="cart-footer-content"></div>
-      <span id="cart-subtotal" style="display:none"></span>
-      <a href="checkout.html" class="btn-primary" style="width:100%; text-align:center; margin-top:0.5rem">Proceed to Checkout</a>
-    </div>
-  </div>
-
-  <script src="supabase.js"></script>
-  <script src="app.js"></script>
-  <script>
-    // Extra PDP enhancements on top of what app.js already does
-
-    document.addEventListener('productsLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const pid = params.get('id');
-      if (!pid || typeof products === 'undefined') return;
-      const product = products.find(p => p.id === pid);
-      if (!product) return;
-
-      // Update page title and breadcrumb
-      document.title = product.name + ' | Aurelius Atelier';
-      const bc = document.getElementById('pdp-breadcrumb-name');
-      if (bc) bc.textContent = product.name;
-
-      // Material tag
-      if (product.material) {
-        const tag = document.getElementById('pdp-material-tag');
-        tag.textContent = product.material;
-        tag.style.display = 'inline-block';
-      }
-
-      // Dynamic description from DB (overrides default placeholder)
-      if (product.description) {
-        document.getElementById('pdp-description').textContent = product.description;
-      }
-
-      // SKU
-      if (product.sku) {
-        document.getElementById('pdp-sku').style.display = 'block';
-        document.getElementById('pdp-sku-val').textContent = product.sku;
-      }
-
-      // Thumbnail gallery — if product has multiple images array
-      const thumbContainer = document.getElementById('pdp-thumbs');
-      const images = product.images || (product.image ? [product.image] : []);
-      if (Array.isArray(images) && images.length > 1) {
-        thumbContainer.innerHTML = images.map((src, i) =>
-          `<img src="${src}" class="pdp-thumb ${i === 0 ? 'active' : ''}" alt="" onclick="switchMainImage(this, '${src}')">`
-        ).join('');
-      }
-
-      // Color label update when swatch selected
-      updateColorLabel();
-    });
-
-    function switchMainImage(thumb, src) {
-      document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-      document.getElementById('pdp-img').src = src;
-    }
-
-    function updateColorLabel() {
-      const label = document.getElementById('pdp-selected-color');
-      if (label && window.selectedColor) label.textContent = window.selectedColor;
-    }
-
-    // Override selectColor to also update label
-    const _origSelectColor = window.selectColor;
-    window.selectColor = function(btn) {
-      if (_origSelectColor) _origSelectColor(btn);
-      updateColorLabel();
-    };
-
-    function handleAddToCartPDP() {
-      if (!window.currentProduct) return;
-
-      const size = window.selectedSize;
-      const color = window.selectedColor;
-
-      if (!size) {
-        alert('Please select a size.');
-        return;
-      }
-      if (!color) {
-        alert('Please select a color.');
-        return;
-      }
-
-      addToCart(window.currentProduct, size, color, 1);
-
-      // Visual feedback
-      const btn = document.getElementById('pdp-atc-btn');
-      const orig = btn.textContent;
-      btn.textContent = '✓ Added to Cart';
-      btn.classList.add('btn-added');
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.classList.remove('btn-added');
-        btn.disabled = false;
-      }, 2000);
-    }
-    // Check wishlist/saved status on load
-    document.addEventListener('productsLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const pid = params.get('id');
-      if (typeof userAuth !== 'undefined' && userAuth && pid) {
-        checkUserInteractions(pid);
-      }
-    });
-
-    let isInWishlist = false;
-    let isSaved = false;
-
-    async function checkUserInteractions(pid) {
-      if (!userAuth) return;
-      
-      const { data: wl } = await supabaseClient.from('wishlists').select('id').eq('customer_id', userAuth.id).eq('product_id', pid).single();
-      if (wl) {
-        isInWishlist = true;
-        const btn = document.getElementById('pdp-wishlist-btn');
-        if(btn) { btn.style.background = 'var(--color-secondary)'; btn.style.color = 'var(--color-bg)'; }
-      }
-      
-      const { data: sv } = await supabaseClient.from('saved_watches').select('id').eq('customer_id', userAuth.id).eq('product_id', pid).single();
-      if (sv) {
-        isSaved = true;
-        const btn = document.getElementById('pdp-save-btn');
-        if(btn) { btn.style.background = 'var(--color-secondary)'; btn.style.color = 'var(--color-bg)'; }
-      }
-    }
-
-    async function toggleWishlistPDP() {
-      if (typeof userAuth === 'undefined' || !userAuth) {
-        alert('Please login to use your wishlist.');
-        return;
-      }
-      const params = new URLSearchParams(window.location.search);
-      const pid = params.get('id');
-      const btn = document.getElementById('pdp-wishlist-btn');
-
-      if (isInWishlist) {
-        await supabaseClient.from('wishlists').delete().eq('customer_id', userAuth.id).eq('product_id', pid);
-        isInWishlist = false;
-        btn.style.background = 'transparent';
-        btn.style.color = 'var(--color-primary)';
-      } else {
-        await supabaseClient.from('wishlists').insert([{ customer_id: userAuth.id, product_id: pid }]);
-        isInWishlist = true;
-        btn.style.background = 'var(--color-secondary)';
-        btn.style.color = 'var(--color-bg)';
-      }
-    }
-
-    async function toggleSavedWatchPDP() {
-      if (typeof userAuth === 'undefined' || !userAuth) {
-        alert('Please login to save watches.');
-        return;
-      }
-      const params = new URLSearchParams(window.location.search);
-      const pid = params.get('id');
-      const btn = document.getElementById('pdp-save-btn');
-
-      if (isSaved) {
-        await supabaseClient.from('saved_watches').delete().eq('customer_id', userAuth.id).eq('product_id', pid);
-        isSaved = false;
-        btn.style.background = 'transparent';
-        btn.style.color = 'var(--color-primary)';
-      } else {
-        await supabaseClient.from('saved_watches').insert([{ customer_id: userAuth.id, product_id: pid }]);
-        isSaved = true;
-        btn.style.background = 'var(--color-secondary)';
-        btn.style.color = 'var(--color-bg)';
-      }
     }
   </script>
 </body>

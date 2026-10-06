@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cp *.js dist/",
+    "build": "tsc -b && vite build && node -e \"import fs from 'fs'; ['app.js','admin.js','supabase.js'].forEach(f=>fs.copyFileSync(f,'dist/'+f))\"",
     "lint": "oxlint",
     "preview": "vite preview"
   },
